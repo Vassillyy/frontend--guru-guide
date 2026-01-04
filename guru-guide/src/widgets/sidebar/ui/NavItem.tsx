@@ -1,0 +1,51 @@
+import { Link, type LinkProps } from "react-router-dom";
+import cn from "classnames";
+import { IconArrow } from "./IconArrow";
+import styles from "./NavItem.module.css";
+
+interface NavItemProps extends Omit<LinkProps, "to"> {
+  to: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+  variant?: "default" | "nested";
+  hasChildren?: boolean;
+  isExpanded?: boolean;
+  onClick?: () => void;
+}
+
+export const NavItem = ({
+  to,
+  children,
+  isActive = false,
+  variant = "default",
+  hasChildren = false,
+  isExpanded = false,
+  onClick,
+  ...props
+}: NavItemProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <Link
+      to={to}
+      className={cn(
+        styles.navItem,
+        styles[variant],
+        isActive && styles.active,
+        hasChildren && styles.hasChildren
+      )}
+      onClick={handleClick}
+      {...props}
+    >
+      <span className={styles.content}>
+        {children}
+        {hasChildren && <IconArrow isExpanded={isExpanded} />}
+      </span>
+    </Link>
+  );
+};

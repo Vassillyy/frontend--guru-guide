@@ -1,12 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { NAV_ITEMS } from "./model";
+import { NavItem } from "./ui/NavItem";
 import styles from "./Sidebar.module.css";
-import cn from "classnames";
 
 export const Sidebar = () => {
   const location = useLocation();
+  const [expandedItemId, setExpandedItemId] = useState<string | null>(null);
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const toggleItem = (itemId: string) => {
+    setExpandedItemId((prev) => (prev === itemId ? null : itemId));
   };
 
   return (
@@ -18,38 +25,42 @@ export const Sidebar = () => {
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem}>
-            <Link
-              to="/"
-              className={cn(styles.link, isActive("/") && styles.linkActive)}
-            >
-              Главная страница
-            </Link>
-          </li>
+          {NAV_ITEMS.map((item) => {
+            const itemHasChildren = item.children && item.children.length > 0;
+            const isExpanded = item.id ? expandedItemId === item.id : false;
 
-          <li className={styles.navItem}>
-            <Link
-              to="/javaScript"
-              className={cn(
-                styles.link,
-                isActive("/javaScript") && styles.linkActive
-              )}
-            >
-              JavaScript
-            </Link>
-          </li>
+            return (
+              <li key={item.path || item.id} className={styles.navItem}>
+                <NavItem
+                  to={item.path}
+                  isActive={isActive(item.path)}
+                  hasChildren={itemHasChildren}
+                  isExpanded={isExpanded}
+                  onClick={
+                    itemHasChildren ? () => toggleItem(item.id!) : undefined
+                  }
+                >
+                  {item.label}
+                </NavItem>
 
-          <li className={styles.navItem}>
-            <Link
-              to="/typeScript"
-              className={cn(
-                styles.link,
-                isActive("/typeScript") && styles.linkActive
-              )}
-            >
-              TypeScript
-            </Link>
-          </li>
+                {itemHasChildren && isExpanded && item.children && (
+                  <ul className={styles.childrenList}>
+                    {item.children.map((child) => (
+                      <li key={child.path} className={styles.navItem}>
+                        <NavItem
+                          to={child.path}
+                          isActive={isActive(child.path)}
+                          variant="nested"
+                        >
+                          {child.label}
+                        </NavItem>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
