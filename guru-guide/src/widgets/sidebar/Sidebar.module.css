@@ -14,7 +14,7 @@
 
 .header {
   margin-bottom: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   border-bottom: 2px solid #e0f5e0;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .subtitle {
-  margin: 8px 0 0 0;
+  margin: 3px 0 0 0;
   font-size: 13px;
   color: #5a8d5a;
   opacity: 0.8;

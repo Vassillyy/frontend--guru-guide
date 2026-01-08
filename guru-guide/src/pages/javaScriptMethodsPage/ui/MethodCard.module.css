@@ -1,0 +1,176 @@
+.methodCard {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+
+.methodCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.methodInfo {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.methodHeader {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.buttonArrow {
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttonArrow svg {
+  height: 100%;
+  width: 100%;
+  color: #1864ab;
+}
+
+.methodName {
+  font-size: 20px;
+  color: #1864ab;
+  margin: 0;
+  font-weight: 600;
+}
+
+.methodSyntax {
+  width: fit-content;
+  background: #f8f9fa;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #e8590c;
+  border-left: 3px solid #4dabf7;
+}
+
+.methodDescription {
+  color: #495057;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.codeEditor {
+  width: 60%;
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.editorTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blockButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.resetButton {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.resetButton:hover {
+  background: #ff5252;
+}
+
+.codeInput {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background: white;
+  color: #212529;
+  resize: vertical;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.codeInput:focus {
+  outline: none;
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
+}
+
+.runButton {
+  background: #4dabf7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.runButton:hover {
+  background: #3d9be7;
+}
+
+.resultContainer {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.resultHeader {
+  background: #e9ecef;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.resultOutput {
+  margin: 0;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #5c940d;
+  background: #f8fff9;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.resultOutput.error {
+  color: #c92a2a;
+  background: #fff5f5;
+}

@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { NAV_ITEMS } from "./model";
+import { NAV_ITEMS, findParentItemIdForActivePath } from "./model";
 import { NavItem } from "./ui/NavItem";
 import styles from "./Sidebar.module.css";
 
@@ -15,6 +15,14 @@ export const Sidebar = () => {
   const toggleItem = (itemId: string) => {
     setExpandedItemId((prev) => (prev === itemId ? null : itemId));
   };
+
+  useEffect(() => {
+    const parentItemId = findParentItemIdForActivePath(
+      NAV_ITEMS,
+      location.pathname
+    );
+    if (parentItemId) setExpandedItemId(parentItemId);
+  }, []);
 
   return (
     <div className={styles.sidebar}>

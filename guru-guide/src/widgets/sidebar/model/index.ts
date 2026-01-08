@@ -23,7 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
       },
       {
         path: AppPaths.JAVA_SCRIPT_METHODS,
-        label: "Методы",
+        label: "API",
       },
     ],
   },
@@ -32,3 +32,21 @@ export const NAV_ITEMS: NavItem[] = [
     label: "TypeScript",
   },
 ];
+
+/** Находит идентификатор родительского элемента для указанного пути */
+export const findParentItemIdForActivePath = (
+  items: NavItem[],
+  currentPath: string
+) => {
+  for (const item of items) {
+    if (item.path === currentPath) return item.id || null;
+
+    if (item.children && item.children.length > 0) {
+      for (const child of item.children) {
+        if (child.path === currentPath) return item.id || null;
+      }
+    }
+  }
+
+  return null;
+};

@@ -1,6 +1,6 @@
 import { Link, type LinkProps } from "react-router-dom";
 import cn from "classnames";
-import { IconArrow } from "./IconArrow";
+import { IconArrow } from "@/shared/ui";
 import styles from "./NavItem.module.css";
 
 interface NavItemProps extends Omit<LinkProps, "to"> {
@@ -44,7 +44,7 @@ export const NavItem = ({
     >
       <span className={styles.content}>
         {children}
-        {hasChildren && <IconArrow isExpanded={isExpanded} />}
+        {hasChildren && <IconArrow isOpen={isExpanded} />}
       </span>
     </Link>
   );
