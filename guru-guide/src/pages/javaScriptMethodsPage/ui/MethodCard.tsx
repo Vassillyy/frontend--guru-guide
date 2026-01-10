@@ -109,7 +109,37 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
         {isOpen && (
           <>
             <code className={styles.methodSyntax}>{method.syntax}</code>
+
+            {method.parameters && method.parameters.length > 0 && (
+              <div className={styles.parametersBlock}>
+                <div className={styles.parametersTitle}>Параметры:</div>
+                <div className={styles.parametersList}>
+                  {method.parameters.map((param, index) => (
+                    <div key={index} className={styles.parameterItem}>
+                      <span className={styles.parameterName}>
+                        {param.name} {" - "}
+                        <span className={styles.parameterDescription}>
+                          {param.description}
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <p className={styles.methodDescription}> {descriptionParts}</p>
+
+            {method.specification && (
+              <a
+                href={method.specification}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.specLink}
+              >
+                📖 Подробнее в спецификации
+              </a>
+            )}
 
             {method.errors && method.errors.length > 0 && (
               <ErorsList method={method as Required<IMethod>} />
