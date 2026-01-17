@@ -17,7 +17,7 @@ export const useFormattedText = (
   return useMemo(() => {
     const parts: React.ReactNode[] = [];
     const excludedSet = new Set(excludeWords.map((w) => w.toLowerCase()));
-    const regex = /\b([A-Za-z][A-Za-z0-9']*)\b|\n/g;
+    const regex = /([A-Za-z_][A-Za-z0-9'_]*|\n)/g;
     let lastIndex = 0;
     let match;
     let key = 0;

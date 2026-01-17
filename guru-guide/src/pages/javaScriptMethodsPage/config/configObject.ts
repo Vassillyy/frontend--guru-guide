@@ -21,6 +21,42 @@ export const configObject = {
       errors: ["TypeError — если this является null или undefined."],
     },
     {
+      name: "hasOwnProperty()",
+      syntax: "obj.hasOwnProperty(prop)",
+      parameters: [
+        {
+          name: "prop",
+          description: "Имя свойства в виде строки или Symbol, которое нужно проверить"
+        }
+      ],
+      description:
+        "Метод объекта Object, возвращает true, если объект содержит указанное свойство как собственное (а не унаследованное через цепочку прототипов), иначе false.",
+      example: "({a: 1}).hasOwnProperty('a')",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.hasownproperty",
+      errors: [
+        "TypeError — если this является null или undefined, или если .",
+      ],
+    },
+    {
+      name: "isPrototypeOf()",
+      syntax: "objA.isPrototypeOf(objB)",
+      parameters: [
+        {
+          name: "objB",
+          description: "Объект, в чьей цепочке прототипов нужно проверить наличие исходного объекта"
+        }
+      ],
+      description:
+        "Метод объекта Object, возвращает true, если исходный объект находится где-то в прототипной цепочке заданного объекта, иначе false.",
+      example: "Array.prototype.isPrototypeOf([])",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.isprototypeof",
+      errors: [
+        "TypeError — если this или аргумент (objB) являются null или undefined.",
+      ],
+    },
+    {
       name: "Object.assign()",
       syntax: "Object.assign(dest, source1, ..., sourceN)",
       parameters: [
@@ -313,6 +349,104 @@ export const configObject = {
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isfrozen",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
+    },
+    {
+      name: "Object.create()",
+      syntax: "Object.create(proto, [descriptors])",
+      parameters: [
+        {
+          name: "proto",
+          description: "Объект, который будет использоваться как прототип создаваемого объекта"
+        },
+        {
+          name: "descriptors",
+          description: "Необязательный объект-дескриптор для определения свойств нового объекта"
+        }
+      ],
+      description:
+        "Статический метод объекта Object, создаёт объект, используя существующий объект в качестве прототипа. Второй аргумент позволяет определять свойства нового объекта с помощью дескрипторов. Мы также можем использовать Object.create для «продвинутого» клонирования объекта с сохранением дескрипторов свойств.",
+      example: "Object.create({x: 1}, {y: {value: 2, writable: true}})",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.create",
+      errors: [
+        "TypeError — если первый аргумент (proto) не является null или объектом, или если второй аргумент (descriptors) указан и не является объектом.",
+      ],
+    },
+    {
+      name: "Object.getPrototypeOf()",
+      syntax: "Object.getPrototypeOf(obj)",
+      parameters: [
+        {
+          name: "obj",
+          description: "Объект, чей прототип нужно получить"
+        }
+      ],
+      description:
+        "Статический метод объекта Object, возвращает прототип (скрытое свойство [[Prototype]]) указанного объекта. Это альтернатива использованию свойства __proto__.",
+      example: "Object.getPrototypeOf({})",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getprototypeof",
+      errors: [
+        "TypeError — если аргумент (obj) является null или undefined."
+      ],
+    },
+    {
+      name: "Object.setPrototypeOf()",
+      syntax: "Object.setPrototypeOf(obj, proto)",
+      parameters: [
+        {
+          name: "obj",
+          description: "Объект, чей прототип нужно установить"
+        },
+        {
+          name: "proto",
+          description: "Новый прототип объекта (объект или null)"
+        }
+      ],
+      description:
+        "Статический метод объекта Object, устанавливает прототип (скрытое свойство [[Prototype]]) указанному объекта (obj). Это альтернатива использованию свойства __proto__.",
+      example: "Object.setPrototypeOf({}, Array.prototype)",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.setprototypeof",
+      errors: [
+        "TypeError — если аргументы (obj, proto) являются null или undefined.",
+      ],
+    },
+    {
+      name: "Object.getOwnPropertySymbols()",
+      syntax: "Object.getOwnPropertySymbols(obj)",
+      parameters: [
+        {
+          name: "obj",
+          description: "Объект, символьные ключи которого нужно получить"
+        }
+      ],
+      description:
+        "Статический метод объекта Object, возвращает массив всех собственных символьных ключей указанного объекта.",
+      example: "Object.getOwnPropertySymbols({[Symbol('id')]: 123})",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertysymbols",
+      errors: [
+        "TypeError — если аргумент (obj) является null или undefined."
+      ],
+    },
+    {
+      name: "Object.getOwnPropertyNames()",
+      syntax: "Object.getOwnPropertyNames(obj)",
+      parameters: [
+        {
+          name: "obj",
+          description: "Объект, строковые ключи которого нужно получить"
+        }
+      ],
+      description:
+        "Статический метод объекта Object, возвращает массив всех собственных строковых ключей указанного объекта.",
+      example: "Object.getOwnPropertyNames({a: 1, b: 2})",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertynames",
+      errors: [
+        "TypeError — если аргумент (obj) является null или undefined."
+      ],
     },
   ],
 };

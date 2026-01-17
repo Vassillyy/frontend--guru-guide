@@ -131,7 +131,7 @@ export const configUtil = {
       example: "setTimeout(() => console.log('Hello'), 1000)",
       specification:
         "https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-setTimeout",
-      errors: ["TypeError — если первый параметр не является функцией."],
+      errors: ["TypeError — если первый аргумент (func) не является функцией."],
     },
     {
       name: "clearTimeout()",
@@ -147,7 +147,7 @@ export const configUtil = {
       specification:
         "https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-clearTimeout",
       errors: [
-        "TypeError — если аргумент не является числовым идентификатором таймера.",
+        "TypeError — если аргумент (timeoutID) не является числовым идентификатором таймера.",
       ],
     },
     {
@@ -174,7 +174,7 @@ export const configUtil = {
       example: "setInterval(() => console.log('Tick'), 1000)",
       specification:
         "https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-setInterval",
-      errors: ["TypeError — если первый параметр не является функцией."],
+      errors: ["TypeError — если первый аргумент (func) не является функцией."],
     },
     {
       name: "clearInterval()",
@@ -190,8 +190,52 @@ export const configUtil = {
       specification:
         "https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-clearInterval",
       errors: [
-        "TypeError — если аргумент не является числовым идентификатором таймера.",
+        "TypeError — если аргумент (intervalID) не является числовым идентификатором таймера.",
       ],
     },
+    {
+      name: "fetch()",
+      syntax: "fetch(url[, options])",
+      parameters: [
+        {
+          name: "url",
+          description: "URL-адрес для отправки запроса (строка или объект URL)"
+        },
+        {
+          name: "options",
+          description: `Необязательный объект с параметрами запроса. Без него выполняется простой GET-запрос.
+            Свойства options:
+            • method – HTTP метод, например 'GET', 'POST', 'PUT', 'DELETE', 'PATCH'
+            • headers – объект с HTTP-заголовками (например, {'Content-Type': 'application/json'})
+            • body – тело запроса (для POST, PUT, PATCH):
+            - строка (например, JSON)
+            - объект FormData для form/multipart
+            - Blob/BufferSource для бинарных данных
+            - URLSearchParams для x-www-form-urlencoded
+            • mode – режим CORS: 'cors', 'no-cors', 'same-origin'
+            • credentials – отправка кук: 'same-origin', 'include', 'omit'
+            • cache – режим кэширования: 'default', 'no-store', 'reload', 'no-cache', 'force-cache', 'only-if-cached'
+            • redirect – обработка редиректов: 'follow', 'error', 'manual'
+            • referrer – URL реферера или 'about:client'
+            • referrerPolicy – политика реферера
+            • integrity – хэш для проверки целостности
+            • keepalive – разрешает запросу "пережить" страницу
+            • signal – объект AbortSignal для отмены запроса
+            
+            Запрещённые HTTP-заголовки:
+            Accept-Charset, Accept-Encoding, Access-Control-Request-Headers, Access-Control-Request-Method, Connection, Content-Length, Cookie, Cookie2, Date, DNT, Expect, Host, Keep-Alive, Origin, Referer, TE, Trailer, Transfer-Encoding, Upgrade, Via, Proxy-*, Sec-*`
+        }
+      ],
+      description:
+        "Встроенная функция для отправки сетевых запросов и получения данных с сервера. Возвращает промис.\nПроцесс получения ответа происходит в два этапа:\n1. Промис выполняется с объектом Response, как только сервер пришлёт заголовки ответа. Можно проверить статус HTTP и заголовки, но без тела ответа.\n2. Для получения тела ответа используется дополнительный вызов методов Response (text(), json() и др.).\nПромис завершается с ошибкой только при проблемах сети или несуществующем домене. HTTP-статусы 404 и 500 НЕ вызывают ошибку fetch.\nСвойства Response:\n• status – код статуса HTTP-запроса (например, 200, 404, 500)\n• ok – true, если код статуса в диапазоне 200-299\n• headers – объект, похожий на Map, содержащий заголовки ответа\nМетоды Response для получения тела ответа:\n• response.text() – возвращает ответ как текст\n• response.json() – декодирует ответ в JSON\n• response.formData() – возвращает как объект FormData\n• response.blob() – возвращает как Blob (бинарные данные)\n• response.arrayBuffer() – возвращает как ArrayBuffer\n• response.body – ReadableStream для чтения по частям.",
+      example: "fetch('https://api.example.com/data', {\n  method: 'POST',\n  headers: {'Content-Type': 'application/json'},\n  body: JSON.stringify({key: 'value'})\n}).then(response => response.json())",
+      specification:
+        "https://fetch.spec.whatwg.org/#fetch-method",
+      errors: [
+        "TypeError — если URL не является валидным URL или если указаны недопустимые параметры запроса..",
+        "AbortError — если запрос был отменён через AbortSignal.",
+        "Сетевая ошибка — при проблемах сети или недоступности ресурса."
+      ],
+    }
   ],
 };

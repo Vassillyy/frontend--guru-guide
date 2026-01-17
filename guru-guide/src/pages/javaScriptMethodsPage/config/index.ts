@@ -11,6 +11,8 @@ import { configSet } from "./configSet";
 import { configWeakSet } from "./configWeakSet";
 import { configUtil } from "./configUtil";
 import { configArray } from "./configArray";
+import { configReflect } from './configReflect.ts'
+import { configPromise } from "./configPromise";
 
 export interface IMethod {
   name: string;
@@ -44,6 +46,7 @@ const enum Sections {
   JSON = "JSON",
   PROMISE = "PROMISE",
   FUNCTION = "FUNCTION",
+  REFLECT = "REFLECT",
   UTIL = "UTIL",
 }
 
@@ -62,6 +65,7 @@ export const labelSections = {
   [Sections.PROMISE]: "Promise",
   [Sections.FUNCTION]: "Function",
   [Sections.SYMBOL]: "Symbol",
+  [Sections.REFLECT]: "Reflect",
   [Sections.UTIL]: "Util",
 };
 
@@ -74,9 +78,11 @@ export const config: IConfig = {
   ...configDate,
   ...configFunction,
   ...configJSON,
+  ...configPromise,
   ...configMap,
   ...configWeakMap,
   ...configSet,
   ...configWeakSet,
+  ...configReflect,
   ...configUtil,
 };

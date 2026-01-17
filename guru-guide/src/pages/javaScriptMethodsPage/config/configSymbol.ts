@@ -1,4 +1,4 @@
-export const configSymbol = {
+ export const configSymbol = {
   SYMBOL: [
     {
       name: "description",
@@ -88,5 +88,40 @@ export const configSymbol = {
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.asynciterator",
     },
+    {
+      name: "Symbol.species",
+      syntax: "static get [Symbol.species]()",
+      parameters: [],
+      description:
+        "Специальный статический геттер, позволяет указать, какой конструктор будет использоваться для создания новых объектов внутри класса. Он используется, когда объект класса передаётся в некоторые встроенные методы, такие как map, filter и slice, которые возвращают новый объект того же типа. Если бы мы хотели, чтобы методы map, filter и т. д. возвращали обычные массивы, мы могли бы вернуть Array в Symbol.species. По умолчанию Symbol.species возвращает this, то есть конструктор текущего класса.",
+      example: "class MyArray extends Array { static get [Symbol.species]() { return Array; } }",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.species",
+    },
+    {
+      name: "Symbol.hasInstance",
+      syntax: "static [Symbol.hasInstance](obj)",
+      parameters: [
+        {
+          name: "obj",
+          description: "Объект, для которого проверяется принадлежность конструктору"
+        }
+      ],
+      description:
+        "Статический метод, используется для определения того, распознаёт ли конструктор заданный объект как свой экземпляр. Метод вызывается оператором instanceof. По умолчанию проверяет, находится ли объект в цепочке прототипов конструктора. Можно переопределить этот метод в классе, чтобы настроить поведение оператора instanceof и задать кастомную логику проверки принадлежности объектов к классу.",
+      example: "class MyClass { static [Symbol.hasInstance](obj) { return Array.isArray(obj); } }",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.hasinstance",
+    },
+    {
+      name: "Symbol.toStringTag",
+      syntax: "get [Symbol.toStringTag]()",
+      parameters: [],
+      description:
+        "Встроенный символ, который позволяет объектам определять собственное строковое представление их типа. Значение этого свойства используется методом Object.prototype.toString() для создания строки '[object Type]', где Type заменяется значением Symbol.toStringTag. Если свойство не определено, используется имя конструктора по умолчанию или 'Object'.",
+      example: "class MyClass { get [Symbol.toStringTag]() { return 'MyCustomClass'; } }",
+      specification:
+        "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.tostringtag",
+    }
   ],
 };
