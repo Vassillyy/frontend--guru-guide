@@ -12,10 +12,21 @@
   overflow-y: auto;
 }
 
+.hiddenSidebar {
+  width: 70px;
+}
+
 .header {
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 2px solid #e0f5e0;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .title {
@@ -26,6 +37,28 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.collapseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #5a8d5a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.collapseButton:hover {
+  background-color: #e6f7e6;
+  color: #1a5f1a;
 }
 
 .subtitle {

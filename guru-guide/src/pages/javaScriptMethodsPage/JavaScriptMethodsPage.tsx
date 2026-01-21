@@ -1,30 +1,75 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Pills } from "@/shared/ui";
 import { MethodCard } from "./ui/MethodCard";
-import { config, labelSections } from "./config";
+import {config, type IMethod, labelSections} from "./config";
 import styles from "./JavaScriptMethodsPage.module.css";
+
+const ITEMS_PER_LOAD = 20;
 
 export const JavaScriptMethodsPage = () => {
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
+  const [loadedCount, setLoadedCount] = useState(ITEMS_PER_LOAD);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const pillItems = Object.keys(config).map((category) => ({
     label: labelSections[category as keyof typeof labelSections],
     value: category,
   }));
 
-  const getActiveCategories = () => {
-    if (activeCategories.length === 0) {
-      return Object.keys(config);
+  const categoriesToShow = activeCategories.length === 0
+    ? Object.keys(config)
+    : activeCategories;
+
+  const totalMethodsCount = useMemo(() => {
+    return categoriesToShow.reduce((total, category) => {
+      return total + (config[category]?.length || 0);
+    }, 0);
+  }, [categoriesToShow]);
+
+  const getMethodsToShow = useMemo(() => {
+    let methodsLoaded = 0;
+    const result: Record<string, IMethod[]> = {};
+
+    for (const category of categoriesToShow) {
+      const categoryMethods = config[category] || [];
+
+      if (methodsLoaded >= loadedCount) break;
+
+      const remainingToLoad = loadedCount - methodsLoaded;
+      const methodsToTake = Math.min(categoryMethods.length, remainingToLoad);
+
+      if (methodsToTake > 0) {
+        result[category] = categoryMethods.slice(0, methodsToTake);
+        methodsLoaded += methodsToTake;
+      }
     }
 
-    return activeCategories;
-  };
+    return result;
+  }, [categoriesToShow, loadedCount]);
 
-  const handleFilterChange = (activeFilters: string[]) => {
-    setActiveCategories(activeFilters);
-  };
+  const hasMore = loadedCount < totalMethodsCount;
 
-  const activeCategoriesToShow = getActiveCategories();
+  useEffect(() => {
+    if (!hasMore || !sentinelRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadedCount(prev => Math.min(prev + ITEMS_PER_LOAD, totalMethodsCount));
+        }
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    observer.observe(sentinelRef.current);
+
+    return () => observer.disconnect();
+  }, [hasMore, totalMethodsCount]);
+
+  const filterChange = (filters: string[]) => {
+    setActiveCategories(filters);
+    setLoadedCount(ITEMS_PER_LOAD);
+  };
 
   return (
     <div className={styles.container}>
@@ -32,22 +77,23 @@ export const JavaScriptMethodsPage = () => {
         <h1 className={styles.title}>API JavaScript</h1>
       </header>
 
-      <Pills items={pillItems} onFilterChange={handleFilterChange} />
+      <Pills items={pillItems} onFilterChange={filterChange} />
 
       <div className={styles.mainContent}>
-        {activeCategoriesToShow.map((category) => (
+        {Object.entries(getMethodsToShow).map(([category, methods]) => (
           <div key={category} className={styles.categorySection}>
             <h2 className={styles.categoryTitle}>
               {labelSections[category as keyof typeof labelSections]}
             </h2>
-
             <div className={styles.methodsList}>
-              {config[category].map((method, index) => (
-                <MethodCard key={index} method={method} />
+              {methods.map((method, index) => (
+                <MethodCard key={`${category}-${index}`} method={method} />
               ))}
             </div>
           </div>
         ))}
+
+        {hasMore && <div ref={sentinelRef} className={styles.sentinel} />}
       </div>
     </div>
   );
