@@ -1,97 +1,132 @@
-import { useState, type ChangeEvent, type FC } from "react";
-import cn from "classnames";
+import {useState, type FC, type ReactNode} from "react";
 import { IconArrow } from "@/shared/ui";
 import { useFormattedText } from "@/shared/hooks/useFormattedText ";
 import { ErorsList } from "./ErrorsList";
 import type { IMethod } from "../config";
 import styles from "./MethodCard.module.css";
 
-const executeCodeSafely = (code: string) => {
-  const safeContext = {
-    Math: Math,
-    Array: Array,
-    String: String,
-    Number: Number,
-    Object: Object,
-    JSON: JSON,
-    Date: Date,
-    RegExp: RegExp,
-    NaN: NaN,
-    Infinity: Infinity,
-    undefined: undefined,
-    isNaN: isNaN,
-    isFinite: isFinite,
-    parseInt: parseInt,
-    parseFloat: parseFloat,
-    encodeURI: encodeURI,
-    encodeURIComponent: encodeURIComponent,
-    decodeURI: decodeURI,
-    decodeURIComponent: decodeURIComponent,
-    console: {
-      log: (...args: any[]) => console.log("[Sandbox]:", ...args),
-      warn: (...args: any[]) => console.warn("[Sandbox]:", ...args),
-      error: (...args: any[]) => console.error("[Sandbox]:", ...args),
-    },
-  };
-
-  try {
-    const func = new Function(
-      ...Object.keys(safeContext),
-      `"use strict";
-      try {
-        return (${code});
-      } catch (e) {
-        throw e;
-      }`
-    );
-
-    return func(...Object.values(safeContext));
-  } catch (error) {
-    throw error;
-  }
-};
-
 export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
-  const [userCode, setUserCode] = useState<string>(method.example);
-  const [result, setResult] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const descriptionParts = useFormattedText(method.description, {
     highlightStyle: { fontWeight: 600, color: "#1864ab" },
   });
 
-  const executeCode = () => {
-    try {
-      const evalResult = executeCodeSafely(userCode);
-      let stringResult;
+  const formatExample = (example: string) => {
+    if (!example) return [];
 
-      if (typeof evalResult === "symbol") {
-        stringResult = evalResult.toString();
-      } else if (evalResult === undefined) {
-        stringResult = "undefined";
-      } else {
-        stringResult = JSON.stringify(evalResult);
+    const lines = example.split('\n');
+    const formattedLines: ReactNode[] = [];
+
+    lines.forEach((line, index) => {
+      if (line === '') {
+        formattedLines.push(<br key={`empty-${index}`} />);
+        return;
       }
 
-      setResult(stringResult);
-    } catch (error) {
-      const err = error as Error;
-      setResult(
-        `${err.name}: ${err instanceof Error ? err.message : String(err)}`
-      );
+      const commentIndex = line.indexOf('//');
+
+      if (commentIndex !== -1) {
+        const codePart = line.substring(0, commentIndex);
+        const commentPart = line.substring(commentIndex);
+
+        const highlightedCode = highlightCode(codePart);
+
+        formattedLines.push(
+          <div key={`line-${index}`} className={styles.exampleLine}>
+            {highlightedCode}
+            <span className={styles.comment}>{commentPart}</span>
+          </div>
+        );
+      } else {
+        const highlightedCode = highlightCode(line);
+
+        formattedLines.push(
+          <div key={`line-${index}`} className={styles.exampleLine}>
+            {highlightedCode}
+          </div>
+        );
+      }
+    });
+
+    return formattedLines;
+  };
+
+  const highlightCode = (code: string): ReactNode[] => {
+    const parts: ReactNode[] = [];
+    let remainingCode = code;
+    let keyCounter = 0;
+
+    while (remainingCode.length > 0) {
+      let matched = false;
+
+      const keywordMatch = remainingCode.match(/^\b(let|const|var|console)\b/);
+
+      if (keywordMatch) {
+        parts.push(
+          <span key={`kw-${keyCounter++}`} className={styles.keyword}>
+            {keywordMatch[0]}
+          </span>
+        );
+        remainingCode = remainingCode.substring(keywordMatch[0].length);
+        matched = true;
+        continue;
+      }
+
+      const methodMatch = remainingCode.match(/^\.([a-zA-Z_$][a-zA-Z0-9_$]*)\b/);
+
+      if (methodMatch) {
+        parts.push(<span key={`dot-${keyCounter++}`}>.</span>);
+        parts.push(
+          <span key={`method-${keyCounter++}`} className={styles.method}>
+            {methodMatch[1]}
+          </span>
+        );
+        remainingCode = remainingCode.substring(methodMatch[0].length);
+        matched = true;
+        continue;
+      }
+
+      const stringMatch = remainingCode.match(/^(["'`])(?:\\.|(?!\1).)*\1/);
+
+      if (stringMatch) {
+        parts.push(
+          <span key={`str-${keyCounter++}`} className={styles.string}>
+            {stringMatch[0]}
+          </span>
+        );
+        remainingCode = remainingCode.substring(stringMatch[0].length);
+        matched = true;
+        continue;
+      }
+
+      const numberMatch = remainingCode.match(/^\d+(\.\d+)?/);
+
+      if (numberMatch) {
+        parts.push(
+          <span key={`num-${keyCounter++}`} className={styles.number}>
+            {numberMatch[0]}
+          </span>
+        );
+        remainingCode = remainingCode.substring(numberMatch[0].length);
+        matched = true;
+        continue;
+      }
+
+      if (!matched) {
+        parts.push(
+          <span key={`char-${keyCounter++}`}>
+            {remainingCode.charAt(0)}
+          </span>
+        );
+        remainingCode = remainingCode.substring(1);
+      }
     }
+
+    return parts;
   };
 
-  const handleCodeChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setUserCode(e.target.value);
-  };
-
-  const resetToDefault = () => {
-    setUserCode(method.example);
-    setResult("");
-  };
-
-  const hasError = result ? result.includes("Error") : false;
+  const formattedExample = method.example ? formatExample(method.example) : null;
 
   return (
     <div className={styles.methodCard}>
@@ -148,40 +183,16 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
         )}
       </div>
 
-      {isOpen && (
-        <div className={styles.codeEditor}>
-          <div className={styles.editorHeader}>
-            <span className={styles.editorTitle}>Попробуйте сами:</span>
-            <div className={styles.blockButtons}>
-              <button className={styles.resetButton} onClick={resetToDefault}>
-                ↺ Сбросить
-              </button>
-              <button className={styles.runButton} onClick={executeCode}>
-                ▶ Запустить
-              </button>
-            </div>
+      {isOpen && method.example && (
+        <div className={styles.exampleBlock}>
+          <div className={styles.exampleHeader}>
+            <span className={styles.exampleTitle}>Примеры использования:</span>
           </div>
-
-          <textarea
-            className={styles.codeInput}
-            value={userCode}
-            onChange={handleCodeChange}
-            placeholder="Введите выражение..."
-            spellCheck="false"
-          />
-
-          {result && (
-            <div className={styles.resultContainer}>
-              <div className={styles.resultHeader}>
-                {hasError ? "Ошибка:" : "Результат:"}
-              </div>
-              <pre
-                className={cn(styles.resultOutput, hasError && styles.error)}
-              >
-                <code>{result}</code>
-              </pre>
-            </div>
-          )}
+          <div className={styles.exampleCode}>
+            <code>
+              {formattedExample}
+            </code>
+          </div>
         </div>
       )}
     </div>

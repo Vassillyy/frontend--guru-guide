@@ -5,7 +5,7 @@ export const configString = {
       syntax: "str.toUpperCase()",
       description:
         "Метод объекта String, возвращает новую строку, приведённую в верхний регистр.",
-      example: "'hello'.toUpperCase()",
+      example: "const filename = 'readme.md';\nconsole.log(filename.toUpperCase()); // 'README.MD'\nconst currency = 'eur/usd';\nconsole.log(currency.toUpperCase()); // 'EUR/USD'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.touppercase",
       errors: ["TypeError — если this не является строкой."],
@@ -15,7 +15,7 @@ export const configString = {
       syntax: "str.toLowerCase()",
       description:
         "Метод объекта String, возвращает новую строку, приведённую в нижний регистр.",
-      example: "'HELLO'.toLowerCase()",
+      example: "const config = 'BACKGROUND_COLOR';\nconsole.log(config.toLowerCase()); // 'background_color'\nconst domain = 'EXAMPLE.COM';\nconsole.log(domain.toLowerCase()); // 'example.com'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.tolowercase",
       errors: ["TypeError — если this не является строкой."],
@@ -35,7 +35,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, проверяет, начинается ли строка указанной подстрокой, если да - возвращает true, иначе false.",
-      example: "'Hello World'.startsWith('Hello')",
+      example: "const path = '/home/user/documents';\nconsole.log(path.startsWith('/home')); // true\nconsole.log(path.startsWith('user')); // false\nconsole.log(path.startsWith('user', 6)); // true",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.startswith",
       errors: ["TypeError — если this не является строкой."],
@@ -56,7 +56,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, проверяет, заканчивается ли строка указанной подстрокой, если да - возвращает true, иначе false.",
-      example: "'Hello World'.endsWith('World')",
+      example: "const filename = 'document.pdf';\nconsole.log(filename.endsWith('.pdf')); // true\nconsole.log(filename.endsWith('.txt')); // false",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.endswith",
       errors: ["TypeError — если this не является строкой."],
@@ -76,7 +76,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, позволяет заменить подстроку в исходной строке другой подстрокой. Возвращает новую строку.",
-      example: "'Hello World'.replace('World', 'JavaScript')",
+      example: "const text = 'Удалить пробелы';\nconsole.log(text.replace('пробелы', 'запятые')); // 'Удалить запятые'\nconst price = 'Цена: $100.50';\nconsole.log(price.replace(/\\\\$/, '€')); // 'Цена: €100.50'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replace",
       errors: ["TypeError — если this не является строкой."],
@@ -98,7 +98,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, позволяет заменить все вхождения подстроки в исходной строке на другую подстроку. Возвращает новую строку.",
-      example: "'Hello World World'.replaceAll('World', 'JavaScript')",
+      example: "const version = 'Node.js v18.17.0';\nconsole.log(version.replace('v18', 'v20')); // 'Node.js v20.17.0'\nconst email = 'user@example.com';\nconsole.log(email.replace(/@.*$/, '@gmail.com')); // 'user@gmail.com'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replaceall",
       errors: [
@@ -117,7 +117,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, возвращает символ по указанному индексу. Если индекс выходит за границы строки, возвращает undefined.",
-      example: "'Hello'.at(1)",
+      example: "const filename = 'config.json';\nconsole.log(filename.at(0)); // 'c'\nconsole.log(filename.at(-5)); // 'j'\nconsole.log(filename.at(20)); // undefined",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.at",
       errors: ["TypeError — если this не является строкой или массивом."],
@@ -133,7 +133,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, возвращает символ по указанному индексу. Если индекс выходит за границы строки - возвращает пустую строку.",
-      example: "'Hello'.charAt(1)",
+      example: "const domain = 'example.com';\nconsole.log(domain.charAt(0)); // 'e'\nconsole.log(domain.charAt(7)); // '.'\nconsole.log(domain.charAt(20)); // ''",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.charat",
       errors: ["TypeError — если this не является строкой."],
@@ -153,8 +153,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, выполняет поиск подстроки в исходной строке. Метод возвращает индекс первого совпадения или -1, если подстрока не найдена.",
-      example: "'Hello World'.indexOf('World')",
-      specification:
+      example: "const url = 'https://site.com';\nconsole.log(url.indexOf('://')); // 5\nconsole.log(url.indexOf('site')); // 8\nconsole.log(url.indexOf('ftp')); // -1",specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.indexof",
       errors: ["TypeError — если this не является строкой или массивом."],
     },
@@ -174,8 +173,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, выполняет поиск подстроки в исходной строке с конца. Метод возвращает индекс последнего совпадения или -1, если подстрока не найдена.",
-      example: "'Hello World World'.lastIndexOf('World')",
-      specification:
+      example: "const path = '/home/user/docs';\nconsole.log(path.lastIndexOf('/')); // 11\nconsole.log(path.lastIndexOf('docs')); // 12\nconsole.log(path.lastIndexOf('user', 8)); // 6",specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.lastindexof",
       errors: ["TypeError — если this не является строкой или массивом."],
     },
@@ -194,7 +192,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, проверяет, содержит ли строка указанную подстроку. Возвращает true если содержит, иначе false.",
-      example: "'Hello World'.includes('World')",
+      example: "const file = 'document.pdf';\nconsole.log(file.includes('.pdf')); // true\nconsole.log(file.includes('.txt')); // false\nconsole.log(file.includes('doc')); // true",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes",
       errors: ["TypeError — если this не является строкой или массивом."],
@@ -215,7 +213,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, возвращает подстроку от индекса, указанного в первом аргументе до индекса, указанного во втором аргументе. Если второй аргумент отсутствует, метод возвращает символы от указанного индекса и до конца строки. Если аргументы не переданы, то возвращает копию строки. Поддерживает отрицательные индексы (отсчёт с конца строки).",
-      example: "'Hello World'.slice(6, 11)",
+      example: "const filename = 'document.pdf';\nconsole.log(filename.slice(0, -4)); // 'document'\nconsole.log(filename.slice(-4)); // '.pdf'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.slice",
       errors: ["TypeError — если this не является строкой или массивом."],
@@ -235,7 +233,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, возвращает подстроку от индекса, указанного в первом аргументе до индекса, указанного во втором аргументе. Если второй аргумент отсутствует, метод возвращает символы от указанного индекса и до конца строки. Если значение первого аргумента больше второго, то они автоматически меняются местами. Отрицательные значения интерпретируются как 0.",
-      example: "'Hello World'.substring(6, 11)",
+      example: "const filename = 'image.png';\nconsole.log(filename.substring(0, 5)); // 'image'\nconsole.log(filename.substring(5)); // '.png'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.substring",
       errors: ["TypeError — если this не является строкой."],
@@ -251,7 +249,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, возвращает код символа (Unicode) по указанному индексу. Возвращает целое число от 0 до 1114111 (0x10FFFF) или undefined, если индекс выходит за границы строки. Корректно обрабатывает суррогатные пары.",
-      example: "'Hello'.codePointAt(1)",
+      example: "const emoji = '🚀火箭';\nconsole.log(emoji.codePointAt(0)); // 128640\nconsole.log(emoji.codePointAt(2)); // 28779\nconsole.log(emoji.codePointAt(10)); // undefined",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.codepointat",
       errors: ["TypeError — если this не является строкой."],
@@ -277,8 +275,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String, сравнивает две строки с учётом правил языка. Возвращает число:\n • отрицательное, если исходная строка меньше строки для сравнения;\n • положительное, если больше;\n • 0, если равны.",
-      example: "'ä'.localeCompare('z', 'de', { sensitivity: 'base' })",
-      specification:
+      example: "const result1 = 'café'.localeCompare('cafe');\nconsole.log(result1); // 1\nconst result2 = '10'.localeCompare('2', undefined, {\n  numeric: true,\n});\nconsole.log(result2); // 1\nconst result3 = 'résumé'.localeCompare('resume', 'fr', {\n  sensitivity: 'base'\n});\nconsole.log(result3); // 0\nconst result4 = 'ä'.localeCompare('z', 'de');\nconsole.log(result4); // -1",specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.localecompare",
       errors: [
         "TypeError — если this не является строкой.",
@@ -290,7 +287,7 @@ export const configString = {
       syntax: "str.trim()",
       description:
         "Метод объекта String, создаёт новую строку на основе исходной строки, удаляя все пробельные символы (пробелы, табуляции, неразрывные пробелы) с её начала и конца.",
-      example: "'  Hello World  '.trim()",
+      example: "const input = '   user@example.com   ';\nconst cleaned = input.trim();\nconsole.log(cleaned); // 'user@example.com'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trim",
       errors: ["TypeError — если this не является строкой."],
@@ -306,29 +303,13 @@ export const configString = {
       ],
       description:
         "Метод объекта String, создаёт новую строку, состоящую из повторений исходной строки заданное количество раз. Если аргумент равен 0, возвращает пустую строку.",
-      example: "'Hello'.repeat(3)",
+      example: "const separator = '---';\nconsole.log(separator.repeat(3)); // '------------'\nconst loading = '.';\nconsole.log(loading.repeat(5)); // '.....'\nconst pattern = 'abc';\nconsole.log(pattern.repeat(2)); // 'abcabc'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.repeat",
       errors: [
         "TypeError — если this не является строкой.",
         "RangeError — если аргумент (count) отрицательный или превышает максимально допустимое значение.",
       ],
-    },
-    {
-      name: "String.fromCodePoint()",
-      syntax: "String.fromCodePoint(...codePoints)",
-      parameters: [
-        {
-          name: "...codePoints",
-          description:
-            "Один или несколько кодов Unicode для преобразования в символы",
-        },
-      ],
-      description:
-        "Статический метод объекта String, создаёт символ по указанному коду.",
-      example: "String.fromCodePoint(65)",
-      specification:
-        "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.fromcodepoint",
     },
     {
       name: "concat()",
@@ -342,7 +323,7 @@ export const configString = {
       ],
       description:
         "Метод объекта String возвращает новую строку, в которую копирует данные из исходной строки и аргументов.",
-      example: "'Hello'.concat(' ', 'World')",
+      example: "const firstName = 'John';\nconst lastName = 'Doe';\nconst fullName = firstName.concat(' ', lastName);\nconsole.log(fullName); // 'John Doe'",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.concat",
       errors: ["TypeError — если this не является строкой или массивом."],
@@ -364,10 +345,26 @@ export const configString = {
       ],
       description:
         "Метод объекта String, разбивает строку на массив по указанному разделителю. Если значение второго аргумента меньше длинны строки, то остаток строки будет отброшен.",
-      example: "'a,b,c'.split(',')",
+      example: "const date = '2024-12-25';\nconst parts = date.split('-');\nconsole.log(parts); // ['2024', '12', '25']",
       specification:
         "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.split",
       errors: ["TypeError — если this не является строкой."],
+    },
+    {
+      name: "String.fromCodePoint()",
+      syntax: "String.fromCodePoint(...codePoints)",
+      parameters: [
+        {
+          name: "...codePoints",
+          description:
+            "Один или несколько кодов Unicode для преобразования в символы",
+        },
+      ],
+      description:
+        "Статический метод объекта String, создаёт символ по указанному коду.",
+      example: "const charA = String.fromCodePoint(65);\nconsole.log(charA); // 'A'\nconst rocket = String.fromCodePoint(128640);\nconsole.log(rocket); // '🚀'\nconst combined = String.fromCodePoint(72, 105, 33);\nconsole.log(combined); // 'Hi!'",
+      specification:
+        "https://tc39.es/ecma262/multipage/text-processing.html#sec-string.fromcodepoint",
     },
   ],
 };
