@@ -5,7 +5,7 @@ export const configArray = {
       syntax: "arr.pop()",
       description:
         "Метод объекта Array, удаляет последний элемент из массива и возвращает его.",
-      example: "[1, 2, 3].pop()",
+      example: "const numbers = [10, 20, 30];\nconst last = numbers.pop();\nconsole.log(last); // 30\nconsole.log(numbers); // [10, 20]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.pop",
       errors: ["TypeError — если this не является массивом."],
@@ -21,7 +21,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, добавляет один или несколько элементов в конец массива. Возвращает новую длину массива.",
-      example: "[1, 2].push(3, 4)",
+      example: "const numbers = [];\nconst length = numbers.push(1, 2, 3);\nconsole.log(length); // 3\nconsole.log(numbers); // [1, 2, 3]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.push",
       errors: ["TypeError — если this не является массивом."],
@@ -31,7 +31,7 @@ export const configArray = {
       syntax: "arr.shift()",
       description:
         "Метод объекта Array, удаляет первый элемент из массива и возвращает его.",
-      example: "[1, 2, 3].shift()",
+      example: "const queue = ['first', 'second', 'third'];\nconst firstItem = queue.shift();\nconsole.log(firstItem); // 'first'\nconsole.log(queue); // ['second', 'third']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.shift",
       errors: ["TypeError — если this не является массивом."],
@@ -47,7 +47,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, добавляет один или несколько элементов в начало массива. Возвращает новую длину массива.",
-      example: "[2, 3].unshift(0, 1)",
+      example: "const numbers = [3, 4];\nconst newLength = numbers.unshift(1, 2);\nconsole.log(newLength); // 4\nconsole.log(numbers); // [1, 2, 3, 4]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.unshift",
       errors: ["TypeError — если this не является массивом."],
@@ -57,7 +57,7 @@ export const configArray = {
       syntax: "arr.toString()",
       description:
         "Метод объекта Array, возвращает строковое представление массива в виде списка элементов, разделённых запятыми.",
-      example: "[1, 2, 3].toString()",
+      example: "const data = ['apple', 'banana', 'orange'];\nconst str = data.toString();\nconsole.log(str); // 'apple,banana,orange'",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tostring",
       errors: ["TypeError — если this является null или undefined."],
@@ -77,7 +77,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, выполняет поиск элемента в массиве. Возвращает индекс первого совпадения или -1, если элемент не найден.",
-      example: "[1, 2, 3, 2, 1].indexOf(2)",
+      example: "const users = ['alice', 'bob', 'charlie', 'bob'];\nconst index = users.indexOf('bob');\nconsole.log(index); // 1\nconst secondIndex = users.indexOf('bob', 2);\nconsole.log(secondIndex); // 3",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.indexof",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -98,7 +98,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, выполняет поиск элемента в массиве с конца. Возвращает индекс последнего совпадения или -1, если элемент не найден.",
-      example: "[1, 2, 3, 2, 1].lastIndexOf(2)",
+      example: "const logEntries = ['error', 'info', 'warning', 'info', 'error'];\nconst lastInfoIndex = logEntries.lastIndexOf('info');\nconsole.log(lastInfoIndex); // 3\nconst lastErrorIndex = logEntries.lastIndexOf('error', 3);\nconsole.log(lastErrorIndex); // 0",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.lastindexof",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -115,7 +115,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает элемент массива по указанному индексу. Если индекс выходит за границы массива, возвращает undefined.",
-      example: "[10, 20, 30, 40].at(2)",
+      example: "const colors = ['red', 'green', 'blue', 'yellow'];\nconst lastColor = colors.at(-1);\nconsole.log(lastColor); // 'yellow'\nconst secondColor = colors.at(1);\nconsole.log(secondColor); // 'green'",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.at",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -135,7 +135,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, проверяет, содержит ли массив указанный элемент, используя алгоритм SameValueZero (правильно обрабатывает NaN). Возвращает true если содержит, иначе false.",
-      example: "[1, 2, 3, NaN, 5].includes(NaN)",
+      example: "const permissions = ['read', 'write', 'execute'];\nconst hasWrite = permissions.includes('write');\nconsole.log(hasWrite); // true\nconst hasDelete = permissions.includes('delete');\nconsole.log(hasDelete); // false",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.includes",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -157,7 +157,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив, содержащий элементы от индекса указанного в первом аргументе до до индекса указанного во втором аргументе. Если второй аргумен не указан, возвращает элементы от индекса указанного в первом аргументе до конца массива. Если аргументы не переданы, возвращает поверхностную копию массива.",
-      example: "[1, 2, 3, 4, 5].slice(1, 4)",
+      example: "const numbers = [10, 20, 30, 40, 50];\nconst middle = numbers.slice(1, 4);\nconsole.log(middle); // [20, 30, 40]\nconst lastTwo = numbers.slice(-2);\nconsole.log(lastTwo); // [40, 50]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.slice",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -181,7 +181,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, изменяет массив начиная с индекса, указанного в первом аргументе, удаляет количество элементов, указанных во втором аргументе и затем вставляет элементы, указанные начиная с третьего аргумента на их место. Возвращает массив удалённых элементов.",
-      example: "[1, 2, 3, 4, 5].splice(1, 2, 'a', 'b')",
+      example: "const items = ['apple', 'banana', 'cherry', 'date'];\nconst removed = items.splice(1, 2, 'blueberry', 'coconut');\nconsole.log(removed); // ['banana', 'cherry']\nconsole.log(items); // ['apple', 'blueberry', 'coconut', 'date']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.splice",
       errors: ["TypeError — если this не является массивом."],
@@ -205,7 +205,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив с изменениями, начиная с индекса, указанного в первом аргументе: удаляет количество элементов, указанных во втором аргументе и затем вставляет элементы, указанные начиная с третьего аргумента на их место.",
-      example: "[1, 2, 3, 4, 5].toSpliced(1, 2, 'a', 'b')",
+      example: "const original = ['jan', 'feb', 'mar', 'apr'];\nconst newArray = original.toSpliced(2, 1, 'march');\nconsole.log(newArray); // ['jan', 'feb', 'march', 'apr']\nconsole.log(original); // ['jan', 'feb', 'mar', 'apr']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tospliced",
       errors: ["TypeError — если this не является массивом."],
@@ -222,7 +222,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив, состоящий из элементов исходного массива и аргументов.",
-      example: "[1, 2].concat([3, 4], 5)",
+      example: "const firstHalf = ['a', 'b'];\nconst secondHalf = ['c', 'd'];\nconst combined = firstHalf.concat(secondHalf, 'e');\nconsole.log(combined); // ['a', 'b', 'c', 'd', 'e']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.concat",
       errors: ["TypeError — если this не является массивом или строкой."],
@@ -243,7 +243,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, вызывает указанную функцию для каждого элемента массива. Функция может принимать до 3 аргументов: элемент, его индекс и сам массив. Возвращает undefined.",
-      example: "[1, 2, 3].forEach(x => console.log(x))",
+      example: "const scores = [85, 92, 78];\nscores.forEach((score, index) => {\n  console.log(`Student ${index + 1}: ${score}`);\n});\n// Student 1: 85\n// Student 2: 92\n// Student 3: 78",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.foreach",
       errors: [
@@ -266,7 +266,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, ищет первый элемент, удовлетворяющий условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает элемент или undefined если элемент не найден.",
-      example: "[1, 2, 3, 4].find(x => x > 2)",
+      example: "const users = [\n  { id: 1, name: 'Alice' },\n  { id: 2, name: 'Bob' },\n  { id: 3, name: 'Charlie' }\n];\nconst user = users.find(u => u.id === 2);\nconsole.log(user); // { id: 2, name: 'Bob' }",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.find",
       errors: [
@@ -289,7 +289,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, ищет последний элемент, удовлетворяющий условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает элемент или undefined если элемент не найден.",
-      example: "[1, 2, 3, 4].findLast(x => x > 2)",
+      example: "const logs = [\n  { level: 'info', message: 'Started' },\n  { level: 'error', message: 'Failed' },\n  { level: 'info', message: 'Completed' }\n];\nconst lastError = logs.findLast(log => log.level === 'error');\nconsole.log(lastError); // { level: 'error', message: 'Failed' }",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findlast",
       errors: [
@@ -312,7 +312,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, ищет индекс первого элемента, удовлетворяющего условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает индекс или -1 если элемент не найден.",
-      example: "[1, 2, 3, 4].findIndex(x => x > 2)",
+      example: "const temperatures = [22, 18, 25, 19, 30];\nconst hotDayIndex = temperatures.findIndex(temp => temp > 25);\nconsole.log(hotDayIndex); // 4",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findindex",
       errors: [
@@ -335,7 +335,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, ищет индекс последнего элемента, удовлетворяющего условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает индекс или -1 если элемент не найден.",
-      example: "[1, 2, 3, 4].findLastIndex(x => x > 2)",
+      example: "const transactions = [100, -50, 200, -30, 150];\nconst lastWithdrawalIndex = transactions.findLastIndex(amount => amount < 0);\nconsole.log(lastWithdrawalIndex); // 3",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findlastindex",
       errors: [
@@ -358,7 +358,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив с элементами, прошедшими проверку, заданную в указанной функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация.",
-      example: "[1, 2, 3, 4].filter(x => x > 2)",
+      example: "const numbers = [1, 2, 3, 4, 5, 6];\nconst evenNumbers = numbers.filter(n => n % 2 === 0);\nconsole.log(evenNumbers); // [2, 4, 6]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.filter",
       errors: [
@@ -381,7 +381,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив с результатами вызова функции для каждого элемента исходного массива. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация.",
-      example: "[1, 2, 3].map(x => x * 2)",
+      example: "const prices = [100, 200, 300];\nconst discounted = prices.map(price => price * 0.9);\nconsole.log(discounted); // [90, 180, 270]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.map",
       errors: [
@@ -399,7 +399,7 @@ export const configArray = {
         },
       ],
       description: "Метод объекта Array, сортирует элементы массива на месте.",
-      example: "[3, 1, 4, 2].sort((a, b) => a - b)",
+      example: "const names = ['Charlie', 'Alice', 'Bob'];\nnames.sort();\nconsole.log(names); // ['Alice', 'Bob', 'Charlie']\nconst scores = [85, 92, 78];\nscores.sort((a, b) => b - a);\nconsole.log(scores); // [92, 85, 78]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.sort",
       errors: [
@@ -418,7 +418,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив с отсортированными элементами исходного массива.",
-      example: "[3, 1, 4, 2].toSorted((a, b) => a - b)",
+      example: "const numbers = [3, 1, 4, 2];\nconst sorted = numbers.toSorted((a, b) => a - b);\nconsole.log(sorted); // [1, 2, 3, 4]\nconsole.log(numbers); // [3, 1, 4, 2]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tosorted",
       errors: [
@@ -430,7 +430,7 @@ export const configArray = {
       syntax: "arr.reverse()",
       description:
         "Метод объекта Array, изменяет порядок элементов массива на обратный (изменяет исходный массив).",
-      example: "[1, 2, 3].reverse()",
+      example: "const letters = ['a', 'b', 'c'];\nletters.reverse();\nconsole.log(letters); // ['c', 'b', 'a']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reverse",
       errors: ["TypeError — если this не является массивом."],
@@ -440,7 +440,7 @@ export const configArray = {
       syntax: "arr.toReversed()",
       description:
         "Метод объекта Array, возвращает новый массив с элементами исходного массива в обратном порядке.",
-      example: "[1, 2, 3].toReversed()",
+      example: "const items = ['first', 'second', 'third'];\nconst reversed = items.toReversed();\nconsole.log(reversed); // ['third', 'second', 'first']\nconsole.log(items); // ['first', 'second', 'third']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.toreversed",
       errors: ["TypeError — если this не является массивом."],
@@ -456,7 +456,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает строку, состоящую из элементов массива, разделённых указанным разделителем.",
-      example: "['a', 'b', 'c'].join(', ')",
+      example: "const path = ['usr', 'local', 'bin'];\nconst fullPath = path.join('/');\nconsole.log(fullPath); // 'usr/local/bin'",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.join",
       errors: ["TypeError — если this не является массивом."],
@@ -476,7 +476,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, применяет функцию к аккумулятору и каждому элементу массива (слева направо), сводя массив к одному значению. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация.",
-      example: "[1, 2, 3].reduce((sum, x) => sum + x, 0)",
+      example: "const cart = [\n  { price: 10, quantity: 2 },\n  { price: 25, quantity: 1 },\n  { price: 5, quantity: 3 }\n];\nconst total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);\nconsole.log(total); // 60",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reduce",
       errors: [
@@ -498,7 +498,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, применяет функцию к аккумулятору и каждому элементу массива (справа налево), сводя массив к одному значению. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация.",
-      example: "[1, 2, 3].reduceRight((sum, x) => sum + x, 0)",
+      example: "const nums = [2, 3, 4];\nconst rightToLeftSum = nums.reduceRight((sum, num) => sum + num);\nconsole.log(rightToLeftSum); // 9",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reduceright",
       errors: [
@@ -524,7 +524,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, заполняет все элементы массива от start до end указанным значением. Возвращает изменённый массив.",
-      example: "[1, 2, 3, 4, 5].fill(0, 1, 4)",
+      example: "const arr = new Array(5);\narr.fill('x', 1, 4);\nconsole.log(arr); // [empty, 'x', 'x', 'x', empty]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.fill",
       errors: ["TypeError — если this не является массивом."],
@@ -548,7 +548,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, копирует последовательность элементов внутри массива. Возвращает изменённый массив.",
-      example: "[1, 2, 3, 4, 5].copyWithin(0, 3)",
+      example: "const arr = [1, 2, 3, 4, 5];\narr.copyWithin(0, 3);\nconsole.log(arr); // [4, 5, 3, 4, 5]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.copywithin",
       errors: ["TypeError — если this не является массивом."],
@@ -564,7 +564,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив, в котором все подмассивы рекурсивно подняты на указанную глубину.",
-      example: "[[1, 2], [3, [4, 5]]].flat(2)",
+      example: "const nested = [1, [2, [3, [4]]]];\nconst flattened = nested.flat(2);\nconsole.log(flattened); // [1, 2, 3, [4]]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.flat",
       errors: [
@@ -587,7 +587,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, проверяет, удовлетворяет ли хотя бы один элемент условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает true если удолетворяет, иначе false.",
-      example: "[1, 2, 3, 4].some(x => x > 3)",
+      example: "const numbers = [1, 2, 3, 5];\nconst hasEven = numbers.some(n => n % 2 === 0);\nconsole.log(hasEven); // true",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.some",
       errors: [
@@ -610,7 +610,7 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, проверяет, удовлетворяют ли все элементы условию, заданному в функции. Эта функция может принимать до 3 аргументов: элемент, его индекс, массив по которому производится итерация. Возвращает true если удолетворяет, иначе false.",
-      example: "[1, 2, 3, 4].every(x => x > 0)",
+      example: "const ages = [18, 22, 25, 30];\nconst allAdult = ages.every(age => age >= 18);\nconsole.log(allAdult); // true",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.every",
       errors: [
@@ -632,12 +632,48 @@ export const configArray = {
       ],
       description:
         "Метод объекта Array, возвращает новый массив с изменённым элементом по указанному индексу.",
-      example: "[1, 2, 3, 4, 5].with(2, 'three')",
+      example: "const original = ['a', 'b', 'c'];\nconst updated = original.with(1, 'B');\nconsole.log(updated); // ['a', 'B', 'c']\nconsole.log(original); // ['a', 'b', 'c']",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.with",
       errors: [
         "TypeError — если this не является массивом.",
         "RangeError — если аргумент (index) выходит за границы массива.",
+      ],
+    },
+    {
+      name: "keys()",
+      syntax: "arr.keys()",
+      description:
+        "Метод объекта Array, возвращает новый итератор, содержащий ключи (индексы) массива.",
+      example: "const colors = ['red', 'green', 'blue'];\nconst indices = [...colors.keys()];\nconsole.log(indices); // [0, 1, 2]",
+      specification:
+        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.keys",
+      errors: [
+        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
+      ],
+    },
+    {
+      name: "values()",
+      syntax: "arr.values()",
+      description:
+        "Метод объекта Array, возвращает новый итератор, содержащий значения массива.",
+      example: "const items = ['apple', 'banana', 'orange'];\nconst itemValues = [...items.values()];\nconsole.log(itemValues); // ['apple', 'banana', 'orange']",
+      specification:
+        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.values",
+      errors: [
+        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
+      ],
+    },
+    {
+      name: "entries()",
+      syntax: "arr.entries()",
+      description:
+        "Метод объекта Array, возвращает новый итератор, содержащий пары [ключ, значение] для каждого элемента массива.",
+      example: "const fruits = ['apple', 'banana', 'orange'];\nconst fruitEntries = [...fruits.entries()];\nconsole.log(fruitEntries); // [[0, 'apple'], [1, 'banana'], [2, 'orange']]",
+      specification:
+        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.entries",
+      errors: [
+        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
       ],
     },
     {
@@ -651,7 +687,7 @@ export const configArray = {
       ],
       description:
         "Статический метод объекта Array, определяет, является ли переданное значение массивом. Возвращает true если является, иначе false.",
-      example: "Array.isArray([1, 2, 3])",
+      example: "const arr = [1, 2, 3];\nconst isArr = Array.isArray(arr);\nconsole.log(isArr); // true\nconsole.log(Array.isArray({})); // false",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.isarray",
     },
@@ -675,45 +711,9 @@ export const configArray = {
       ],
       description:
         "Статический метод объекта Array, создаёт новый массив из итерируемого объекта или псевдомассива.",
-      example: "Array.from('hello')",
+      example: "const set = new Set([1, 2, 3]);\nconst arrFromSet = Array.from(set);\nconsole.log(arrFromSet); // [1, 2, 3]",
       specification:
         "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.from",
-    },
-    {
-      name: "keys()",
-      syntax: "arr.keys()",
-      description:
-        "Метод объекта Array, возвращает новый итератор, содержащий ключи (индексы) массива.",
-      example: "[...['a', 'b', 'c'].keys()]",
-      specification:
-        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.keys",
-      errors: [
-        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
-      ],
-    },
-    {
-      name: "values()",
-      syntax: "arr.values()",
-      description:
-        "Метод объекта Array, возвращает новый итератор, содержащий значения массива.",
-      example: "[...['a', 'b', 'c'].values()]",
-      specification:
-        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.values",
-      errors: [
-        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
-      ],
-    },
-    {
-      name: "entries()",
-      syntax: "arr.entries()",
-      description:
-        "Метод объекта Array, возвращает новый итератор, содержащий пары [ключ, значение] для каждого элемента массива.",
-      example: "[...['a', 'b', 'c'].entries()]",
-      specification:
-        "https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.entries",
-      errors: [
-        "TypeError — если this не является массивом, коллекцией (map) или множеством (set).",
-      ],
     },
   ],
 };
