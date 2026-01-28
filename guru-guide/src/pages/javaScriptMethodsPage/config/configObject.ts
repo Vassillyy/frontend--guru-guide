@@ -5,7 +5,7 @@ export const configObject = {
       syntax: "obj.toString()",
       description:
         "Метод объекта Object, возвращает примитивное значение объекта. По умолчанию обычный объект имеет метод toString, который возвращает строку '[object Object]'. Но метод можно переопределить. Если имеются другие методы преобразования, то данный метод имеет приоритет при строковом преобразовании.",
-      example: "({}).toString()",
+      example: "const obj = { x: 10, y: 20 };\nconsole.log(obj.toString()); // '[object Object]'\nconst customObj = {\n  toString() {\n    return 'Custom Object';\n  }\n};\nconsole.log(customObj.toString()); // 'Custom Object'",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.tostring",
       errors: ["TypeError — если this является null или undefined."],
@@ -15,7 +15,7 @@ export const configObject = {
       syntax: "obj.valueOf()",
       description:
         "Метод объекта Object, возвращает примитивное значение объекта. По умолчанию обычный объект имеет метод valueOf, который возвращает сам объект. Но метод можно переопределить. Если имеются другие методы преобразования, то данный метод имеет приоритет при математических операциях.",
-      example: "({}).valueOf()",
+      example: "const obj = { x: 5 };\nconsole.log(obj.valueOf() === obj); // true\nconst numberObj = {\n  value: 100,\n  valueOf() {\n    return this.value;\n  }\n};\nconsole.log(numberObj + 50); // 150",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.valueof",
       errors: ["TypeError — если this является null или undefined."],
@@ -31,7 +31,7 @@ export const configObject = {
       ],
       description:
         "Метод объекта Object, возвращает true, если объект содержит указанное свойство как собственное (а не унаследованное через цепочку прототипов), иначе false.",
-      example: "({a: 1}).hasOwnProperty('a')",
+      example: "const user = { id: 1, name: 'Alice' };\nconst hasName = user.hasOwnProperty('name');\nconsole.log(hasName); // true\nconst hasAge = user.hasOwnProperty('age');\nconsole.log(hasAge); // false",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.hasownproperty",
       errors: [
@@ -49,7 +49,7 @@ export const configObject = {
       ],
       description:
         "Метод объекта Object, возвращает true, если исходный объект находится где-то в прототипной цепочке заданного объекта, иначе false.",
-      example: "Array.prototype.isPrototypeOf([])",
+      example: "const base = { x: 1 };\nconst obj = Object.create(base);\nconst isProto = base.isPrototypeOf(obj);\nconsole.log(isProto); // true\nconsole.log(Object.prototype.isPrototypeOf([])); // true",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.isprototypeof",
       errors: [
@@ -71,7 +71,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, копирует собственные перечисляемые свойства всех исходных объектов в целевой объект. Происходит только поверхностное копирование — если свойство является объектом, то будет скопирована только ссылка. Копирует как строковые, так и символьные свойства. Возвращает целевой объект.",
-      example: "Object.assign({}, {a: 1}, {b: 2})",
+      example: "const defaults = { theme: 'light', lang: 'en' };\nconst userSettings = { lang: 'ru' };\nconst settings = Object.assign({}, defaults, userSettings);\nconsole.log(settings); // { theme: 'light', lang: 'ru' }",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.assign",
       errors: [
@@ -93,7 +93,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, сравнивает два значения и определяет, являются ли они строго равными. Работает аналогично оператору строгого равенства, кроме двух случаев:\n • Object.is(NaN, NaN) === true\n • Object.is(0, -0) === false",
-      example: "Object.is(NaN, NaN)",
+      example: "console.log(Object.is(NaN, NaN)); // true\nconsole.log(Object.is(0, -0)); // false\nconsole.log(Object.is('hello', 'hello')); // true\nconsole.log(Object.is([], [])); // false",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.is",
     },
@@ -108,7 +108,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает массив строковых ключей объекта. Игнорирует символьные свойства и перебирает только собственные.",
-      example: "Object.keys({a: 1, b: 2, c: 3})",
+      example: "const user = { name: 'Alice', age: 30, city: 'Moscow' };\nconst keys = Object.keys(user);\nconsole.log(keys); // ['name', 'age', 'city']",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.keys",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -124,7 +124,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает массив значений объекта. Игнорирует символьные свойства и перебирает только собственные.",
-      example: "Object.values({a: 1, b: 2, c: 3})",
+      example: "const config = { port: 3000, host: 'localhost', debug: true };\nconst values = Object.values(config);\nconsole.log(values); // [3000, 'localhost', true]",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.values",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -140,7 +140,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает массив по парам вида [ключ, значение]. Игнорирует символьные свойства и перебирает только собственные.",
-      example: "Object.entries({a: 1, b: 2, c: 3})",
+      example: "const product = { name: 'Laptop', price: 999, stock: 5 };\nconst entries = Object.entries(product);\nconsole.log(entries); // [['name', 'Laptop'], ['price', 999], ['stock', 5]]",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.entries",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -157,7 +157,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, преобразует список пар [ключ, значение] в обычный JavaScript-объект. Каждая пара из итерируемого объекта становится свойством в результирующем объекте, где первый элемент пары — ключ, второй — значение. Является обратной операцией к Object.entries().",
-      example: "Object.fromEntries([['a', 1], ['b', 2], ['c', 3]])",
+      example: "const map = new Map([\n  ['name', 'Alice'],\n  ['age', 30],\n  ['city', 'Moscow']\n]);\nconst obj = Object.fromEntries(map);\nconsole.log(obj); // { name: 'Alice', age: 30, city: 'Moscow' }",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.fromentries",
       errors: [
@@ -179,7 +179,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, позволяет получить полную информацию о свойстве объекта. Метод возвращает объект-дескриптор свойства, который содержит значение свойства и все его флаги.",
-      example: "Object.getOwnPropertyDescriptor({a: 1}, 'a')",
+      example: "const obj = { name: 'John', age: 30 };\nconst descriptor = Object.getOwnPropertyDescriptor(obj, 'name');\nconsole.log(descriptor);\n// { value: 'John', writable: true, enumerable: true, configurable: true }",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertydescriptor",
       errors: [
@@ -206,7 +206,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, позволяет изменить или определить свойство объекта. Если свойство существует, метод обновит его значение и флаги. В противном случае метод создаёт новое свойство с указанным значением и флагами; если какой-либо флаг не указан явно, ему присваивается значение false.",
-      example: "Object.defineProperty({}, 'prop', {value: 1, writable: true})",
+      example: "const obj = {};\nObject.defineProperty(obj, 'readonlyProp', {\n  value: 42,\n  writable: false,\n  enumerable: true\n});\nconsole.log(obj.readonlyProp); // 42\nobj.readonlyProp = 100; // TypeError в strict mode",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.defineproperty",
       errors: [
@@ -230,7 +230,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, позволяет изменять или определять множество свойств одновременно. Удобен для массового определения свойств с различными дескрипторами.",
-      example: "Object.defineProperties({}, {a: {value: 1}, b: {value: 2}})",
+      example: "const user = {};\nObject.defineProperties(user, {\n  name: {\n    value: 'Alice',\n    writable: true,\n    enumerable: true\n  },\n  age: {\n    value: 30,\n    writable: true,\n    enumerable: false\n  }\n});\nconsole.log(Object.keys(user)); // ['name']",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.defineproperties",
       errors: [
@@ -249,7 +249,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает объект, содержащий дескрипторы для всех собственных свойств целевого объекта. Вместе с Object.defineProperties() позволяет клонировать объект с сохранением всех флагов свойств.",
-      example: "Object.getOwnPropertyDescriptors({a: 1, b: 2})",
+      example: "const obj = {};\nObject.defineProperties(obj, {\n  x: { value: 10, writable: false },\n  y: { value: 20, enumerable: false }\n});\nconst descriptors = Object.getOwnPropertyDescriptors(obj);\nconsole.log(descriptors.x.writable); // false\nconsole.log(descriptors.y.enumerable); // false",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertydescriptors",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -265,7 +265,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, запрещает добавление новых свойств к объекту. После вызова этого метода объект становится 'нерасширяемым' — нельзя добавлять новые свойства, но существующие можно изменять или удалять.",
-      example: "Object.preventExtensions({a: 1})",
+      example: "const obj = { prop: 'value' };\nObject.preventExtensions(obj);\nobj.newProp = 'new'; // TypeError в strict mode\nconsole.log('newProp' in obj); // false",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.preventextensions",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -281,7 +281,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, проверяет, является ли объект расширяемым (можно ли добавлять к нему новые свойства). Возвращает true, если объект расширяемый, и false, если нет.",
-      example: "Object.isExtensible({a: 1})",
+      example: "const obj = { x: 10 };\nconsole.log(Object.isExtensible(obj)); // true\nObject.preventExtensions(obj);\nconsole.log(Object.isExtensible(obj)); // false",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isextensible",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -297,7 +297,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, запрещает добавление и удаление свойств, а также изменение их дескрипторов. Устанавливает configurable: false для всех существующих свойств, но позволяет изменять их значения, если writable: true.",
-      example: "Object.seal({a: 1, b: 2})",
+      example: "const obj = { name: 'John', age: 25 };\nObject.seal(obj);\nobj.age = 30; // Изменение значения работает\nconsole.log(obj.age); // 30\ndelete obj.name; // Не работает в strict mode",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.seal",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -313,7 +313,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, проверяет, запечатан ли объект. Возвращает true, если объект запечатан (нельзя добавлять/удалять свойства и изменять их дескрипторы), иначе возвращает false.",
-      example: "Object.isSealed(Object.seal({a: 1}))",
+      example: "const obj = { x: 10, y: 20 };\nconsole.log(Object.isSealed(obj)); // false\nObject.seal(obj);\nconsole.log(Object.isSealed(obj)); // true",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.issealed",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -329,7 +329,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, делает объект полностью неизменяемым. Запрещает добавление, удаление и изменение свойств, а также изменение их дескрипторов. Устанавливает configurable: false и writable: false для всех существующих свойств.",
-      example: "Object.freeze({a: 1, b: 2})",
+      example: "const config = { version: '1.0', debug: false };\nObject.freeze(config);\nconsole.log(config.debug); // false\nconfig.debug = true;\nconsole.log(config.debug); // false (изменение не применилось)\nconsole.log('newProp' in config); // false\nconfig.newProp = 'test';\nconsole.log('newProp' in config); // false (свойство не добавилось)",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.freeze",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -345,7 +345,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, проверяет, заморожен ли объект. Возвращает true, если объект полностью неизменяем (нельзя добавлять/удалять/изменять свойства), иначе возвращает false.",
-      example: "Object.isFrozen(Object.freeze({a: 1}))",
+      example: "const obj = { value: 100 };\nconsole.log(Object.isFrozen(obj)); // false\nObject.freeze(obj);\nconsole.log(Object.isFrozen(obj)); // true",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isfrozen",
       errors: ["TypeError — если аргумент (obj) является null или undefined."],
@@ -365,7 +365,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, создаёт объект, используя существующий объект в качестве прототипа. Второй аргумент позволяет определять свойства нового объекта с помощью дескрипторов. Мы также можем использовать Object.create для «продвинутого» клонирования объекта с сохранением дескрипторов свойств.",
-      example: "Object.create({x: 1}, {y: {value: 2, writable: true}})",
+      example: "const proto = { greet() { return 'Hello'; } };\nconst obj = Object.create(proto, {\n  name: { value: 'Alice', enumerable: true }\n});\nconsole.log(obj.greet()); // 'Hello'\nconsole.log(obj.name); // 'Alice'",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.create",
       errors: [
@@ -383,7 +383,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает прототип (скрытое свойство [[Prototype]]) указанного объекта. Это альтернатива использованию свойства __proto__.",
-      example: "Object.getPrototypeOf({})",
+      example: "const proto = { base: true };\nconst obj = Object.create(proto);\nconst prototype = Object.getPrototypeOf(obj);\nconsole.log(prototype === proto); // true",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getprototypeof",
       errors: [
@@ -405,7 +405,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, устанавливает прототип (скрытое свойство [[Prototype]]) указанному объекта (obj). Это альтернатива использованию свойства __proto__.",
-      example: "Object.setPrototypeOf({}, Array.prototype)",
+      example: "const animal = { eats: true };\nconst rabbit = { jumps: true };\nObject.setPrototypeOf(rabbit, animal);\nconsole.log(rabbit.eats); // true\nconsole.log(Object.getPrototypeOf(rabbit) === animal); // true",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.setprototypeof",
       errors: [
@@ -423,7 +423,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает массив всех собственных символьных ключей указанного объекта.",
-      example: "Object.getOwnPropertySymbols({[Symbol('id')]: 123})",
+      example: "const id = Symbol('id');\nconst token = Symbol('token');\nconst obj = {\n  [id]: 123,\n  [token]: 'abc',\n  name: 'Test'\n};\nconst symbols = Object.getOwnPropertySymbols(obj);\nconsole.log(symbols); // [Symbol(id), Symbol(token)]",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertysymbols",
       errors: [
@@ -441,7 +441,7 @@ export const configObject = {
       ],
       description:
         "Статический метод объекта Object, возвращает массив всех собственных строковых ключей указанного объекта.",
-      example: "Object.getOwnPropertyNames({a: 1, b: 2})",
+      example: "const obj = {};\nObject.defineProperties(obj, {\n  visible: { value: 1, enumerable: true },\n  hidden: { value: 2, enumerable: false }\n});\nconst keys = Object.keys(obj);\nconst names = Object.getOwnPropertyNames(obj);\nconsole.log(keys); // ['visible']\nconsole.log(names); // ['visible', 'hidden']",
       specification:
         "https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertynames",
       errors: [

@@ -21,7 +21,7 @@ export const configJSON = {
       ],
       description:
         "Статический метод объекта JSON, преобразует JavaScript значение в JSON (строку). JSON является независимым от языка форматом данных, поэтому метод пропускает некоторые специфические свойства JavaScript: методы (свойства-функции), символьные ключи и значения, свойства содержащие undefined. Если объект содержит циклические ссылки, будет выброшена ошибка. Если объект имеет метод toJSON(), он будет вызван, и его возвращаемое значение будет сериализовано вместо исходного объекта.",
-      example: "JSON.stringify({name: 'John', age: 30})",
+      example: `const obj = { name: 'John', age: 30, city: 'Moscow' };\nconst json = JSON.stringify(obj, ['name', 'city']);\nconsole.log(json); // '{"name":"John","city":"Moscow"}'`,
       specification:
         "https://tc39.es/ecma262/multipage/structured-data.html#sec-json.stringify",
       errors: ["TypeError — если объект содержит циклическую ссылку."],
@@ -42,7 +42,7 @@ export const configJSON = {
       ],
       description:
         "Статический метод объекта JSON, преобразует строку JSON в JavaScript значение. Функция reviver (если указана) вызывается для каждого свойства, включая вложенные, и позволяет преобразовывать значения перед их возвратом.",
-      example: 'JSON.parse(\'{"name":"John","age":30}\')',
+      example: `const json = '{"name":"John","age":30}';\nconst obj = JSON.parse(json);\nconsole.log(obj.name); // 'John'`,
       specification:
         "https://tc39.es/ecma262/multipage/structured-data.html#sec-json.parse",
       errors: ["SyntaxError — если строка не является валидным JSON."],

@@ -94,12 +94,13 @@
 }
 
 .parameterName {
+  width: 100%;
   font-family: "Monaco", "Menlo", "Consolas", monospace;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #1864ab;
   background: #e7f5ff;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: 4px;
   display: inline-block;
 }

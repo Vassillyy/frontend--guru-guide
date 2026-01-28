@@ -5,7 +5,7 @@ export const configDate = {
       syntax: "date.getFullYear()",
       description:
         "Метод объекта Date, возвращает год (4 цифры) исходной даты по местному времени.",
-      example: "new Date('2023-12-15').getFullYear()",
+      example: "const date = new Date('2023-12-15');\nconst year = date.getFullYear();\nconsole.log(year); // год по местному времени (2023 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getfullyear",
       errors: ["TypeError — если this не является датой."],
@@ -29,7 +29,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает год исходной даты по местному времени. Дополнительно может установить месяц и день месяца. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setFullYear(2024, 5, 15)",
+      example: "const date = new Date('2023-01-15');\nconst timestamp = date.setFullYear(2024);\nconst year = date.getFullYear();\nconsole.log(year); // год по местному времени (2024 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setfullyear",
       errors: ["TypeError — если this не является датой."],
@@ -39,7 +39,7 @@ export const configDate = {
       syntax: "date.getUTCFullYear()",
       description:
         "Метод объекта Date, возвращает год (4 цифры) исходной даты по всемирному координированному времени (UTC), игнорируя часовой пояс.",
-      example: "new Date('2023-12-15').getUTCFullYear()",
+      example: "const date = new Date('2023-12-15T23:00:00Z');\nconst utcYear = date.getUTCFullYear();\nconst localYear = date.getFullYear();\nconsole.log(utcYear); // 2023\nconsole.log(localYear); // год по местному времени (2023 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcfullyear",
       errors: ["TypeError — если this не является датой."],
@@ -63,7 +63,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает год исходной даты по всемирному координированному времени (UTC). Дополнительно может установить месяц и день месяца. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCFullYear(2024, 5, 15)",
+      example: "const date = new Date('2023-01-15T00:00:00Z');\nconst timestamp = date.setUTCFullYear(2025);\nconst year = date.getUTCFullYear();\nconsole.log(year); // 2025",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcfullyear",
       errors: ["TypeError — если this не является датой."],
@@ -73,7 +73,7 @@ export const configDate = {
       syntax: "date.getMonth()",
       description:
         "Метод объекта Date, возвращает месяц исходной даты по местному времени. Месяцы нумеруются с 0 (январь) до 11 (декабрь).",
-      example: "new Date('2023-12-15').getMonth()",
+      example: "const summer = new Date('2024-06-15');\nconsole.log(summer.getMonth()); // месяц по местному времени (5 - июнь по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getmonth",
       errors: ["TypeError — если this не является датой."],
@@ -93,7 +93,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает месяц исходной даты по местному времени. Дополнительно может установить день месяца. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setMonth(11) // Устанавливает декабрь",
+      example: "const date = new Date('2024-01-15');\nconst timestamp = date.setMonth(5);\nconst month = date.getMonth();\nconsole.log(month); // месяц по местному времени (5 - июнь по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setmonth",
       errors: ["TypeError — если this не является датой."],
@@ -103,7 +103,7 @@ export const configDate = {
       syntax: "date.getUTCMonth()",
       description:
         "Метод объекта Date, возвращает месяц исходной даты по всемирному координированному времени (UTC). Месяцы нумеруются с 0 (январь) до 11 (декабрь).",
-      example: "new Date('2023-12-15').getUTCMonth()",
+      example: "const date = new Date('2024-01-01T00:00:00Z');\nconsole.log(date.getUTCMonth()); // 0 - январь",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcmonth",
       errors: ["TypeError — если this не является датой."],
@@ -123,7 +123,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает месяц исходной даты по всемирному координированному времени (UTC). Дополнительно может установить день месяца. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCMonth(11) // Устанавливает декабрь по UTC",
+      example: "const date = new Date('2024-01-15T12:00:00Z');\nconst timestamp = date.setUTCMonth(8);\nconst month = date.getUTCMonth();\nconsole.log(month); // 8 - сентябрь",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcmonth",
       errors: ["TypeError — если this не является датой."],
@@ -133,7 +133,7 @@ export const configDate = {
       syntax: "date.getDate()",
       description:
         "Метод объекта Date, возвращает день месяца (от 1 до 31) исходной даты по местному времени.",
-      example: "new Date('2023-12-15').getDate()",
+      example: "const birthday = new Date('2024-05-20');\nconsole.log(birthday.getDate()); // день по местному времени (20 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getdate",
       errors: ["TypeError — если this не является датой."],
@@ -149,7 +149,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает день месяца исходной даты по местному времени. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setDate(25)",
+      example: "const date = new Date('2024-01-10');\nconst timestamp = date.setDate(25);\nconst day = date.getDate();\nconsole.log(day); // день по местному времени (25 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setdate",
       errors: ["TypeError — если this не является датой."],
@@ -159,7 +159,7 @@ export const configDate = {
       syntax: "date.getUTCDate()",
       description:
         "Метод объекта Date, возвращает день месяца (от 1 до 31) исходной даты по всемирному координированному времени (UTC).",
-      example: "new Date('2023-12-15').getUTCDate()",
+      example: "const date = new Date('2024-12-31T23:59:59Z');\nconsole.log(date.getUTCDate()); // 31",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcdate",
       errors: ["TypeError — если this не является датой."],
@@ -175,7 +175,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает день месяца исходной даты по всемирному координированному времени (UTC). Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCDate(25)",
+      example: "const date = new Date('2024-03-10T12:00:00Z');\nconst timestamp = date.setUTCDate(15);\nconst day = date.getUTCDate();\nconsole.log(day); // 15",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcdate",
       errors: ["TypeError — если this не является датой."],
@@ -185,7 +185,7 @@ export const configDate = {
       syntax: "date.getHours()",
       description:
         "Метод объекта Date, возвращает часы (0-23) исходной даты по местному времени.",
-      example: "new Date('2023-12-15T14:30:00').getHours()",
+      example: "const morning = new Date('2024-05-20T09:15:00');\nconsole.log(morning.getHours()); // часы по местному времени (9 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gethours",
       errors: ["TypeError — если this не является датой."],
@@ -213,7 +213,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает часы исходной даты по местному времени. Дополнительно может установить минуты, секунды и миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setHours(15, 30, 0)",
+      example: "const date = new Date('2024-01-01T00:00:00');\nconst timestamp = date.setHours(14);\nconst hours = date.getHours();\nconsole.log(hours); // часы по местному времени (14 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.sethours",
       errors: ["TypeError — если this не является датой."],
@@ -223,7 +223,7 @@ export const configDate = {
       syntax: "date.getUTCHours()",
       description:
         "Метод объекта Date, возвращает часы (0-23) исходной даты по всемирному координированному времени (UTC).",
-      example: "new Date('2023-12-15T14:30:00').getUTCHours()",
+      example: "const date = new Date('2024-01-01T20:00:00Z');\nconst hours = date.getUTCHours();\nconsole.log(hours); // 20",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutchours",
       errors: ["TypeError — если this не является датой."],
@@ -251,7 +251,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает часы исходной даты по всемирному координированному времени (UTC). Дополнительно может установить минуты, секунды и миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCHours(15, 30, 0)",
+      example: "const date = new Date('2024-01-01T00:00:00Z');\nconst timestamp = date.setUTCHours(15);\nconst hours = date.getUTCHours();\nconsole.log(hours); // 15",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutchours",
       errors: ["TypeError — если this не является датой."],
@@ -261,7 +261,7 @@ export const configDate = {
       syntax: "date.getMinutes()",
       description:
         "Метод объекта Date, возвращает минуты (0-59) исходной даты по местному времени.",
-      example: "new Date('2023-12-15T14:30:45').getMinutes()",
+      example: "const date = new Date('2024-01-01T14:30:00');\nconst minutes = date.getMinutes();\nconsole.log(minutes); // минуты по местному времени (30 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getminutes",
       errors: ["TypeError — если this не является датой."],
@@ -285,7 +285,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает минуты исходной даты по местному времени. Дополнительно может установить секунды и миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setMinutes(45, 30, 500)",
+      example: "const date = new Date('2024-03-10T12:00:00');\nconst timestamp = date.setMinutes(15);\nconst minutes = date.getMinutes();\nconsole.log(minutes); // минуты по местному времени (15 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setminutes",
       errors: ["TypeError — если this не является датой."],
@@ -295,7 +295,7 @@ export const configDate = {
       syntax: "date.getUTCMinutes()",
       description:
         "Метод объекта Date, возвращает минуты (0-59) исходной даты по всемирному координированному времени (UTC).",
-      example: "new Date('2023-12-15T14:30:45').getUTCMinutes()",
+      example: "const date = new Date('2024-01-01T14:30:00Z');\nconst minutes = date.getUTCMinutes();\nconsole.log(minutes); // 30",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcminutes",
       errors: ["TypeError — если this не является датой."],
@@ -319,7 +319,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает минуты исходной даты по всемирному координированному времени (UTC). Дополнительно может установить секунды и миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCMinutes(45, 30, 500)",
+      example: "const date = new Date('2024-01-01T12:00:00Z');\nconst timestamp = date.setUTCMinutes(45);\nconst minutes = date.getUTCMinutes();\nconsole.log(minutes); // 45",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcminutes",
       errors: ["TypeError — если this не является датой."],
@@ -329,7 +329,7 @@ export const configDate = {
       syntax: "date.getSeconds()",
       description:
         "Метод объекта Date, возвращает секунды (0-59) исходной даты по местному времени.",
-      example: "new Date('2023-12-15T14:30:45').getSeconds()",
+      example: "const date = new Date('2024-01-01T12:30:45');\nconst seconds = date.getSeconds();\nconsole.log(seconds); // секунды по местному времени (45 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getseconds",
       errors: ["TypeError — если this не является датой."],
@@ -349,7 +349,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает секунды исходной даты по местному времени. Дополнительно может установить миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setSeconds(30, 500)",
+      example: "const date = new Date('2024-01-01T12:30:00');\nconst timestamp = date.setSeconds(45);\nconst seconds = date.getSeconds();\nconsole.log(seconds); // секунды по местному времени (45 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setseconds",
       errors: ["TypeError — если this не является датой."],
@@ -359,7 +359,7 @@ export const configDate = {
       syntax: "date.getUTCSeconds()",
       description:
         "Метод объекта Date, возвращает секунды (0-59) исходной даты по всемирному координированному времени (UTC).",
-      example: "new Date('2023-12-15T14:30:45').getUTCSeconds()",
+      example: "const date = new Date('2024-01-01T12:30:45Z');\nconst seconds = date.getUTCSeconds();\nconsole.log(seconds); // 45",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcseconds",
       errors: ["TypeError — если this не является датой."],
@@ -379,7 +379,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает секунды исходной даты по всемирному координированному времени (UTC). Дополнительно может установить миллисекунды. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCSeconds(30, 500)",
+      example: "const date = new Date('2024-01-01T12:30:00Z');\nconst timestamp = date.setUTCSeconds(45);\nconst seconds = date.getUTCSeconds();\nconsole.log(seconds); // 45",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcseconds",
       errors: ["TypeError — если this не является датой."],
@@ -389,7 +389,7 @@ export const configDate = {
       syntax: "date.getMilliseconds()",
       description:
         "Метод объекта Date, возвращает миллисекунды (0-999) исходной даты по местному времени.",
-      example: "new Date('2023-12-15T14:30:45.123').getMilliseconds()",
+      example: "const date = new Date('2024-01-01T12:30:45.500');\nconst milliseconds = date.getMilliseconds();\nconsole.log(milliseconds); // миллисекунды по местному времени (500 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getmilliseconds",
       errors: ["TypeError — если this не является датой."],
@@ -405,7 +405,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает миллисекунды исходной даты по местному времени. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setMilliseconds(500)",
+      example: "const date = new Date('2024-01-01T12:30:45.000');\nconst timestamp = date.setMilliseconds(50);\nconst ms = date.getMilliseconds();\nconsole.log(ms); // миллисекунды по местному времени (50 по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setmilliseconds",
       errors: ["TypeError — если this не является датой."],
@@ -415,7 +415,7 @@ export const configDate = {
       syntax: "date.getUTCMilliseconds()",
       description:
         "Метод объекта Date, возвращает миллисекунды (0-999) исходной даты по всемирному координированному времени (UTC).",
-      example: "new Date('2023-12-15T14:30:45.123').getUTCMilliseconds()",
+      example: "const date = new Date('2024-01-01T12:30:45.750Z');\nconst milliseconds = date.getUTCMilliseconds();\nconsole.log(milliseconds); // 750",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcmilliseconds",
       errors: ["TypeError — если this не является датой."],
@@ -431,7 +431,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает миллисекунды исходной даты по всемирному координированному времени (UTC). Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setUTCMilliseconds(500)",
+      example: "const date = new Date('2024-01-01T12:30:45.000Z');\nconst timestamp = date.setUTCMilliseconds(50);\nconst ms = date.getUTCMilliseconds();\nconsole.log(ms); // 50",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcmilliseconds",
       errors: ["TypeError — если this не является датой."],
@@ -441,7 +441,7 @@ export const configDate = {
       syntax: "date.getDay()",
       description:
         "Метод объекта Date, возвращает день недели (0-6) исходной даты по местному времени, где 0 соответствует воскресенью.",
-      example: "new Date('2023-12-15').getDay()",
+      example: "const date = new Date('2024-01-01');\nconst day = date.getDay();\nconsole.log(day); // день недели по местному времени (1 - понедельник по Москве)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getday",
       errors: ["TypeError — если this не является датой."],
@@ -451,7 +451,7 @@ export const configDate = {
       syntax: "date.getUTCDay()",
       description:
         "Метод объекта Date, возвращает день недели (0-6) исходной даты по всемирному координированному времени (UTC), где 0 соответствует воскресенью.",
-      example: "new Date('2023-12-15').getUTCDay()",
+      example: "const date = new Date('2024-01-01T00:00:00Z');\nconst day = date.getUTCDay();\nconsole.log(day); // 1 - понедельник",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcday",
       errors: ["TypeError — если this не является датой."],
@@ -461,7 +461,7 @@ export const configDate = {
       syntax: "date.getTime()",
       description:
         "Метод объекта Date, возвращает таймстамп исходной даты (количество миллисекунд с 1 января 1970 года, 00:00:00 UTC).",
-      example: "new Date('2023-12-15').getTime()",
+      example: "const date = new Date('2024-01-01');\nconst timestamp = date.getTime();\nconsole.log(timestamp); // 1704067200000",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gettime",
       errors: ["TypeError — если this не является датой."],
@@ -477,7 +477,7 @@ export const configDate = {
       ],
       description:
         "Метод объекта Date, устанавливает дату и время с помощью таймстампа. Возвращает таймстамп обновлённой даты.",
-      example: "new Date().setTime(1671033600000)",
+      example: "const date = new Date();\nconst timestamp = date.setTime(1704067200000);\nconst newTime = date.getTime();\nconsole.log(newTime); // 1704067200000",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.settime",
       errors: ["TypeError — если this не является датой."],
@@ -487,7 +487,7 @@ export const configDate = {
       syntax: "date.getTimezoneOffset()",
       description:
         "Метод объекта Date, возвращает разницу в минутах между всемирным координированным временем (UTC) и местным временем. Значение будет положительным, если местное время опережает UTC, и отрицательным, если отстает.",
-      example: "new Date().getTimezoneOffset()",
+      example: "const date = new Date('2024-01-01T00:00:00Z');\nconst offset = date.getTimezoneOffset();\nconsole.log(offset); // -180 (для Москвы, UTC+3)",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gettimezoneoffset",
       errors: ["TypeError — если this не является датой."],
@@ -497,7 +497,7 @@ export const configDate = {
       syntax: "Date.now()",
       description:
         "Статический метод объекта Date, возвращает таймстамп текущей даты (количество миллисекунд с 1 января 1970 года, 00:00:00 UTC). Это то же самое, что и new Date().getTime(), однако метод не создаёт промежуточный объект Date, поэтому работает быстрее.",
-      example: "Date.now()",
+      example: "const timestamp = Date.now();\nconsole.log(timestamp); // таймстамп для текущей даты",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.now",
     },
@@ -513,7 +513,7 @@ export const configDate = {
       ],
       description:
         "Статический метод объекта Date, парсит строку с датой и возвращает таймстамп. Если формат неправильный, возвращается NaN. Предпочтительный формат: YYYY-MM-DDTHH:mm:ss.sssZ, где:\n • YYYY-MM-DD – дата: год-месяц-день;\n • 'T' – разделитель;\n • HH:mm:ss.sss – время: часы, минуты, секунды, миллисекунды;\n • 'Z' – часовой пояс в формате +-hh:mm (необязательно).",
-      example: "Date.parse('2023-12-15T14:30:00')",
+      example: "const timestamp = Date.parse('2024-01-01T00:00:00Z');\nconsole.log(timestamp); // 1704067200000",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.parse",
     },
@@ -552,7 +552,7 @@ export const configDate = {
       ],
       description:
         "Статический метод объекта Date, возвращает таймстамп для указанной даты и времени по UTC. В отличие от конструктора new Date(), параметры интерпретируются как UTC время, а не локальное время.",
-      example: "Date.UTC(2023, 11, 15, 14, 30, 0)",
+      example: "const timestamp = Date.UTC(2024, 0, 1);\nconsole.log(timestamp); // 1704067200000",
       specification:
         "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.utc",
     },
