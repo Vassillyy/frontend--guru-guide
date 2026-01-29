@@ -15,7 +15,7 @@ export const configWeakMap = {
       ],
       description:
         "Метод объекта WeakMap, записывает значение по ключу. Каждый вызов set() возвращает объект WeakMap, что позволяет использовать цепочки вызовов. Ключами в WeakMap могут быть только объекты.",
-      example: "new WeakMap().set({}, 1).set({}, 2).get({})",
+      example: "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst result = weakMap.get(key);\nconsole.log(result); // 'value'",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.set",
       errors: [
@@ -34,7 +34,7 @@ export const configWeakMap = {
       ],
       description:
         "Метод объекта WeakMap, возвращает значение по ключу или undefined если ключ отсутствует.",
-      example: "new WeakMap().set({}, 1).get({})",
+      example: "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'data');\nconst value = weakMap.get(key);\nconsole.log(value); // 'data'",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.get",
       errors: [
@@ -52,7 +52,7 @@ export const configWeakMap = {
       ],
       description:
         "Метод объекта WeakMap, возвращает true, если ключ присутствует в коллекции, иначе false.",
-      example: "new WeakMap().set({}, 1).has({})",
+      example: "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst hasKey = weakMap.has(key);\nconsole.log(hasKey); // true",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.has",
       errors: [
@@ -70,7 +70,7 @@ export const configWeakMap = {
       ],
       description:
         "Метод объекта WeakMap, удаляет элемент (пару вида «ключ/значение») по ключу и возвращает true, если оно было в коллекции на момент вызова, иначе false.",
-      example: "new WeakMap().set({}, 1).delete({})",
+      example: "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst deleted = weakMap.delete(key);\nconsole.log(deleted); // true",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.delete",
       errors: [

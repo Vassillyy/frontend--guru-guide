@@ -5,7 +5,7 @@ export const configMap = {
       syntax: "map.size",
       description:
         "Свойство объекта Map, возвращает количество элементов. Свойство только для чтения (read-only).",
-      example: "new Map([['a', 1], ['b', 2]]).size",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst size = map.size;\nconsole.log(size); // 2",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-get-map.prototype.size",
       errors: [
@@ -28,8 +28,7 @@ export const configMap = {
       ],
       description:
         "Метод объекта Map, вызывает указанную функцию для каждой пары (ключ/значение) коллекции. Эта функция может принимать до трёх аргументов: значение, ключ, объект по которому производится итерация. Возвращает undefined.",
-      example:
-        "new Map([['a', 1], ['b', 2]]).forEach((v, k) => console.log(k, v))",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nmap.forEach((value, key) => {\n console.log(key, value); // 'a' 1, 'b' 2\n});",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.foreach",
       errors: [
@@ -51,7 +50,7 @@ export const configMap = {
       ],
       description:
         "Метод объекта Map, записывает значение по ключу. Каждый вызов set() возвращает объект Map, что позволяет использовать цепочки вызовов. Если ключ уже существует в Map, его значение обновляется.",
-      example: "new Map().set('a', 1).set('b', 2).get('a')",
+      example: "const map = new Map();\nmap.set('key', 'value');\nconst result = map.get('key');\nconsole.log(result); // 'value'",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.set",
       errors: [
@@ -69,7 +68,7 @@ export const configMap = {
       ],
       description:
         "Метод объекта Map, возвращает значение по ключу или undefined если ключ отсутствует.",
-      example: "new Map([['a', 1], ['b', 2]]).get('a')",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst value = map.get('a');\nconsole.log(value); // 1",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.get",
       errors: [
@@ -87,7 +86,7 @@ export const configMap = {
       ],
       description:
         "Метод объекта Map, возвращает true, если ключ, присутствует в коллекции, иначе false.",
-      example: "new Map([['a', 1], ['b', 2]]).has('a')",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst hasKey = map.has('a');\nconsole.log(hasKey); // true",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.has",
       errors: [
@@ -105,7 +104,7 @@ export const configMap = {
       ],
       description:
         "Метод объекта Map, удаляет элемент (пару вида «ключ/значение») по ключу и возвращает true, если оно было в коллекции на момент вызова, иначе false.",
-      example: "new Map([['a', 1], ['b', 2]]).delete('a')",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst deleted = map.delete('a');\nconsole.log(deleted); // true\nconsole.log(map.has('a')); // false",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.delete",
       errors: [
@@ -116,7 +115,7 @@ export const configMap = {
       name: "clear()",
       syntax: "map.clear()",
       description: "Метод объекта Map, очищает коллекцию от всех элементов.",
-      example: "new Map([['a', 1], ['b', 2]]).clear()",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nmap.clear();\nconsole.log(map.size); // 0",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.clear",
       errors: [
@@ -128,7 +127,7 @@ export const configMap = {
       syntax: "map.keys()",
       description:
         "Метод объекта Map, возвращает итерируемый объект по ключам коллекции.",
-      example: "[...new Map([['a', 1], ['b', 2]]).keys()]",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst keys = Array.from(map.keys());\nconsole.log(keys); // ['a', 'b']",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.keys",
       errors: [
@@ -140,7 +139,7 @@ export const configMap = {
       syntax: "map.values()",
       description:
         "Метод объекта Map, возвращает итерируемый объект по значениям коллекции.",
-      example: "[...new Map([['a', 1], ['b', 2]]).values()]",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst values = Array.from(map.values());\nconsole.log(values); // [1, 2]",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.values",
       errors: [
@@ -152,7 +151,7 @@ export const configMap = {
       syntax: "map.entries()",
       description:
         "Метод объекта Map, возвращает итерируемый объект по парам вида [ключ, значение], этот вариант используется по умолчанию в for of.",
-      example: "[...new Map([['a', 1], ['b', 2]]).entries()]",
+      example: "const map = new Map([['a', 1], ['b', 2]]);\nconst entries = Array.from(map.entries());\nconsole.log(entries); // [['a', 1], ['b', 2]]",
       specification:
         "https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.entries",
       errors: [

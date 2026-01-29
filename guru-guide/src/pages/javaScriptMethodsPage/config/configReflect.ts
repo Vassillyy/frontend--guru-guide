@@ -11,12 +11,12 @@ export const configReflect = {
       ],
       description:
         "Статический метод объекта Reflect, возвращает массив всех собственных ключей указанного объекта, как перечисляемых, так и неперечисляемых.",
-      example: "Reflect.ownKeys({a: 1, [Symbol('id')]: 2})",
+      example: "const sym = Symbol('id');\nconst obj = { a: 1, b: 2, [sym]: 3 };\nconst keys = Reflect.ownKeys(obj);\nconsole.log(keys); // ['a', 'b', Symbol(id)]",
       specification:
         "https://tc39.es/ecma262/multipage/reflect-object.html#sec-reflect.ownkeys",
       errors: [
         "TypeError — если аргумент (obj) не является объектом."
       ],
-    }
+    },
   ]
 }
