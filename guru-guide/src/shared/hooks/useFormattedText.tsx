@@ -1,7 +1,7 @@
-import { useMemo } from "react";
+import {type CSSProperties, type ReactNode, useMemo} from "react";
 
 interface UseFormattedTextOptions {
-  highlightStyle?: React.CSSProperties;
+  highlightStyle?: CSSProperties;
   excludeWords?: string[];
 }
 
@@ -15,7 +15,7 @@ export const useFormattedText = (
   } = options;
 
   return useMemo(() => {
-    const parts: React.ReactNode[] = [];
+    const parts: ReactNode[] = [];
     const excludedSet = new Set(excludeWords.map((w) => w.toLowerCase()));
     const regex = /([A-Za-z_][A-Za-z0-9'_]*|\n)/g;
     let lastIndex = 0;

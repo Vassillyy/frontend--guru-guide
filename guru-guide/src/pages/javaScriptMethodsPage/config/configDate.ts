@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configDate = {
-  DATE: [
+  [Sections.DATE]: [
     {
       name: "getFullYear()",
       syntax: "date.getFullYear()",

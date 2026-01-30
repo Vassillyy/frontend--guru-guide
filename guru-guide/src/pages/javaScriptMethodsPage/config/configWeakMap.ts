@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configWeakMap = {
-  WEAK_MAP: [
+  [Sections.WEAK_MAP]: [
     {
       name: "set()",
       syntax: "weakMap.set(key, value)",

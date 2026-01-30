@@ -1,23 +1,24 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Pills } from "@/shared/ui";
 import { MethodCard } from "./ui/MethodCard";
-import {config, type IMethod, labelSections} from "./config";
+import { type IMethod, labelSections, Sections } from "./config/types.ts";
+import { config } from "./config";
 import styles from "./JavaScriptMethodsPage.module.css";
 
 const ITEMS_PER_LOAD = 20;
 
 export const JavaScriptMethodsPage = () => {
-  const [activeCategories, setActiveCategories] = useState<string[]>([]);
+  const [activeCategories, setActiveCategories] = useState<Sections[]>([]);
   const [loadedCount, setLoadedCount] = useState(ITEMS_PER_LOAD);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   const pillItems = Object.keys(config).map((category) => ({
-    label: labelSections[category as keyof typeof labelSections],
-    value: category,
+    label: labelSections[category as Sections],
+    value: category as Sections,
   }));
 
   const categoriesToShow = activeCategories.length === 0
-    ? Object.keys(config)
+    ? (Object.keys(config) as Sections[])
     : activeCategories;
 
   const totalMethodsCount = useMemo(() => {
@@ -66,7 +67,7 @@ export const JavaScriptMethodsPage = () => {
     return () => observer.disconnect();
   }, [hasMore, totalMethodsCount]);
 
-  const filterChange = (filters: string[]) => {
+  const filterChange = (filters: Sections[]) => {
     setActiveCategories(filters);
     setLoadedCount(ITEMS_PER_LOAD);
   };

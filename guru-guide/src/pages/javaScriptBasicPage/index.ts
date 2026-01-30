@@ -1,1 +1,0 @@
-export { JavaScriptBasicPage } from "./JavaScriptBasicPage";

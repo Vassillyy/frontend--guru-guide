@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configFunction = {
-  FUNCTION: [
+  [Sections.FUNCTION]: [
     {
       name: "name",
       syntax: "function.name",

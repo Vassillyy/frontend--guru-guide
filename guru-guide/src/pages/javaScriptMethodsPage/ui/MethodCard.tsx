@@ -1,7 +1,8 @@
-import {useState, type FC, type ReactNode} from "react";
+import {useState, type FC} from "react";
 import { IconArrow } from "@/shared/ui";
-import { useFormattedText } from "@/shared/hooks/useFormattedText ";
-import { ErorsList } from "./ErrorsList";
+import { useFormattedText } from "@/shared/hooks/useFormattedText.tsx";
+import {formatExample} from '@/shared/lib'
+import { ErrorList } from "./errors/ErrorList.tsx";
 import type { IMethod } from "../config";
 import styles from "./MethodCard.module.css";
 
@@ -12,121 +13,7 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
     highlightStyle: { fontWeight: 600, color: "#1864ab" },
   });
 
-  const formatExample = (example: string) => {
-    if (!example) return [];
-
-    const lines = example.split('\n');
-    const formattedLines: ReactNode[] = [];
-
-    lines.forEach((line, index) => {
-      if (line === '') {
-        formattedLines.push(<br key={`empty-${index}`} />);
-        return;
-      }
-
-      const commentIndex = line.indexOf('//');
-
-      if (commentIndex !== -1) {
-        const codePart = line.substring(0, commentIndex);
-        const commentPart = line.substring(commentIndex);
-
-        const highlightedCode = highlightCode(codePart);
-
-        formattedLines.push(
-          <div key={`line-${index}`} className={styles.exampleLine}>
-            {highlightedCode}
-            <span className={styles.comment}>{commentPart}</span>
-          </div>
-        );
-      } else {
-        const highlightedCode = highlightCode(line);
-
-        formattedLines.push(
-          <div key={`line-${index}`} className={styles.exampleLine}>
-            {highlightedCode}
-          </div>
-        );
-      }
-    });
-
-    return formattedLines;
-  };
-
-  const highlightCode = (code: string): ReactNode[] => {
-    const parts: ReactNode[] = [];
-    let remainingCode = code;
-    let keyCounter = 0;
-
-    while (remainingCode.length > 0) {
-      let matched = false;
-
-      const keywordMatch = remainingCode.match(/^\b(let|const|var|console)\b/);
-
-      if (keywordMatch) {
-        parts.push(
-          <span key={`kw-${keyCounter++}`} className={styles.keyword}>
-            {keywordMatch[0]}
-          </span>
-        );
-        remainingCode = remainingCode.substring(keywordMatch[0].length);
-        matched = true;
-        continue;
-      }
-
-      const methodMatch = remainingCode.match(/^\.([a-zA-Z_$][a-zA-Z0-9_$]*)\b/);
-
-      if (methodMatch) {
-        parts.push(<span key={`dot-${keyCounter++}`}>.</span>);
-        parts.push(
-          <span key={`method-${keyCounter++}`} className={styles.method}>
-            {methodMatch[1]}
-          </span>
-        );
-        remainingCode = remainingCode.substring(methodMatch[0].length);
-        matched = true;
-        continue;
-      }
-
-      const stringMatch = remainingCode.match(/^(["'`])(?:\\.|(?!\1).)*\1/);
-
-      if (stringMatch) {
-        parts.push(
-          <span key={`str-${keyCounter++}`} className={styles.string}>
-            {stringMatch[0]}
-          </span>
-        );
-        remainingCode = remainingCode.substring(stringMatch[0].length);
-        matched = true;
-        continue;
-      }
-
-      const numberMatch = remainingCode.match(/^\d+(\.\d+)?/);
-
-      if (numberMatch) {
-        parts.push(
-          <span key={`num-${keyCounter++}`} className={styles.number}>
-            {numberMatch[0]}
-          </span>
-        );
-        remainingCode = remainingCode.substring(numberMatch[0].length);
-        matched = true;
-        continue;
-      }
-
-      if (!matched) {
-        parts.push(
-          <span key={`char-${keyCounter++}`}>
-            {remainingCode.charAt(0)}
-          </span>
-        );
-        remainingCode = remainingCode.substring(1);
-      }
-    }
-
-    return parts;
-  };
-
-  const formattedExample = method.example ? formatExample(method.example) : null;
+  const formattedExample = method.example ? formatExample(method.example, styles) : null;
 
   return (
     <div className={styles.methodCard}>
@@ -177,7 +64,7 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
             )}
 
             {method.errors && method.errors.length > 0 && (
-              <ErorsList method={method as Required<IMethod>} />
+              <ErrorList method={method as Required<IMethod>} />
             )}
           </>
         )}

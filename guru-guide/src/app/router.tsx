@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { JavaScriptBasicPage } from "@/pages/javaScriptBasicPage";
+import { JavaScriptPage } from "@/pages/javaScriptPage";
 import { TypeScriptPage } from "@/pages/typeScriptPage";
 import { MainPage } from "@/pages/mainPage";
 import { JavaScriptMethodsPage } from "@/pages/javaScriptMethodsPage";
@@ -16,8 +16,8 @@ export const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: AppPaths.JAVA_SCRIPT_BASIC,
-        element: <JavaScriptBasicPage />,
+        path: AppPaths.JAVA_SCRIPT,
+        element: <JavaScriptPage />,
       },
       {
         path: AppPaths.JAVA_SCRIPT_METHODS,

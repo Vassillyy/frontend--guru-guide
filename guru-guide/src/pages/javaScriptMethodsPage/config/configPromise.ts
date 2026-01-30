@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configPromise = {
-  PROMISE: [
+  [Sections.PROMISE]: [
     {
       name: "then()",
       syntax: "promise.then(onFulfilled[, onRejected])",

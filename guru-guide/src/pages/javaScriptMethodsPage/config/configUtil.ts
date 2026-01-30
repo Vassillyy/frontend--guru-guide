@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configUtil = {
-  UTIL: [
+  [Sections.UTIL]: [
     {
       name: "structuredClone()",
       syntax: "structuredClone(value[, options])",

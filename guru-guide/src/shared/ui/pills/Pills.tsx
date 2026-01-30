@@ -1,21 +1,21 @@
+import { useState } from "react";
 import cn from "classnames";
-import { useState, type FC } from "react";
 import styles from "./Pills.module.css";
 
-interface PillItem {
+interface IPillItem<T> {
   label: string;
-  value: string;
+  value: T;
 }
 
-interface PillsProps {
-  items: PillItem[];
-  onFilterChange: (activeFilters: string[]) => void;
+interface IPillsProps<T> {
+  items: IPillItem<T>[];
+  onFilterChange: (activeFilters: T[]) => void;
 }
 
-export const Pills: FC<PillsProps> = ({ items, onFilterChange }) => {
-  const [activePills, setActivePills] = useState<string[]>([]);
+export const Pills = <T extends string>({ items, onFilterChange }: IPillsProps<T>) => {
+  const [activePills, setActivePills] = useState<T[]>([]);
 
-  const handleClick = (value: string) => {
+  const handleClick = (value: T) => {
     const newPills = activePills.includes(value)
       ? activePills.filter((item) => item !== value)
       : [...activePills, value];

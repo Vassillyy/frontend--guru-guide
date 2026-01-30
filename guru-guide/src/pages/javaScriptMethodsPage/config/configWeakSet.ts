@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configWeakSet = {
-  WEAK_SET: [
+  [Sections.WEAK_SET]: [
     {
       name: "add()",
       syntax: "weakSet.add(value)",

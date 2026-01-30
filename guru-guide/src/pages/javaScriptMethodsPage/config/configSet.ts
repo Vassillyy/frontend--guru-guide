@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configSet = {
-  SET: [
+  [Sections.SET]: [
     {
       name: "size",
       syntax: "set.size",

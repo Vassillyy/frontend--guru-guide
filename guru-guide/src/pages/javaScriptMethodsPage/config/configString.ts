@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configString = {
-  STRING: [
+  [Sections.STRING]: [
     {
       name: "toUpperCase()",
       syntax: "str.toUpperCase()",

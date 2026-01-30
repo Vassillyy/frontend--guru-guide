@@ -18,8 +18,8 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Java Script",
     children: [
       {
-        path: AppPaths.JAVA_SCRIPT_BASIC,
-        label: "Основы",
+        path: AppPaths.JAVA_SCRIPT,
+        label: "Руководство",
       },
       {
         path: AppPaths.JAVA_SCRIPT_METHODS,

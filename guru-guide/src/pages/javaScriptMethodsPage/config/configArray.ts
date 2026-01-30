@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configArray = {
-  ARRAY: [
+  [Sections.ARRAY]: [
     {
       name: "pop()",
       syntax: "arr.pop()",

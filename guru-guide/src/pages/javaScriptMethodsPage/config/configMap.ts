@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configMap = {
-  MAP: [
+  [Sections.MAP]: [
     {
       name: "size",
       syntax: "map.size",

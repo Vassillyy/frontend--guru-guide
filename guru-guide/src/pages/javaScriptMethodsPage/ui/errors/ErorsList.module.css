@@ -14,20 +14,11 @@
   font-weight: 600;
   color: #d63939;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .list {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.item {
-  position: relative;
-  padding: 2px;
-  color: #a61e1e;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  border-bottom: 1px solid #ffe6e6;
 }

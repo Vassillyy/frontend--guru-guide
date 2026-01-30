@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configReflect = {
-  REFLECT: [
+  [Sections.REFLECT]: [
     {
       name: "Reflect.ownKeys()",
       syntax: "Reflect.ownKeys(obj)",

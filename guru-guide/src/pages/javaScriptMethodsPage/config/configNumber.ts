@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configNumber = {
-  NUMBER: [
+  [Sections.NUMBER]: [
     {
       name: "toFixed()",
       syntax: "num.toFixed([digits])",

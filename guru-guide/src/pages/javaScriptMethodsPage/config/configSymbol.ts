@@ -1,5 +1,7 @@
- export const configSymbol = {
-  SYMBOL: [
+import { Sections } from './types';
+
+export const configSymbol = {
+  [Sections.SYMBOL]: [
     {
       name: "description",
       syntax: "symbol.description",

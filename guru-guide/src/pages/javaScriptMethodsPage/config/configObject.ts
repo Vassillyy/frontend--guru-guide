@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configObject = {
-  OBJECT: [
+  [Sections.OBJECT]: [
     {
       name: "toString()",
       syntax: "obj.toString()",

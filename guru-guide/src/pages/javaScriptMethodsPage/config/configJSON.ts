@@ -1,5 +1,7 @@
+import { Sections } from './types';
+
 export const configJSON = {
-  JSON: [
+  [Sections.JSON]: [
     {
       name: "JSON.stringify()",
       syntax: "JSON.stringify(value[, replacer[, space]])",
