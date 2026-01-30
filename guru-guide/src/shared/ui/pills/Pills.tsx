@@ -1,6 +1,6 @@
-import { useState } from "react";
-import cn from "classnames";
-import styles from "./Pills.module.css";
+import { useState } from 'react';
+import cn from 'classnames';
+import styles from './Pills.module.css';
 
 interface IPillItem<T> {
   label: string;
@@ -12,7 +12,10 @@ interface IPillsProps<T> {
   onFilterChange: (activeFilters: T[]) => void;
 }
 
-export const Pills = <T extends string>({ items, onFilterChange }: IPillsProps<T>) => {
+export const Pills = <T extends string>({
+  items,
+  onFilterChange,
+}: IPillsProps<T>) => {
   const [activePills, setActivePills] = useState<T[]>([]);
 
   const handleClick = (value: T) => {

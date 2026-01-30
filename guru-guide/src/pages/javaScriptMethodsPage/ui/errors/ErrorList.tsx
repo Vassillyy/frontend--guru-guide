@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import type { IMethod } from "../../config";
-import {Error} from './Error'
-import styles from "./ErorsList.module.css";
+import type { FC } from 'react';
+import type { IMethod } from '../../config/types';
+import { Error } from './Error';
+import styles from './ErorsList.module.css';
 
 export const ErrorList: FC<{
   method: Required<IMethod>;

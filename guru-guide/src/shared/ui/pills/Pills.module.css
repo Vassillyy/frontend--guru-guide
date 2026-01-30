@@ -7,7 +7,7 @@
 
 .pills {
   border-radius: 20px;
-  border: 1.5px solid #e8f5e9;
+  border: 1px solid #e8f5e9;
   padding: 4px 12px;
   font-size: 12px;
   font-weight: 600;
@@ -23,7 +23,6 @@
   box-shadow: 0 1px 4px rgba(76, 176, 108, 0.08);
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.2px;
 }
 
 .pills:hover {

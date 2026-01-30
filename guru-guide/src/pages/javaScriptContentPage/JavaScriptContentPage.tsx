@@ -1,27 +1,38 @@
-import { useState } from "react";
-import { Pills, IconArrow } from "@/shared/ui";
-import { config, labelTopics, Topics } from "./config";
-import styles from "./JavaScriptPage.module.css";
+import { type FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Pills, IconArrow } from '@/shared/ui';
+import { AppPaths } from '@/shared/constants/route.ts';
+import { labelTopics, Topics } from './config/types.ts';
+import { config } from './config';
+import styles from './JavaScriptContentPage.module.css';
 
-export const JavaScriptPage = () => {
+export const JavaScriptContentPage: FC = () => {
   const [activeTopics, setActiveTopics] = useState<Topics[]>([]);
   const [expandedGroups, setExpandedGroups] = useState<Topics[]>([]);
+  const navigate = useNavigate();
 
   const pillItems = Object.keys(config).map((topic) => ({
     label: labelTopics[topic as Topics],
     value: topic as Topics,
   }));
 
-  const topicsToShow = activeTopics.length > 0
-    ? activeTopics
-    : (Object.keys(config) as Topics[]);
+  const topicsToShow =
+    activeTopics.length > 0 ? activeTopics : (Object.keys(config) as Topics[]);
 
   const toggleGroup = (topicKey: Topics) => {
-    setExpandedGroups(prev =>
+    setExpandedGroups((prev) =>
       prev.includes(topicKey)
-        ? prev.filter(t => t !== topicKey)
-        : [...prev, topicKey]
+        ? prev.filter((t) => t !== topicKey)
+        : [...prev, topicKey],
     );
+  };
+
+  const navigateToTopic = (section: any) => {
+    navigate(`${AppPaths.JAVA_SCRIPT}/topic/${section.value}`, {
+      state: {
+        topicData: section,
+      },
+    });
   };
 
   return (
@@ -44,7 +55,7 @@ export const JavaScriptPage = () => {
           {topicsToShow.map((topicKey) => {
             const topicLabel = labelTopics[topicKey as Topics];
             const sections = config[topicKey as Topics] || [];
-            const isExpanded = expandedGroups.includes(topicKey)
+            const isExpanded = expandedGroups.includes(topicKey);
 
             return (
               <div key={topicKey} className={styles.topicGroup}>
@@ -54,7 +65,7 @@ export const JavaScriptPage = () => {
                 >
                   <div className={styles.topicTitle}>
                     <span className={styles.topicIcon}>
-                      {isExpanded ? "📖" : "📘"}
+                      {isExpanded ? '📖' : '📘'}
                     </span>
                     <h3>{topicLabel}</h3>
                     <span className={styles.sectionCount}>
@@ -70,16 +81,13 @@ export const JavaScriptPage = () => {
                       <div
                         key={section.value}
                         className={styles.sectionItem}
+                        onClick={() => navigateToTopic(section)}
                       >
-                        <div className={styles.sectionNumber}>
-                          {index + 1}
-                        </div>
+                        <div className={styles.sectionNumber}>{index + 1}</div>
                         <div className={styles.sectionContent}>
                           {section.title}
                         </div>
-                        <div className={styles.sectionArrow}>
-                          →
-                        </div>
+                        <div className={styles.sectionArrow}>→</div>
                       </div>
                     ))}
                   </div>

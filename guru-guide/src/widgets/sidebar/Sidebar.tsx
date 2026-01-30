@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import cn from "classnames";
-import { NAV_ITEMS, findParentItemIdForActivePath } from "./model";
-import { NavItem } from "./ui/NavItem";
-import styles from "./Sidebar.module.css";
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import cn from 'classnames';
+import { NAV_ITEMS, findParentItemIdForActivePath } from './model';
+import { NavItem } from './ui/NavItem';
+import styles from './Sidebar.module.css';
 
 export const Sidebar = () => {
   const location = useLocation();
@@ -29,11 +29,8 @@ export const Sidebar = () => {
       <div className={styles.header}>
         <div className={styles.headerTop}>
           {!isCollapsed && <h2 className={styles.title}>Навигация</h2>}
-          <button
-            className={styles.collapseButton}
-            onClick={toggleSidebar}
-          >
-            {isCollapsed ? "→" : "←"}
+          <button className={styles.collapseButton} onClick={toggleSidebar}>
+            {isCollapsed ? '→' : '←'}
           </button>
         </div>
         {!isCollapsed && <p className={styles.subtitle}>Выберите раздел</p>}

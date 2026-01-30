@@ -1,6 +1,9 @@
-import type {ReactNode} from "react";
+import type { ReactNode } from 'react';
 
-export const highlightCode = (code: string, styles: Record<string, string>): ReactNode[] => {
+export const highlightCode = (
+  code: string,
+  styles: Record<string, string>,
+): ReactNode[] => {
   const parts: ReactNode[] = [];
   let remainingCode = code;
   let keyCounter = 0;
@@ -13,8 +16,8 @@ export const highlightCode = (code: string, styles: Record<string, string>): Rea
     if (keywordMatch) {
       parts.push(
         <span key={`kw-${keyCounter++}`} className={styles.keyword}>
-            {keywordMatch[0]}
-          </span>
+          {keywordMatch[0]}
+        </span>,
       );
       remainingCode = remainingCode.substring(keywordMatch[0].length);
       matched = true;
@@ -27,8 +30,8 @@ export const highlightCode = (code: string, styles: Record<string, string>): Rea
       parts.push(<span key={`dot-${keyCounter++}`}>.</span>);
       parts.push(
         <span key={`method-${keyCounter++}`} className={styles.method}>
-            {methodMatch[1]}
-          </span>
+          {methodMatch[1]}
+        </span>,
       );
       remainingCode = remainingCode.substring(methodMatch[0].length);
       matched = true;
@@ -40,8 +43,8 @@ export const highlightCode = (code: string, styles: Record<string, string>): Rea
     if (stringMatch) {
       parts.push(
         <span key={`str-${keyCounter++}`} className={styles.string}>
-            {stringMatch[0]}
-          </span>
+          {stringMatch[0]}
+        </span>,
       );
       remainingCode = remainingCode.substring(stringMatch[0].length);
       matched = true;
@@ -53,8 +56,8 @@ export const highlightCode = (code: string, styles: Record<string, string>): Rea
     if (numberMatch) {
       parts.push(
         <span key={`num-${keyCounter++}`} className={styles.number}>
-            {numberMatch[0]}
-          </span>
+          {numberMatch[0]}
+        </span>,
       );
       remainingCode = remainingCode.substring(numberMatch[0].length);
       matched = true;
@@ -63,9 +66,7 @@ export const highlightCode = (code: string, styles: Record<string, string>): Rea
 
     if (!matched) {
       parts.push(
-        <span key={`char-${keyCounter++}`}>
-            {remainingCode.charAt(0)}
-          </span>
+        <span key={`char-${keyCounter++}`}>{remainingCode.charAt(0)}</span>,
       );
       remainingCode = remainingCode.substring(1);
     }

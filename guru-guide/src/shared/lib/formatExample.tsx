@@ -1,7 +1,10 @@
-import type {ReactNode} from "react";
-import {highlightCode} from "./highlightCode";
+import type { ReactNode } from 'react';
+import { highlightCode } from './highlightCode';
 
-export const formatExample = (example: string, styles: Record<string, string>) => {
+export const formatExample = (
+  example: string,
+  styles: Record<string, string>,
+) => {
   if (!example) return [];
 
   const lines = example.split('\n');
@@ -25,7 +28,7 @@ export const formatExample = (example: string, styles: Record<string, string>) =
         <div key={`line-${index}`} className={styles.exampleLine}>
           {highlightedCode}
           <span className={styles.comment}>{commentPart}</span>
-        </div>
+        </div>,
       );
     } else {
       const highlightedCode = highlightCode(line, styles);
@@ -33,7 +36,7 @@ export const formatExample = (example: string, styles: Record<string, string>) =
       formattedLines.push(
         <div key={`line-${index}`} className={styles.exampleLine}>
           {highlightedCode}
-        </div>
+        </div>,
       );
     }
   });

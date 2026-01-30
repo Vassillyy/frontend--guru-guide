@@ -1,13 +1,14 @@
-import { Link, type LinkProps } from "react-router-dom";
-import cn from "classnames";
-import { IconArrow } from "@/shared/ui";
-import styles from "./NavItem.module.css";
+import type { ReactNode, MouseEvent as ReactMouseEvent } from 'react';
+import { Link, type LinkProps } from 'react-router-dom';
+import cn from 'classnames';
+import { IconArrow } from '@/shared/ui';
+import styles from './NavItem.module.css';
 
-interface NavItemProps extends Omit<LinkProps, "to"> {
+interface INavItemProps extends Omit<LinkProps, 'to'> {
   to: string;
-  children: React.ReactNode;
+  children: ReactNode;
   isActive?: boolean;
-  variant?: "default" | "nested";
+  variant?: 'default' | 'nested';
   hasChildren?: boolean;
   isExpanded?: boolean;
   onClick?: () => void;
@@ -17,13 +18,13 @@ export const NavItem = ({
   to,
   children,
   isActive = false,
-  variant = "default",
+  variant = 'default',
   hasChildren = false,
   isExpanded = false,
   onClick,
   ...props
-}: NavItemProps) => {
-  const handleClick = (e: React.MouseEvent) => {
+}: INavItemProps) => {
+  const handleClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       e.preventDefault();
       onClick();
@@ -37,7 +38,7 @@ export const NavItem = ({
         styles.navItem,
         styles[variant],
         isActive && styles.active,
-        hasChildren && styles.hasChildren
+        hasChildren && styles.hasChildren,
       )}
       onClick={handleClick}
       {...props}

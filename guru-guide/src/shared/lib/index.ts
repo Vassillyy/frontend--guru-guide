@@ -1,1 +1,1 @@
-export {formatExample} from './formatExample.tsx'
+export { formatExample } from './formatExample.tsx';

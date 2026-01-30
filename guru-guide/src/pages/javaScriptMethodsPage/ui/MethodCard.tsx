@@ -1,19 +1,21 @@
-import {useState, type FC} from "react";
-import { IconArrow } from "@/shared/ui";
-import { useFormattedText } from "@/shared/hooks/useFormattedText.tsx";
-import {formatExample} from '@/shared/lib'
-import { ErrorList } from "./errors/ErrorList.tsx";
-import type { IMethod } from "../config";
-import styles from "./MethodCard.module.css";
+import { useState, type FC } from 'react';
+import { IconArrow } from '@/shared/ui';
+import { useFormattedText } from '@/shared/hooks/useFormattedText.tsx';
+import { formatExample } from '@/shared/lib';
+import { ErrorList } from './errors/ErrorList.tsx';
+import type { IMethod } from '../config/types.ts';
+import styles from './MethodCard.module.css';
 
 export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const descriptionParts = useFormattedText(method.description, {
-    highlightStyle: { fontWeight: 600, color: "#1864ab" },
+    highlightStyle: { fontWeight: 600, color: '#1864ab' },
   });
 
-  const formattedExample = method.example ? formatExample(method.example, styles) : null;
+  const formattedExample = method.example
+    ? formatExample(method.example, styles)
+    : null;
 
   return (
     <div className={styles.methodCard}>
@@ -39,7 +41,7 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
                   {method.parameters.map((param, index) => (
                     <div key={index} className={styles.parameterItem}>
                       <span className={styles.parameterName}>
-                        {param.name} {" - "}
+                        {param.name} {' - '}
                         <span className={styles.parameterDescription}>
                           {param.description}
                         </span>
@@ -76,9 +78,7 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
             <span className={styles.exampleTitle}>Примеры использования:</span>
           </div>
           <div className={styles.exampleCode}>
-            <code>
-              {formattedExample}
-            </code>
+            <code>{formattedExample}</code>
           </div>
         </div>
       )}

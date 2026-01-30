@@ -1,6 +1,6 @@
-import type { FC } from "react";
-import cn from "classnames";
-import styles from "./IconArrow.module.css";
+import type { FC } from 'react';
+import cn from 'classnames';
+import styles from './IconArrow.module.css';
 
 export const IconArrow: FC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (

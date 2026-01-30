@@ -1,4 +1,4 @@
-import {type CSSProperties, type ReactNode, useMemo} from "react";
+import { type CSSProperties, type ReactNode, useMemo } from 'react';
 
 interface UseFormattedTextOptions {
   highlightStyle?: CSSProperties;
@@ -7,10 +7,10 @@ interface UseFormattedTextOptions {
 
 export const useFormattedText = (
   text: string,
-  options: UseFormattedTextOptions = {}
+  options: UseFormattedTextOptions = {},
 ) => {
   const {
-    highlightStyle = { fontWeight: 600, color: "#1864ab" },
+    highlightStyle = { fontWeight: 600, color: '#1864ab' },
     excludeWords = [],
   } = options;
 
@@ -27,11 +27,11 @@ export const useFormattedText = (
 
       if (match.index > lastIndex) {
         parts.push(
-          <span key={key++}>{text.substring(lastIndex, match.index)}</span>
+          <span key={key++}>{text.substring(lastIndex, match.index)}</span>,
         );
       }
 
-      if (matchedText === "\n") {
+      if (matchedText === '\n') {
         parts.push(<br key={key++} />);
       } else if (matchedText) {
         const shouldHighlight = !excludedSet.has(matchedText.toLowerCase());
@@ -40,7 +40,7 @@ export const useFormattedText = (
           parts.push(
             <strong key={key++} style={highlightStyle}>
               {matchedText}
-            </strong>
+            </strong>,
           );
         } else {
           parts.push(<span key={key++}>{matchedText}</span>);

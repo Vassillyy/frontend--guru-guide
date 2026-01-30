@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef, useMemo } from "react";
-import { Pills } from "@/shared/ui";
-import { MethodCard } from "./ui/MethodCard";
-import { type IMethod, labelSections, Sections } from "./config/types.ts";
-import { config } from "./config";
-import styles from "./JavaScriptMethodsPage.module.css";
+import { useState, useEffect, useRef, useMemo, type FC } from 'react';
+import { Pills } from '@/shared/ui';
+import { MethodCard } from './ui/MethodCard';
+import { type IMethod, labelSections, Sections } from './config/types.ts';
+import { config } from './config';
+import styles from './JavaScriptMethodsPage.module.css';
 
 const ITEMS_PER_LOAD = 20;
 
-export const JavaScriptMethodsPage = () => {
+export const JavaScriptMethodsPage: FC = () => {
   const [activeCategories, setActiveCategories] = useState<Sections[]>([]);
   const [loadedCount, setLoadedCount] = useState(ITEMS_PER_LOAD);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -17,9 +17,10 @@ export const JavaScriptMethodsPage = () => {
     value: category as Sections,
   }));
 
-  const categoriesToShow = activeCategories.length === 0
-    ? (Object.keys(config) as Sections[])
-    : activeCategories;
+  const categoriesToShow =
+    activeCategories.length === 0
+      ? (Object.keys(config) as Sections[])
+      : activeCategories;
 
   const totalMethodsCount = useMemo(() => {
     return categoriesToShow.reduce((total, category) => {
@@ -56,10 +57,12 @@ export const JavaScriptMethodsPage = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setLoadedCount(prev => Math.min(prev + ITEMS_PER_LOAD, totalMethodsCount));
+          setLoadedCount((prev) =>
+            Math.min(prev + ITEMS_PER_LOAD, totalMethodsCount),
+          );
         }
       },
-      { threshold: 0.1, rootMargin: '100px' }
+      { threshold: 0.1, rootMargin: '100px' },
     );
 
     observer.observe(sentinelRef.current);

@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { Sidebar } from "../../../widgets/sidebar";
-import styles from "./MainLayout.module.css";
+import { Outlet } from 'react-router-dom';
+import { Sidebar } from '@/widgets/sidebar';
+import styles from './MainLayout.module.css';
 
 export const MainLayout = () => {
   return (

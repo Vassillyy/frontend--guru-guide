@@ -35,7 +35,6 @@
   transform: none !important;
 }
 
-/* Варианты */
 .navItem.nested {
   font-size: 14px;
   padding: 10px 14px;
@@ -48,7 +47,6 @@
   transform: translateX(3px);
 }
 
-/* Для элементов с детьми */
 .navItem.hasChildren {
   font-weight: 600;
 }
@@ -60,7 +58,6 @@
   width: 100%;
 }
 
-/* Стили для иконки стрелки (опционально, если нужно) */
 .arrowIcon {
   color: #5a8d5a;
   transition: transform 0.3s ease;
