@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configSymbol = {
-  [Sections.SYMBOL]: [
+export const configSymbol: Record<Methods.SYMBOL, IMethod[]> = {
+  [Methods.SYMBOL]: [
     {
       name: 'description',
       syntax: 'symbol.description',
@@ -61,7 +61,7 @@ export const configSymbol = {
         "const obj = {\n  value: 100,\n  [Symbol.toPrimitive](hint) {\n    if (hint === 'number') return this.value;\n    if (hint === 'string') return `Value: ${this.value}`;\n    return this.value;\n  }\n};\nconsole.log(Number(obj)); // 100\nconsole.log(String(obj)); // 'Value: 100'\nconsole.log(obj + 50); // 150",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.toprimitive',
-      errors: ['TypeError — если метод возвращает не примитивное значение.'],
+      errors: 'TypeError — если метод возвращает не примитивное значение.',
     },
     {
       name: 'Symbol.isConcatSpreadable',

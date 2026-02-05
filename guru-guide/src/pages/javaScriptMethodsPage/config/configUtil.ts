@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configUtil = {
-  [Sections.UTIL]: [
+export const configUtil: Record<Methods.UTIL, IMethod[]> = {
+  [Methods.UTIL]: [
     {
       name: 'structuredClone()',
       syntax: 'structuredClone(value[, options])',
@@ -22,9 +22,8 @@ export const configUtil = {
         'const obj = { a: 1, b: { c: 2 } };\nconst cloned = structuredClone(obj);\nconsole.log(cloned); // { a: 1, b: { c: 2 } }',
       specification:
         'https://tc39.es/ecma262/multipage/structured-data.html#sec-structuredclone',
-      errors: [
+      errors:
         'DataCloneError — возникает при клонировании функций или DOM-элементов.',
-      ],
     },
     {
       name: 'Symbol()',
@@ -40,9 +39,7 @@ export const configUtil = {
       example: "const sym = Symbol('id');\nconsole.log(sym); // Symbol(id)",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol-description',
-      errors: [
-        "TypeError — если вызывается как конструктор с оператором 'new'.",
-      ],
+      errors: "TypeError — если вызывается как конструктор с оператором 'new'.",
     },
     {
       name: 'isNaN()',
@@ -139,7 +136,7 @@ export const configUtil = {
         "setTimeout(() => {\n console.log('Выполнится через 1 секунду');\n}, 1000);",
       specification:
         'https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-setTimeout',
-      errors: ['TypeError — если первый аргумент (func) не является функцией.'],
+      errors: 'TypeError — если первый аргумент (func) не является функцией.',
     },
     {
       name: 'clearTimeout()',
@@ -155,9 +152,8 @@ export const configUtil = {
         "const timerId = setTimeout(() => {\n console.log('Не выполнится');\n}, 1000);\nclearTimeout(timerId);",
       specification:
         'https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-clearTimeout',
-      errors: [
+      errors:
         'TypeError — если аргумент (timeoutID) не является числовым идентификатором таймера.',
-      ],
     },
     {
       name: 'setInterval()',
@@ -184,7 +180,7 @@ export const configUtil = {
         "let counter = 0;\nconst intervalId = setInterval(() => {\n console.log(\"Выведется 3 раза: 'Tick', 'Tick', 'Tick'\");\n counter++;\n if (counter === 3) {\n clearInterval(intervalId);\n }\n}, 1000);",
       specification:
         'https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-setInterval',
-      errors: ['TypeError — если первый аргумент (func) не является функцией.'],
+      errors: 'TypeError — если первый аргумент (func) не является функцией.',
     },
     {
       name: 'clearInterval()',
@@ -200,9 +196,8 @@ export const configUtil = {
         "let count = 0;\nconst intervalId = setInterval(() => {\n console.log('Выполнится 3 раза');\n count++;\n if (count === 3) {\n clearInterval(intervalId); // Остановка после 3 выполнений\n }\n}, 1000);",
       specification:
         'https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#sec-clearInterval',
-      errors: [
+      errors:
         'TypeError — если аргумент (intervalID) не является числовым идентификатором таймера.',
-      ],
     },
     {
       name: 'fetch()',
@@ -242,11 +237,8 @@ export const configUtil = {
       example:
         "fetch('Какой-то URL для запроса', {\n method: 'POST',\n headers: { 'Content-Type': 'application/json' },\n body: JSON.stringify({ title: 'New Post', body: 'Content' })\n})\n .then(response => response.json())\n .then(data => console.log(data)); // { title: 'New Post', body: 'Content' }",
       specification: 'https://fetch.spec.whatwg.org/#fetch-method',
-      errors: [
-        'TypeError — если URL не является валидным URL или если указаны недопустимые параметры запроса..',
-        'AbortError — если запрос был отменён через AbortSignal.',
-        'Сетевая ошибка — при проблемах сети или недоступности ресурса.',
-      ],
+      errors:
+        'TypeError — если URL не является валидным URL или если указаны недопустимые параметры запроса.\nAbortError — если запрос был отменён через AbortSignal.\nСетевая ошибка — при проблемах сети или недоступности ресурса.',
     },
   ],
 };

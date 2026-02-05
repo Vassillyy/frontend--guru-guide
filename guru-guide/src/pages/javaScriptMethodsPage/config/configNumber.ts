@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configNumber = {
-  [Sections.NUMBER]: [
+export const configNumber: Record<Methods.NUMBER, IMethod[]> = {
+  [Methods.NUMBER]: [
     {
       name: 'toFixed()',
       syntax: 'num.toFixed([digits])',
@@ -17,10 +17,8 @@ export const configNumber = {
         "const num = 123.123;\nconsole.log(num.toFixed(2)); // '123.12'\n// Округление до ближайшего целого:\nconst num2 = 123.567;\nconsole.log(num2.toFixed(0)); // '124'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.tofixed',
-      errors: [
-        'RangeError — если аргумент (digits) не в диапазоне от 0 до 100.',
-        'TypeError — если this не является числом.',
-      ],
+      errors:
+        'RangeError — если аргумент (digits) не в диапазоне от 0 до 100.\nTypeError — если this не является числом.',
     },
     {
       name: 'toString()',
@@ -38,10 +36,8 @@ export const configNumber = {
         "const num = 123;\nconsole.log(num.toString()); // '123'\nconsole.log(num.toString(2)); // '1111011'\nconsole.log(num.toString(16)); // '7b'\nconsole.log(num.toString(36)); // '3f'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.tostring',
-      errors: [
-        'RangeError — если основание (radix) не в диапазоне от 2 до 36.',
-        'TypeError — если this является null или undefined.',
-      ],
+      errors:
+        'RangeError — если основание (radix) не в диапазоне от 2 до 36.\nTypeError — если this является null или undefined.',
     },
     {
       name: 'toExponential()',
@@ -58,10 +54,8 @@ export const configNumber = {
         "// Большие числа:\nconst bigNumber = 123456.789;\nconsole.log(bigNumber.toExponential(4)); // '1.2346e+5'\n// Маленькие числа:\nconst smallNumber = 0.000123456;\nconsole.log(smallNumber.toExponential(3)); // '1.235e-4'\n// Целые числа:\nconst integer = 42;\nconsole.log(integer.toExponential(0)); // '4e+1'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.toexponential',
-      errors: [
-        'RangeError — если аргумент (fractionDigits) не в диапазоне от 0 до 100.',
-        'TypeError — если this не является числом.',
-      ],
+      errors:
+        'RangeError — если аргумент (fractionDigits) не в диапазоне от 0 до 100.\nTypeError — если this не является числом.',
     },
     {
       name: 'toPrecision()',
@@ -78,10 +72,8 @@ export const configNumber = {
         "const num = 123.456;\nconsole.log(num.toPrecision()); // '123.456'\nconsole.log(num.toPrecision(4)); // '123.5'\nconsole.log(num.toPrecision(2)); // '1.2e+2'\nconsole.log(num.toPrecision(1)); // '1e+2'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.toprecision',
-      errors: [
-        'RangeError — если аргумент (precision) не в диапазоне от 1 до 100.',
-        'TypeError — если this не является числом.',
-      ],
+      errors:
+        'RangeError — если аргумент (precision) не в диапазоне от 1 до 100.\nTypeError — если this не является числом.',
     },
     {
       name: 'toLocaleString()',
@@ -104,10 +96,8 @@ export const configNumber = {
         "const num = 123456.789;\nconst result1 = num.toLocaleString('ru-RU');\nconsole.log(result1); // '123 456,789'\nconst result2 = num.toLocaleString('en-US');\nconsole.log(result2); // '123,456.789'\nconst result3 = num.toLocaleString('de-DE', {\n  style: 'currency',\n  currency: 'EUR',\n});\nconsole.log(result3); // '123.456,79 €'\nconst result4 = num.toLocaleString('ja-JP', {\n  style: 'currency',\n  currency: 'JPY',\n});\nconsole.log(result4); // '¥123,457'\nconst result5 = num.toLocaleString('ru-RU', {\n  style: 'percent',\n});\nconsole.log(result5); // '12 345 679 %'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.tolocalestring',
-      errors: [
-        'RangeError — если аргумент (locales) содержит недопустимые значения языковых тегов.',
-        'TypeError — если this не является числом или если аргумент (options) содержит недопустимые свойства.',
-      ],
+      errors:
+        'RangeError — если аргумент (locales) содержит недопустимые значения языковых тегов.\nTypeError — если this не является числом или если аргумент (options) содержит недопустимые свойства.',
     },
     {
       name: 'Number.isInteger()',

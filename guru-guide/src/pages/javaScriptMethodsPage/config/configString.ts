@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configString = {
-  [Sections.STRING]: [
+export const configString: Record<Methods.STRING, IMethod[]> = {
+  [Methods.STRING]: [
     {
       name: 'toUpperCase()',
       syntax: 'str.toUpperCase()',
@@ -11,7 +11,7 @@ export const configString = {
         "const filename = 'readme.md';\nconsole.log(filename.toUpperCase()); // 'README.MD'\nconst currency = 'eur/usd';\nconsole.log(currency.toUpperCase()); // 'EUR/USD'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.touppercase',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'toLowerCase()',
@@ -22,7 +22,7 @@ export const configString = {
         "const config = 'BACKGROUND_COLOR';\nconsole.log(config.toLowerCase()); // 'background_color'\nconst domain = 'EXAMPLE.COM';\nconsole.log(domain.toLowerCase()); // 'example.com'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.tolowercase',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'startsWith()',
@@ -43,7 +43,7 @@ export const configString = {
         "const path = '/home/user/documents';\nconsole.log(path.startsWith('/home')); // true\nconsole.log(path.startsWith('user')); // false\nconsole.log(path.startsWith('user', 6)); // true",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.startswith',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'endsWith()',
@@ -65,7 +65,7 @@ export const configString = {
         "const filename = 'document.pdf';\nconsole.log(filename.endsWith('.pdf')); // true\nconsole.log(filename.endsWith('.txt')); // false",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.endswith',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'replace()',
@@ -86,7 +86,7 @@ export const configString = {
         "const text = 'Удалить пробелы';\nconsole.log(text.replace('пробелы', 'запятые')); // 'Удалить запятые'\nconst price = 'Цена: $100.50';\nconsole.log(price.replace(/\\\\$/, '€')); // 'Цена: €100.50'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replace',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'replaceAll()',
@@ -109,9 +109,8 @@ export const configString = {
         "const version = 'Node.js v18.17.0';\nconsole.log(version.replace('v18', 'v20')); // 'Node.js v20.17.0'\nconst email = 'user@example.com';\nconsole.log(email.replace(/@.*$/, '@gmail.com')); // 'user@gmail.com'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replaceall',
-      errors: [
+      errors:
         "TypeError — если this не является строкой или если первый аргумент (pattern) является регулярным выражением без флага 'g'.",
-      ],
     },
     {
       name: 'at()',
@@ -129,7 +128,7 @@ export const configString = {
         "const filename = 'config.json';\nconsole.log(filename.at(0)); // 'c'\nconsole.log(filename.at(-5)); // 'j'\nconsole.log(filename.at(20)); // undefined",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.at',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'charAt()',
@@ -146,7 +145,7 @@ export const configString = {
         "const domain = 'example.com';\nconsole.log(domain.charAt(0)); // 'e'\nconsole.log(domain.charAt(7)); // '.'\nconsole.log(domain.charAt(20)); // ''",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.charat',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'indexOf()',
@@ -167,7 +166,7 @@ export const configString = {
         "const url = 'https://site.com';\nconsole.log(url.indexOf('://')); // 5\nconsole.log(url.indexOf('site')); // 8\nconsole.log(url.indexOf('ftp')); // -1",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.indexof',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'lastIndexOf()',
@@ -189,7 +188,7 @@ export const configString = {
         "const path = '/home/user/docs';\nconsole.log(path.lastIndexOf('/')); // 11\nconsole.log(path.lastIndexOf('docs')); // 12\nconsole.log(path.lastIndexOf('user', 8)); // 6",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.lastindexof',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'includes()',
@@ -210,7 +209,7 @@ export const configString = {
         "const file = 'document.pdf';\nconsole.log(file.includes('.pdf')); // true\nconsole.log(file.includes('.txt')); // false\nconsole.log(file.includes('doc')); // true",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'slice()',
@@ -232,7 +231,7 @@ export const configString = {
         "const filename = 'document.pdf';\nconsole.log(filename.slice(0, -4)); // 'document'\nconsole.log(filename.slice(-4)); // '.pdf'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.slice',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'substring()',
@@ -253,7 +252,7 @@ export const configString = {
         "const filename = 'image.png';\nconsole.log(filename.substring(0, 5)); // 'image'\nconsole.log(filename.substring(5)); // '.png'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.substring',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'codePointAt()',
@@ -270,7 +269,7 @@ export const configString = {
         "const emoji = '🚀火箭';\nconsole.log(emoji.codePointAt(0)); // 128640\nconsole.log(emoji.codePointAt(2)); // 28779\nconsole.log(emoji.codePointAt(10)); // undefined",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.codepointat',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'localeCompare()',
@@ -297,10 +296,8 @@ export const configString = {
         "const result1 = 'café'.localeCompare('cafe');\nconsole.log(result1); // 1\nconst result2 = '10'.localeCompare('2', undefined, {\n  numeric: true,\n});\nconsole.log(result2); // 1\nconst result3 = 'résumé'.localeCompare('resume', 'fr', {\n  sensitivity: 'base'\n});\nconsole.log(result3); // 0\nconst result4 = 'ä'.localeCompare('z', 'de');\nconsole.log(result4); // -1",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.localecompare',
-      errors: [
-        'TypeError — если this не является строкой.',
-        'RangeError — если аргумент (locales) содержит недопустимые значения языковых тегов.',
-      ],
+      errors:
+        'TypeError — если this не является строкой.\nRangeError — если аргумент (locales) содержит недопустимые значения языковых тегов.',
     },
     {
       name: 'trim()',
@@ -311,7 +308,7 @@ export const configString = {
         "const input = '   user@example.com   ';\nconst cleaned = input.trim();\nconsole.log(cleaned); // 'user@example.com'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trim',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'repeat()',
@@ -328,10 +325,8 @@ export const configString = {
         "const separator = '---';\nconsole.log(separator.repeat(3)); // '------------'\nconst loading = '.';\nconsole.log(loading.repeat(5)); // '.....'\nconst pattern = 'abc';\nconsole.log(pattern.repeat(2)); // 'abcabc'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.repeat',
-      errors: [
-        'TypeError — если this не является строкой.',
-        'RangeError — если аргумент (count) отрицательный или превышает максимально допустимое значение.',
-      ],
+      errors:
+        'TypeError — если this не является строкой.\nRangeError — если аргумент (count) отрицательный или превышает максимально допустимое значение.',
     },
     {
       name: 'concat()',
@@ -349,7 +344,7 @@ export const configString = {
         "const firstName = 'John';\nconst lastName = 'Doe';\nconst fullName = firstName.concat(' ', lastName);\nconsole.log(fullName); // 'John Doe'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.concat',
-      errors: ['TypeError — если this не является строкой или массивом.'],
+      errors: 'TypeError — если this не является строкой или массивом.',
     },
     {
       name: 'split()',
@@ -372,7 +367,7 @@ export const configString = {
         "const date = '2024-12-25';\nconst parts = date.split('-');\nconsole.log(parts); // ['2024', '12', '25']",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.split',
-      errors: ['TypeError — если this не является строкой.'],
+      errors: 'TypeError — если this не является строкой.',
     },
     {
       name: 'String.fromCodePoint()',

@@ -1,10 +1,21 @@
-export interface ISection {
+export interface ITopic {
   value: string;
   title: string;
+  content: {
+    introduction: string;
+    sections: ITopicSection[];
+  };
+}
+
+export interface ITopicSection {
+  title: string;
+  content: string;
+  addition: string;
+  examples?: string;
 }
 
 export type IConfig = {
-  [key in Topics]: ISection[];
+  [key in Topics]: ITopic[];
 };
 
 export const enum Topics {
@@ -18,5 +29,5 @@ export const labelTopics = {
   [Topics.BASIC]: 'Основы JavaScript',
   [Topics.FUNCTION]: 'Функции',
   [Topics.OBJECT]: 'Объекты и ООП',
-  [Topics.PROMISE]: 'Объекты и ООП',
+  [Topics.PROMISE]: 'Асинхронность',
 };

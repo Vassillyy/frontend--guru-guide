@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configDate = {
-  [Sections.DATE]: [
+export const configDate: Record<Methods.DATE, IMethod[]> = {
+  [Methods.DATE]: [
     {
       name: 'getFullYear()',
       syntax: 'date.getFullYear()',
@@ -11,7 +11,7 @@ export const configDate = {
         "const date = new Date('2023-12-15');\nconst year = date.getFullYear();\nconsole.log(year); // год по местному времени (2023 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getfullyear',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setFullYear()',
@@ -36,7 +36,7 @@ export const configDate = {
         "const date = new Date('2023-01-15');\nconst timestamp = date.setFullYear(2024);\nconst year = date.getFullYear();\nconsole.log(year); // год по местному времени (2024 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setfullyear',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCFullYear()',
@@ -47,7 +47,7 @@ export const configDate = {
         "const date = new Date('2023-12-15T23:00:00Z');\nconst utcYear = date.getUTCFullYear();\nconst localYear = date.getFullYear();\nconsole.log(utcYear); // 2023\nconsole.log(localYear); // год по местному времени (2023 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcfullyear',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCFullYear()',
@@ -72,7 +72,7 @@ export const configDate = {
         "const date = new Date('2023-01-15T00:00:00Z');\nconst timestamp = date.setUTCFullYear(2025);\nconst year = date.getUTCFullYear();\nconsole.log(year); // 2025",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcfullyear',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getMonth()',
@@ -83,7 +83,7 @@ export const configDate = {
         "const summer = new Date('2024-06-15');\nconsole.log(summer.getMonth()); // месяц по местному времени (5 - июнь по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getmonth',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setMonth()',
@@ -104,7 +104,7 @@ export const configDate = {
         "const date = new Date('2024-01-15');\nconst timestamp = date.setMonth(5);\nconst month = date.getMonth();\nconsole.log(month); // месяц по местному времени (5 - июнь по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setmonth',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCMonth()',
@@ -115,7 +115,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T00:00:00Z');\nconsole.log(date.getUTCMonth()); // 0 - январь",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcmonth',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCMonth()',
@@ -136,7 +136,7 @@ export const configDate = {
         "const date = new Date('2024-01-15T12:00:00Z');\nconst timestamp = date.setUTCMonth(8);\nconst month = date.getUTCMonth();\nconsole.log(month); // 8 - сентябрь",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcmonth',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getDate()',
@@ -147,7 +147,7 @@ export const configDate = {
         "const birthday = new Date('2024-05-20');\nconsole.log(birthday.getDate()); // день по местному времени (20 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getdate',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setDate()',
@@ -164,7 +164,7 @@ export const configDate = {
         "const date = new Date('2024-01-10');\nconst timestamp = date.setDate(25);\nconst day = date.getDate();\nconsole.log(day); // день по местному времени (25 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setdate',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCDate()',
@@ -175,7 +175,7 @@ export const configDate = {
         "const date = new Date('2024-12-31T23:59:59Z');\nconsole.log(date.getUTCDate()); // 31",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcdate',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCDate()',
@@ -192,7 +192,7 @@ export const configDate = {
         "const date = new Date('2024-03-10T12:00:00Z');\nconst timestamp = date.setUTCDate(15);\nconst day = date.getUTCDate();\nconsole.log(day); // 15",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcdate',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getHours()',
@@ -203,7 +203,7 @@ export const configDate = {
         "const morning = new Date('2024-05-20T09:15:00');\nconsole.log(morning.getHours()); // часы по местному времени (9 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gethours',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setHours()',
@@ -232,7 +232,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T00:00:00');\nconst timestamp = date.setHours(14);\nconst hours = date.getHours();\nconsole.log(hours); // часы по местному времени (14 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.sethours',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCHours()',
@@ -243,7 +243,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T20:00:00Z');\nconst hours = date.getUTCHours();\nconsole.log(hours); // 20",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutchours',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCHours()',
@@ -272,7 +272,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T00:00:00Z');\nconst timestamp = date.setUTCHours(15);\nconst hours = date.getUTCHours();\nconsole.log(hours); // 15",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutchours',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getMinutes()',
@@ -283,7 +283,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T14:30:00');\nconst minutes = date.getMinutes();\nconsole.log(minutes); // минуты по местному времени (30 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getminutes',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setMinutes()',
@@ -308,7 +308,7 @@ export const configDate = {
         "const date = new Date('2024-03-10T12:00:00');\nconst timestamp = date.setMinutes(15);\nconst minutes = date.getMinutes();\nconsole.log(minutes); // минуты по местному времени (15 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setminutes',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCMinutes()',
@@ -319,7 +319,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T14:30:00Z');\nconst minutes = date.getUTCMinutes();\nconsole.log(minutes); // 30",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcminutes',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCMinutes()',
@@ -344,7 +344,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:00:00Z');\nconst timestamp = date.setUTCMinutes(45);\nconst minutes = date.getUTCMinutes();\nconsole.log(minutes); // 45",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcminutes',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getSeconds()',
@@ -355,7 +355,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45');\nconst seconds = date.getSeconds();\nconsole.log(seconds); // секунды по местному времени (45 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setSeconds()',
@@ -376,7 +376,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:00');\nconst timestamp = date.setSeconds(45);\nconst seconds = date.getSeconds();\nconsole.log(seconds); // секунды по местному времени (45 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCSeconds()',
@@ -387,7 +387,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45Z');\nconst seconds = date.getUTCSeconds();\nconsole.log(seconds); // 45",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCSeconds()',
@@ -408,7 +408,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:00Z');\nconst timestamp = date.setUTCSeconds(45);\nconst seconds = date.getUTCSeconds();\nconsole.log(seconds); // 45",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getMilliseconds()',
@@ -419,7 +419,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45.500');\nconst milliseconds = date.getMilliseconds();\nconsole.log(milliseconds); // миллисекунды по местному времени (500 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getmilliseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setMilliseconds()',
@@ -436,7 +436,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45.000');\nconst timestamp = date.setMilliseconds(50);\nconst ms = date.getMilliseconds();\nconsole.log(ms); // миллисекунды по местному времени (50 по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setmilliseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCMilliseconds()',
@@ -447,7 +447,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45.750Z');\nconst milliseconds = date.getUTCMilliseconds();\nconsole.log(milliseconds); // 750",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcmilliseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setUTCMilliseconds()',
@@ -464,7 +464,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T12:30:45.000Z');\nconst timestamp = date.setUTCMilliseconds(50);\nconst ms = date.getUTCMilliseconds();\nconsole.log(ms); // 50",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcmilliseconds',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getDay()',
@@ -475,7 +475,7 @@ export const configDate = {
         "const date = new Date('2024-01-01');\nconst day = date.getDay();\nconsole.log(day); // день недели по местному времени (1 - понедельник по Москве)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getday',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getUTCDay()',
@@ -486,7 +486,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T00:00:00Z');\nconst day = date.getUTCDay();\nconsole.log(day); // 1 - понедельник",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.getutcday',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getTime()',
@@ -497,7 +497,7 @@ export const configDate = {
         "const date = new Date('2024-01-01');\nconst timestamp = date.getTime();\nconsole.log(timestamp); // 1704067200000",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gettime',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'setTime()',
@@ -515,7 +515,7 @@ export const configDate = {
         'const date = new Date();\nconst timestamp = date.setTime(1704067200000);\nconst newTime = date.getTime();\nconsole.log(newTime); // 1704067200000',
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.settime',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'getTimezoneOffset()',
@@ -526,7 +526,7 @@ export const configDate = {
         "const date = new Date('2024-01-01T00:00:00Z');\nconst offset = date.getTimezoneOffset();\nconsole.log(offset); // -180 (для Москвы, UTC+3)",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gettimezoneoffset',
-      errors: ['TypeError — если this не является датой.'],
+      errors: 'TypeError — если this не является датой.',
     },
     {
       name: 'Date.now()',

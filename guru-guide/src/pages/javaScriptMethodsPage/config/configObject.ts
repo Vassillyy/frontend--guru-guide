@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configObject = {
-  [Sections.OBJECT]: [
+export const configObject: Record<Methods.OBJECT, IMethod[]> = {
+  [Methods.OBJECT]: [
     {
       name: 'toString()',
       syntax: 'obj.toString()',
@@ -11,7 +11,7 @@ export const configObject = {
         "const obj = { x: 10, y: 20 };\nconsole.log(obj.toString()); // '[object Object]'\nconst customObj = {\n  toString() {\n    return 'Custom Object';\n  }\n};\nconsole.log(customObj.toString()); // 'Custom Object'",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.tostring',
-      errors: ['TypeError — если this является null или undefined.'],
+      errors: 'TypeError — если this является null или undefined.',
     },
     {
       name: 'valueOf()',
@@ -22,7 +22,7 @@ export const configObject = {
         'const obj = { x: 5 };\nconsole.log(obj.valueOf() === obj); // true\nconst numberObj = {\n  value: 100,\n  valueOf() {\n    return this.value;\n  }\n};\nconsole.log(numberObj + 50); // 150',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.valueof',
-      errors: ['TypeError — если this является null или undefined.'],
+      errors: 'TypeError — если this является null или undefined.',
     },
     {
       name: 'hasOwnProperty()',
@@ -40,7 +40,7 @@ export const configObject = {
         "const user = { id: 1, name: 'Alice' };\nconst hasName = user.hasOwnProperty('name');\nconsole.log(hasName); // true\nconst hasAge = user.hasOwnProperty('age');\nconsole.log(hasAge); // false",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.hasownproperty',
-      errors: ['TypeError — если this является null или undefined, или если .'],
+      errors: 'TypeError — если this является null или undefined, или если .',
     },
     {
       name: 'isPrototypeOf()',
@@ -58,9 +58,8 @@ export const configObject = {
         'const base = { x: 1 };\nconst obj = Object.create(base);\nconst isProto = base.isPrototypeOf(obj);\nconsole.log(isProto); // true\nconsole.log(Object.prototype.isPrototypeOf([])); // true',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.isprototypeof',
-      errors: [
+      errors:
         'TypeError — если this или аргумент (objB) являются null или undefined.',
-      ],
     },
     {
       name: 'Object.assign()',
@@ -81,9 +80,8 @@ export const configObject = {
         "const defaults = { theme: 'light', lang: 'en' };\nconst userSettings = { lang: 'ru' };\nconst settings = Object.assign({}, defaults, userSettings);\nconsole.log(settings); // { theme: 'light', lang: 'ru' }",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.assign',
-      errors: [
+      errors:
         'TypeError — если первый аргумент (dest) является null или undefined.',
-      ],
     },
     {
       name: 'Object.is()',
@@ -120,7 +118,7 @@ export const configObject = {
         "const user = { name: 'Alice', age: 30, city: 'Moscow' };\nconst keys = Object.keys(user);\nconsole.log(keys); // ['name', 'age', 'city']",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.keys',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.values()',
@@ -137,7 +135,7 @@ export const configObject = {
         "const config = { port: 3000, host: 'localhost', debug: true };\nconst values = Object.values(config);\nconsole.log(values); // [3000, 'localhost', true]",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.values',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.entries()',
@@ -154,7 +152,7 @@ export const configObject = {
         "const product = { name: 'Laptop', price: 999, stock: 5 };\nconst entries = Object.entries(product);\nconsole.log(entries); // [['name', 'Laptop'], ['price', 999], ['stock', 5]]",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.entries',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.fromEntries()',
@@ -172,9 +170,8 @@ export const configObject = {
         "const map = new Map([\n  ['name', 'Alice'],\n  ['age', 30],\n  ['city', 'Moscow']\n]);\nconst obj = Object.fromEntries(map);\nconsole.log(obj); // { name: 'Alice', age: 30, city: 'Moscow' }",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.fromentries',
-      errors: [
+      errors:
         'TypeError — если аргумент (iterable) не является итерируемым объектом с парами вида [ключ, значение].',
-      ],
     },
     {
       name: 'Object.getOwnPropertyDescriptor()',
@@ -195,9 +192,8 @@ export const configObject = {
         "const obj = { name: 'John', age: 30 };\nconst descriptor = Object.getOwnPropertyDescriptor(obj, 'name');\nconsole.log(descriptor);\n// { value: 'John', writable: true, enumerable: true, configurable: true }",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertydescriptor',
-      errors: [
+      errors:
         'TypeError — если первый аргумент (obj) равен null или undefined.',
-      ],
     },
     {
       name: 'Object.defineProperty()',
@@ -223,9 +219,8 @@ export const configObject = {
         "const obj = {};\nObject.defineProperty(obj, 'readonlyProp', {\n  value: 42,\n  writable: false,\n  enumerable: true\n});\nconsole.log(obj.readonlyProp); // 42\nobj.readonlyProp = 100; // TypeError в strict mode",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.defineproperty',
-      errors: [
+      errors:
         'TypeError — если первый аргумент (obj) равен null или undefined.',
-      ],
     },
     {
       name: 'Object.defineProperties()',
@@ -248,9 +243,8 @@ export const configObject = {
         "const user = {};\nObject.defineProperties(user, {\n  name: {\n    value: 'Alice',\n    writable: true,\n    enumerable: true\n  },\n  age: {\n    value: 30,\n    writable: true,\n    enumerable: false\n  }\n});\nconsole.log(Object.keys(user)); // ['name']",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.defineproperties',
-      errors: [
+      errors:
         'TypeError — если первый аргумент (obj) равен null или undefined.',
-      ],
     },
     {
       name: 'Object.getOwnPropertyDescriptors()',
@@ -268,7 +262,7 @@ export const configObject = {
         'const obj = {};\nObject.defineProperties(obj, {\n  x: { value: 10, writable: false },\n  y: { value: 20, enumerable: false }\n});\nconst descriptors = Object.getOwnPropertyDescriptors(obj);\nconsole.log(descriptors.x.writable); // false\nconsole.log(descriptors.y.enumerable); // false',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertydescriptors',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.preventExtensions()',
@@ -285,7 +279,7 @@ export const configObject = {
         "const obj = { prop: 'value' };\nObject.preventExtensions(obj);\nobj.newProp = 'new'; // TypeError в strict mode\nconsole.log('newProp' in obj); // false",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.preventextensions',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.isExtensible()',
@@ -302,7 +296,7 @@ export const configObject = {
         'const obj = { x: 10 };\nconsole.log(Object.isExtensible(obj)); // true\nObject.preventExtensions(obj);\nconsole.log(Object.isExtensible(obj)); // false',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isextensible',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.seal()',
@@ -319,7 +313,7 @@ export const configObject = {
         "const obj = { name: 'John', age: 25 };\nObject.seal(obj);\nobj.age = 30; // Изменение значения работает\nconsole.log(obj.age); // 30\ndelete obj.name; // Не работает в strict mode",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.seal',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.isSealed()',
@@ -336,7 +330,7 @@ export const configObject = {
         'const obj = { x: 10, y: 20 };\nconsole.log(Object.isSealed(obj)); // false\nObject.seal(obj);\nconsole.log(Object.isSealed(obj)); // true',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.issealed',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.freeze()',
@@ -353,7 +347,7 @@ export const configObject = {
         "const config = { version: '1.0', debug: false };\nObject.freeze(config);\nconsole.log(config.debug); // false\nconfig.debug = true;\nconsole.log(config.debug); // false (изменение не применилось)\nconsole.log('newProp' in config); // false\nconfig.newProp = 'test';\nconsole.log('newProp' in config); // false (свойство не добавилось)",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.freeze',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.isFrozen()',
@@ -370,7 +364,7 @@ export const configObject = {
         'const obj = { value: 100 };\nconsole.log(Object.isFrozen(obj)); // false\nObject.freeze(obj);\nconsole.log(Object.isFrozen(obj)); // true',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isfrozen',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.create()',
@@ -393,9 +387,8 @@ export const configObject = {
         "const proto = { greet() { return 'Hello'; } };\nconst obj = Object.create(proto, {\n  name: { value: 'Alice', enumerable: true }\n});\nconsole.log(obj.greet()); // 'Hello'\nconsole.log(obj.name); // 'Alice'",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.create',
-      errors: [
+      errors:
         'TypeError — если первый аргумент (proto) не является null или объектом, или если второй аргумент (descriptors) указан и не является объектом.',
-      ],
     },
     {
       name: 'Object.getPrototypeOf()',
@@ -412,7 +405,7 @@ export const configObject = {
         'const proto = { base: true };\nconst obj = Object.create(proto);\nconst prototype = Object.getPrototypeOf(obj);\nconsole.log(prototype === proto); // true',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getprototypeof',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.setPrototypeOf()',
@@ -433,9 +426,8 @@ export const configObject = {
         'const animal = { eats: true };\nconst rabbit = { jumps: true };\nObject.setPrototypeOf(rabbit, animal);\nconsole.log(rabbit.eats); // true\nconsole.log(Object.getPrototypeOf(rabbit) === animal); // true',
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.setprototypeof',
-      errors: [
+      errors:
         'TypeError — если аргументы (obj, proto) являются null или undefined.',
-      ],
     },
     {
       name: 'Object.getOwnPropertySymbols()',
@@ -452,7 +444,7 @@ export const configObject = {
         "const id = Symbol('id');\nconst token = Symbol('token');\nconst obj = {\n  [id]: 123,\n  [token]: 'abc',\n  name: 'Test'\n};\nconst symbols = Object.getOwnPropertySymbols(obj);\nconsole.log(symbols); // [Symbol(id), Symbol(token)]",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertysymbols',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
     {
       name: 'Object.getOwnPropertyNames()',
@@ -469,7 +461,7 @@ export const configObject = {
         "const obj = {};\nObject.defineProperties(obj, {\n  visible: { value: 1, enumerable: true },\n  hidden: { value: 2, enumerable: false }\n});\nconst keys = Object.keys(obj);\nconst names = Object.getOwnPropertyNames(obj);\nconsole.log(keys); // ['visible']\nconsole.log(names); // ['visible', 'hidden']",
       specification:
         'https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertynames',
-      errors: ['TypeError — если аргумент (obj) является null или undefined.'],
+      errors: 'TypeError — если аргумент (obj) является null или undefined.',
     },
   ],
 };

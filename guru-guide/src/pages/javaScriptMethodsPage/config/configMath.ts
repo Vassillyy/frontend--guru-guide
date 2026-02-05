@@ -1,5 +1,5 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configMath = {
-  [Sections.MATH]: [],
+export const configMath: Record<Methods.MATH, IMethod[]> = {
+  [Methods.MATH]: [],
 };

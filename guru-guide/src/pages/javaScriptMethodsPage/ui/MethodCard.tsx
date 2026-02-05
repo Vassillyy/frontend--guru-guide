@@ -1,9 +1,8 @@
 import { useState, type FC } from 'react';
-import { IconArrow } from '@/shared/ui';
+import type { IMethod } from '@/entities/method';
+import { CodeWS, IconArrow } from '@/shared/ui';
 import { useFormattedText } from '@/shared/hooks/useFormattedText.tsx';
-import { formatExample } from '@/shared/lib';
 import { ErrorList } from './errors/ErrorList.tsx';
-import type { IMethod } from '../config/types.ts';
 import styles from './MethodCard.module.css';
 
 export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
@@ -12,10 +11,6 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
   const descriptionParts = useFormattedText(method.description, {
     highlightStyle: { fontWeight: 600, color: '#1864ab' },
   });
-
-  const formattedExample = method.example
-    ? formatExample(method.example, styles)
-    : null;
 
   return (
     <div className={styles.methodCard}>
@@ -72,16 +67,7 @@ export const MethodCard: FC<{ method: IMethod }> = ({ method }) => {
         )}
       </div>
 
-      {isOpen && method.example && (
-        <div className={styles.exampleBlock}>
-          <div className={styles.exampleHeader}>
-            <span className={styles.exampleTitle}>Примеры использования:</span>
-          </div>
-          <div className={styles.exampleCode}>
-            <code>{formattedExample}</code>
-          </div>
-        </div>
-      )}
+      {isOpen && method.example && <CodeWS text={method.example} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configWeakMap = {
-  [Sections.WEAK_MAP]: [
+export const configWeakMap: Record<Methods.WEAK_MAP, IMethod[]> = {
+  [Methods.WEAK_MAP]: [
     {
       name: 'set()',
       syntax: 'weakMap.set(key, value)',
@@ -21,9 +21,8 @@ export const configWeakMap = {
         "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst result = weakMap.get(key);\nconsole.log(result); // 'value'",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.set',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (weakMap или map) или если в качестве ключа передаётся не объект.',
-      ],
     },
     {
       name: 'get()',
@@ -41,9 +40,8 @@ export const configWeakMap = {
         "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'data');\nconst value = weakMap.get(key);\nconsole.log(value); // 'data'",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.get',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (weakMap или map) или если в качестве ключа передаётся не объект.',
-      ],
     },
     {
       name: 'has()',
@@ -60,9 +58,8 @@ export const configWeakMap = {
         "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst hasKey = weakMap.has(key);\nconsole.log(hasKey); // true",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.has',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (weakMap или map) или если в качестве ключа передаётся не объект.',
-      ],
     },
     {
       name: 'delete()',
@@ -79,9 +76,8 @@ export const configWeakMap = {
         "const weakMap = new WeakMap();\nconst key = {};\nweakMap.set(key, 'value');\nconst deleted = weakMap.delete(key);\nconsole.log(deleted); // true",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.delete',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (weakMap или map) или если в качестве ключа передаётся не объект.',
-      ],
     },
   ],
 };

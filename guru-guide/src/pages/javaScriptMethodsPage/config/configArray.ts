@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configArray = {
-  [Sections.ARRAY]: [
+export const configArray: Record<Methods.ARRAY, IMethod[]> = {
+  [Methods.ARRAY]: [
     {
       name: 'pop()',
       syntax: 'arr.pop()',
@@ -11,7 +11,7 @@ export const configArray = {
         'const numbers = [10, 20, 30];\nconst last = numbers.pop();\nconsole.log(last); // 30\nconsole.log(numbers); // [10, 20]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.pop',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'push()',
@@ -28,7 +28,7 @@ export const configArray = {
         'const numbers = [];\nconst length = numbers.push(1, 2, 3);\nconsole.log(length); // 3\nconsole.log(numbers); // [1, 2, 3]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.push',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'shift()',
@@ -39,7 +39,7 @@ export const configArray = {
         "const queue = ['first', 'second', 'third'];\nconst firstItem = queue.shift();\nconsole.log(firstItem); // 'first'\nconsole.log(queue); // ['second', 'third']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.shift',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'unshift()',
@@ -56,7 +56,7 @@ export const configArray = {
         'const numbers = [3, 4];\nconst newLength = numbers.unshift(1, 2);\nconsole.log(newLength); // 4\nconsole.log(numbers); // [1, 2, 3, 4]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.unshift',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'toString()',
@@ -67,7 +67,7 @@ export const configArray = {
         "const data = ['apple', 'banana', 'orange'];\nconst str = data.toString();\nconsole.log(str); // 'apple,banana,orange'",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tostring',
-      errors: ['TypeError — если this является null или undefined.'],
+      errors: 'TypeError — если this является null или undefined.',
     },
     {
       name: 'indexOf()',
@@ -88,7 +88,7 @@ export const configArray = {
         "const users = ['alice', 'bob', 'charlie', 'bob'];\nconst index = users.indexOf('bob');\nconsole.log(index); // 1\nconst secondIndex = users.indexOf('bob', 2);\nconsole.log(secondIndex); // 3",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.indexof',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'lastIndexOf()',
@@ -110,7 +110,7 @@ export const configArray = {
         "const logEntries = ['error', 'info', 'warning', 'info', 'error'];\nconst lastInfoIndex = logEntries.lastIndexOf('info');\nconsole.log(lastInfoIndex); // 3\nconst lastErrorIndex = logEntries.lastIndexOf('error', 3);\nconsole.log(lastErrorIndex); // 0",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.lastindexof',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'at()',
@@ -128,7 +128,7 @@ export const configArray = {
         "const colors = ['red', 'green', 'blue', 'yellow'];\nconst lastColor = colors.at(-1);\nconsole.log(lastColor); // 'yellow'\nconst secondColor = colors.at(1);\nconsole.log(secondColor); // 'green'",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.at',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'includes()',
@@ -149,7 +149,7 @@ export const configArray = {
         "const permissions = ['read', 'write', 'execute'];\nconst hasWrite = permissions.includes('write');\nconsole.log(hasWrite); // true\nconst hasDelete = permissions.includes('delete');\nconsole.log(hasDelete); // false",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.includes',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'slice()',
@@ -172,7 +172,7 @@ export const configArray = {
         'const numbers = [10, 20, 30, 40, 50];\nconst middle = numbers.slice(1, 4);\nconsole.log(middle); // [20, 30, 40]\nconst lastTwo = numbers.slice(-2);\nconsole.log(lastTwo); // [40, 50]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.slice',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'splice()',
@@ -197,7 +197,7 @@ export const configArray = {
         "const items = ['apple', 'banana', 'cherry', 'date'];\nconst removed = items.splice(1, 2, 'blueberry', 'coconut');\nconsole.log(removed); // ['banana', 'cherry']\nconsole.log(items); // ['apple', 'blueberry', 'coconut', 'date']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.splice',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'toSpliced()',
@@ -222,7 +222,7 @@ export const configArray = {
         "const original = ['jan', 'feb', 'mar', 'apr'];\nconst newArray = original.toSpliced(2, 1, 'march');\nconsole.log(newArray); // ['jan', 'feb', 'march', 'apr']\nconsole.log(original); // ['jan', 'feb', 'mar', 'apr']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tospliced',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'concat()',
@@ -240,7 +240,7 @@ export const configArray = {
         "const firstHalf = ['a', 'b'];\nconst secondHalf = ['c', 'd'];\nconst combined = firstHalf.concat(secondHalf, 'e');\nconsole.log(combined); // ['a', 'b', 'c', 'd', 'e']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.concat',
-      errors: ['TypeError — если this не является массивом или строкой.'],
+      errors: 'TypeError — если this не является массивом или строкой.',
     },
     {
       name: 'forEach()',
@@ -262,9 +262,8 @@ export const configArray = {
         'const scores = [85, 92, 78];\nscores.forEach((score, index) => {\n  console.log(`Student ${index + 1}: ${score}`);\n});\n// Student 1: 85\n// Student 2: 92\n// Student 3: 78',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.foreach',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, множеством или коллекцией, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'find()',
@@ -286,9 +285,8 @@ export const configArray = {
         "const users = [\n  { id: 1, name: 'Alice' },\n  { id: 2, name: 'Bob' },\n  { id: 3, name: 'Charlie' }\n];\nconst user = users.find(u => u.id === 2);\nconsole.log(user); // { id: 2, name: 'Bob' }",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.find',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'findLast()',
@@ -310,9 +308,8 @@ export const configArray = {
         "const logs = [\n  { level: 'info', message: 'Started' },\n  { level: 'error', message: 'Failed' },\n  { level: 'info', message: 'Completed' }\n];\nconst lastError = logs.findLast(log => log.level === 'error');\nconsole.log(lastError); // { level: 'error', message: 'Failed' }",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findlast',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'findIndex()',
@@ -334,9 +331,8 @@ export const configArray = {
         'const temperatures = [22, 18, 25, 19, 30];\nconst hotDayIndex = temperatures.findIndex(temp => temp > 25);\nconsole.log(hotDayIndex); // 4',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findindex',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'findLastIndex()',
@@ -358,9 +354,8 @@ export const configArray = {
         'const transactions = [100, -50, 200, -30, 150];\nconst lastWithdrawalIndex = transactions.findLastIndex(amount => amount < 0);\nconsole.log(lastWithdrawalIndex); // 3',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.findlastindex',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'filter()',
@@ -382,9 +377,8 @@ export const configArray = {
         'const numbers = [1, 2, 3, 4, 5, 6];\nconst evenNumbers = numbers.filter(n => n % 2 === 0);\nconsole.log(evenNumbers); // [2, 4, 6]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.filter',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'map()',
@@ -406,9 +400,8 @@ export const configArray = {
         'const prices = [100, 200, 300];\nconst discounted = prices.map(price => price * 0.9);\nconsole.log(discounted); // [90, 180, 270]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.map',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'sort()',
@@ -425,9 +418,8 @@ export const configArray = {
         "const names = ['Charlie', 'Alice', 'Bob'];\nnames.sort();\nconsole.log(names); // ['Alice', 'Bob', 'Charlie']\nconst scores = [85, 92, 78];\nscores.sort((a, b) => b - a);\nconsole.log(scores); // [92, 85, 78]",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.sort',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (compareFn) не является функцией.',
-      ],
     },
     {
       name: 'toSorted()',
@@ -445,9 +437,8 @@ export const configArray = {
         'const numbers = [3, 1, 4, 2];\nconst sorted = numbers.toSorted((a, b) => a - b);\nconsole.log(sorted); // [1, 2, 3, 4]\nconsole.log(numbers); // [3, 1, 4, 2]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.tosorted',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (compareFn) не является функцией.',
-      ],
     },
     {
       name: 'reverse()',
@@ -458,7 +449,7 @@ export const configArray = {
         "const letters = ['a', 'b', 'c'];\nletters.reverse();\nconsole.log(letters); // ['c', 'b', 'a']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reverse',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'toReversed()',
@@ -469,7 +460,7 @@ export const configArray = {
         "const items = ['first', 'second', 'third'];\nconst reversed = items.toReversed();\nconsole.log(reversed); // ['third', 'second', 'first']\nconsole.log(items); // ['first', 'second', 'third']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.toreversed',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'join()',
@@ -486,7 +477,7 @@ export const configArray = {
         "const path = ['usr', 'local', 'bin'];\nconst fullPath = path.join('/');\nconsole.log(fullPath); // 'usr/local/bin'",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.join',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'reduce()',
@@ -507,9 +498,8 @@ export const configArray = {
         'const cart = [\n  { price: 10, quantity: 2 },\n  { price: 25, quantity: 1 },\n  { price: 5, quantity: 3 }\n];\nconst total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);\nconsole.log(total); // 60',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reduce',
-      errors: [
+      errors:
         'TypeError — если this не является массивом или если аргумент (fn) не является функцией, или если массив пуст и не указано начальное значение.',
-      ],
     },
     {
       name: 'reduceRight()',
@@ -530,9 +520,8 @@ export const configArray = {
         'const nums = [2, 3, 4];\nconst rightToLeftSum = nums.reduceRight((sum, num) => sum + num);\nconsole.log(rightToLeftSum); // 9',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.reduceright',
-      errors: [
+      errors:
         'TypeError — если this не является массивом или если аргумент (fn) не является функцией, или если массив пуст и не указано начальное значение.',
-      ],
     },
     {
       name: 'fill()',
@@ -557,7 +546,7 @@ export const configArray = {
         "const arr = new Array(5);\narr.fill('x', 1, 4);\nconsole.log(arr); // [empty, 'x', 'x', 'x', empty]",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.fill',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'copyWithin()',
@@ -582,7 +571,7 @@ export const configArray = {
         'const arr = [1, 2, 3, 4, 5];\narr.copyWithin(0, 3);\nconsole.log(arr); // [4, 5, 3, 4, 5]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.copywithin',
-      errors: ['TypeError — если this не является массивом.'],
+      errors: 'TypeError — если this не является массивом.',
     },
     {
       name: 'flat()',
@@ -599,9 +588,8 @@ export const configArray = {
         'const nested = [1, [2, [3, [4]]]];\nconst flattened = nested.flat(2);\nconsole.log(flattened); // [1, 2, 3, [4]]',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.flat',
-      errors: [
+      errors:
         'TypeError — если this не является массивом или если аргумент (depth) не является числом.',
-      ],
     },
     {
       name: 'some()',
@@ -623,9 +611,8 @@ export const configArray = {
         'const numbers = [1, 2, 3, 5];\nconst hasEven = numbers.some(n => n % 2 === 0);\nconsole.log(hasEven); // true',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.some',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'every()',
@@ -647,9 +634,8 @@ export const configArray = {
         'const ages = [18, 22, 25, 30];\nconst allAdult = ages.every(age => age >= 18);\nconsole.log(allAdult); // true',
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.every',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'with()',
@@ -670,10 +656,8 @@ export const configArray = {
         "const original = ['a', 'b', 'c'];\nconst updated = original.with(1, 'B');\nconsole.log(updated); // ['a', 'B', 'c']\nconsole.log(original); // ['a', 'b', 'c']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.with',
-      errors: [
-        'TypeError — если this не является массивом.',
-        'RangeError — если аргумент (index) выходит за границы массива.',
-      ],
+      errors:
+        'TypeError — если this не является массивом.\nRangeError — если аргумент (index) выходит за границы массива.',
     },
     {
       name: 'keys()',
@@ -684,9 +668,8 @@ export const configArray = {
         "const colors = ['red', 'green', 'blue'];\nconst indices = [...colors.keys()];\nconsole.log(indices); // [0, 1, 2]",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.keys',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, коллекцией (map) или множеством (set).',
-      ],
     },
     {
       name: 'values()',
@@ -697,9 +680,8 @@ export const configArray = {
         "const items = ['apple', 'banana', 'orange'];\nconst itemValues = [...items.values()];\nconsole.log(itemValues); // ['apple', 'banana', 'orange']",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.values',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, коллекцией (map) или множеством (set).',
-      ],
     },
     {
       name: 'entries()',
@@ -710,9 +692,8 @@ export const configArray = {
         "const fruits = ['apple', 'banana', 'orange'];\nconst fruitEntries = [...fruits.entries()];\nconsole.log(fruitEntries); // [[0, 'apple'], [1, 'banana'], [2, 'orange']]",
       specification:
         'https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.entries',
-      errors: [
+      errors:
         'TypeError — если this не является массивом, коллекцией (map) или множеством (set).',
-      ],
     },
     {
       name: 'Array.isArray()',

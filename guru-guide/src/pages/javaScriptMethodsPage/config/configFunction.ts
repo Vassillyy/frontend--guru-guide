@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configFunction = {
-  [Sections.FUNCTION]: [
+export const configFunction: Record<Methods.FUNCTION, IMethod[]> = {
+  [Methods.FUNCTION]: [
     {
       name: 'name',
       syntax: 'function.name',
@@ -11,7 +11,7 @@ export const configFunction = {
         "const myFunc = function() {};\nconst name = myFunc.name;\nconsole.log(name); // 'myFunc'",
       specification:
         'https://tc39.es/ecma262/multipage/functions-and-classes.html#sec-function-instances-name',
-      errors: ['TypeError — если this не является функцией.'],
+      errors: 'TypeError — если this не является функцией.',
     },
     {
       name: 'length',
@@ -22,7 +22,7 @@ export const configFunction = {
         'function sum(a, b) {};\nconst length = sum.length;\nconsole.log(length); // 2',
       specification:
         'https://tc39.es/ecma262/multipage/functions-and-classes.html#sec-function-instances-length',
-      errors: ['TypeError — если this не является функцией.'],
+      errors: 'TypeError — если this не является функцией.',
     },
     {
       name: 'call()',
@@ -44,7 +44,7 @@ export const configFunction = {
         "function greet(name) {\n console.log(`Hello, ${name}! I'm ${this.title}`);\n}\nconst person = { title: 'Mr.' };\ngreet.call(person, 'John'); // 'Hello, John! I'm Mr.'",
       specification:
         'https://tc39.es/ecma262/multipage/functions-and-classes.html#sec-function.prototype.call',
-      errors: ['TypeError — если this не является функцией.'],
+      errors: 'TypeError — если this не является функцией.',
     },
     {
       name: 'apply()',
@@ -67,7 +67,7 @@ export const configFunction = {
         'function sum(a, b, c) {\n return a + b + c;\n}\nconst numbers = [1, 2, 3];\nconst result = sum.apply(null, numbers);\nconsole.log(result); // 6',
       specification:
         'https://tc39.es/ecma262/multipage/functions-and-classes.html#sec-function.prototype.apply',
-      errors: ['TypeError — если this не является функцией.'],
+      errors: 'TypeError — если this не является функцией.',
     },
     {
       name: 'bind()',
@@ -90,7 +90,7 @@ export const configFunction = {
         "function greet(greeting, name) {\n console.log(`${greeting}, ${name}!`);\n}\nconst sayHello = greet.bind(null, 'Hello');\nsayHello('John'); // 'Hello, John!'",
       specification:
         'https://tc39.es/ecma262/multipage/functions-and-classes.html#sec-function.prototype.bind',
-      errors: ['TypeError — если this не является функцией.'],
+      errors: 'TypeError — если this не является функцией.',
     },
   ],
 };

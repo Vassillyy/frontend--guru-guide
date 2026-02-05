@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configJSON = {
-  [Sections.JSON]: [
+export const configJSON: Record<Methods.JSON, IMethod[]> = {
+  [Methods.JSON]: [
     {
       name: 'JSON.stringify()',
       syntax: 'JSON.stringify(value[, replacer[, space]])',
@@ -26,7 +26,7 @@ export const configJSON = {
       example: `const obj = { name: 'John', age: 30, city: 'Moscow' };\nconst json = JSON.stringify(obj, ['name', 'city']);\nconsole.log(json); // '{"name":"John","city":"Moscow"}'`,
       specification:
         'https://tc39.es/ecma262/multipage/structured-data.html#sec-json.stringify',
-      errors: ['TypeError — если объект содержит циклическую ссылку.'],
+      errors: 'TypeError — если объект содержит циклическую ссылку.',
     },
     {
       name: 'JSON.parse()',
@@ -47,7 +47,7 @@ export const configJSON = {
       example: `const json = '{"name":"John","age":30}';\nconst obj = JSON.parse(json);\nconsole.log(obj.name); // 'John'`,
       specification:
         'https://tc39.es/ecma262/multipage/structured-data.html#sec-json.parse',
-      errors: ['SyntaxError — если строка не является валидным JSON.'],
+      errors: 'SyntaxError — если строка не является валидным JSON.',
     },
   ],
 };

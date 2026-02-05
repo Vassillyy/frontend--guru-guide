@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configMap = {
-  [Sections.MAP]: [
+export const configMap: Record<Methods.MAP, IMethod[]> = {
+  [Methods.MAP]: [
     {
       name: 'size',
       syntax: 'map.size',
@@ -11,9 +11,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst size = map.size;\nconsole.log(size); // 2",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-get-map.prototype.size',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (map) или множеством (set).',
-      ],
     },
     {
       name: 'forEach()',
@@ -35,9 +34,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nmap.forEach((value, key) => {\n console.log(key, value); // 'a' 1, 'b' 2\n});",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.foreach',
-      errors: [
+      errors:
         'TypeError — если this не является множеством (set), массивом или коллекцией (map), или если аргумент (fn) не является функцией.',
-      ],
     },
     {
       name: 'set()',
@@ -58,9 +56,7 @@ export const configMap = {
         "const map = new Map();\nmap.set('key', 'value');\nconst result = map.get('key');\nconsole.log(result); // 'value'",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.set',
-      errors: [
-        'TypeError — если this не является коллекцией (map или weakMap).',
-      ],
+      errors: 'TypeError — если this не является коллекцией (map или weakMap).',
     },
     {
       name: 'get()',
@@ -77,9 +73,7 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst value = map.get('a');\nconsole.log(value); // 1",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.get',
-      errors: [
-        'TypeError — если this не является коллекцией (map или weakMap).',
-      ],
+      errors: 'TypeError — если this не является коллекцией (map или weakMap).',
     },
     {
       name: 'has()',
@@ -96,9 +90,7 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst hasKey = map.has('a');\nconsole.log(hasKey); // true",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.has',
-      errors: [
-        'TypeError — если this не является коллекцией (map или weakMap).',
-      ],
+      errors: 'TypeError — если this не является коллекцией (map или weakMap).',
     },
     {
       name: 'delete()',
@@ -115,9 +107,7 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst deleted = map.delete('a');\nconsole.log(deleted); // true\nconsole.log(map.has('a')); // false",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.delete',
-      errors: [
-        'TypeError — если this не является коллекцией (map или weakMap).',
-      ],
+      errors: 'TypeError — если this не является коллекцией (map или weakMap).',
     },
     {
       name: 'clear()',
@@ -127,9 +117,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nmap.clear();\nconsole.log(map.size); // 0",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.clear',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (map) или множеством (set).',
-      ],
     },
     {
       name: 'keys()',
@@ -140,9 +129,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst keys = Array.from(map.keys());\nconsole.log(keys); // ['a', 'b']",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.keys',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (map), массивом или множеством (set).',
-      ],
     },
     {
       name: 'values()',
@@ -153,9 +141,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst values = Array.from(map.values());\nconsole.log(values); // [1, 2]",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.values',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (map), массивом или множеством (set).',
-      ],
     },
     {
       name: 'entries()',
@@ -166,9 +153,8 @@ export const configMap = {
         "const map = new Map([['a', 1], ['b', 2]]);\nconst entries = Array.from(map.entries());\nconsole.log(entries); // [['a', 1], ['b', 2]]",
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.entries',
-      errors: [
+      errors:
         'TypeError — если this не является коллекцией (map), массивом или множеством (set).',
-      ],
     },
   ],
 };

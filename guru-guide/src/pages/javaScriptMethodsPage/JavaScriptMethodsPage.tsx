@@ -1,25 +1,25 @@
 import { useState, useEffect, useRef, useMemo, type FC } from 'react';
+import { type IMethod, labelMethods, Methods } from '@/entities/method';
 import { Pills } from '@/shared/ui';
 import { MethodCard } from './ui/MethodCard';
-import { type IMethod, labelSections, Sections } from './config/types.ts';
 import { config } from './config';
 import styles from './JavaScriptMethodsPage.module.css';
 
 const ITEMS_PER_LOAD = 20;
 
 export const JavaScriptMethodsPage: FC = () => {
-  const [activeCategories, setActiveCategories] = useState<Sections[]>([]);
+  const [activeCategories, setActiveCategories] = useState<Methods[]>([]);
   const [loadedCount, setLoadedCount] = useState(ITEMS_PER_LOAD);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   const pillItems = Object.keys(config).map((category) => ({
-    label: labelSections[category as Sections],
-    value: category as Sections,
+    label: labelMethods[category as Methods],
+    value: category as Methods,
   }));
 
   const categoriesToShow =
     activeCategories.length === 0
-      ? (Object.keys(config) as Sections[])
+      ? (Object.keys(config) as Methods[])
       : activeCategories;
 
   const totalMethodsCount = useMemo(() => {
@@ -70,7 +70,7 @@ export const JavaScriptMethodsPage: FC = () => {
     return () => observer.disconnect();
   }, [hasMore, totalMethodsCount]);
 
-  const filterChange = (filters: Sections[]) => {
+  const filterChange = (filters: Methods[]) => {
     setActiveCategories(filters);
     setLoadedCount(ITEMS_PER_LOAD);
   };
@@ -87,7 +87,7 @@ export const JavaScriptMethodsPage: FC = () => {
         {Object.entries(getMethodsToShow).map(([category, methods]) => (
           <div key={category} className={styles.categorySection}>
             <h2 className={styles.categoryTitle}>
-              {labelSections[category as keyof typeof labelSections]}
+              {labelMethods[category as keyof typeof labelMethods]}
             </h2>
             <div className={styles.methodsList}>
               {methods.map((method, index) => (

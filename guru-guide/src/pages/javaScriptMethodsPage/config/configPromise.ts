@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configPromise = {
-  [Sections.PROMISE]: [
+export const configPromise: Record<Methods.PROMISE, IMethod[]> = {
+  [Methods.PROMISE]: [
     {
       name: 'then()',
       syntax: 'promise.then(onFulfilled[, onRejected])',
@@ -71,10 +71,8 @@ export const configPromise = {
         'const p1 = Promise.resolve(1);\nconst p2 = Promise.resolve(2);\nconst p3 = Promise.resolve(3);\nPromise.all([p1, p2, p3]).then((values) => {\n console.log(values); // [1, 2, 3]\n});',
       specification:
         'https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.all',
-      errors: [
-        'TypeError — если аргумент (iterable) не является итерируемым объектом.',
-        'Promise rejection — если любой из переданных промисов завершается с ошибкой.',
-      ],
+      errors:
+        'TypeError — если аргумент (iterable) не является итерируемым объектом.\nPromise rejection — если любой из переданных промисов завершается с ошибкой.',
     },
     {
       name: 'Promise.allSettled()',
@@ -91,9 +89,8 @@ export const configPromise = {
         "const p1 = Promise.resolve(1);\nconst p2 = Promise.reject('error');\nPromise.allSettled([p1, p2]).then((results) => {\n console.log(results);\n}); // [{status:'fulfilled',value:1},{status:'rejected',reason:'error'}]",
       specification:
         'https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.allsettled',
-      errors: [
+      errors:
         'TypeError — если аргумент (iterable) не является итерируемым объектом.',
-      ],
     },
     {
       name: 'Promise.race()',
@@ -110,9 +107,8 @@ export const configPromise = {
         "const p1 = new Promise(resolve => setTimeout(() => resolve('First'), 100));\nconst p2 = new Promise(resolve => setTimeout(() => resolve('Second'), 50));\nPromise.race([p1, p2]).then((result) => {\n console.log(result); // 'Second'\n});",
       specification:
         'https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.race',
-      errors: [
+      errors:
         'TypeError — если аргумент (iterable) не является итерируемым объектом.',
-      ],
     },
     {
       name: 'Promise.any()',
@@ -129,10 +125,8 @@ export const configPromise = {
         "const p1 = new Promise((resolve, reject) => setTimeout(() => reject('Err'), 90));\nconst p2 = new Promise(resolve => setTimeout(() => resolve('Success'), 50));\nPromise.any([p1, p2]).then((result) => {\n console.log(result); // 'Success'\n});",
       specification:
         'https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.any',
-      errors: [
-        'TypeError — если аргумент (iterable) не является итерируемым объектом.',
-        'AggregateError — если все промисы завершаются с ошибкой (содержит свойство errors с массивом всех ошибок).',
-      ],
+      errors:
+        'TypeError — если аргумент (iterable) не является итерируемым объектом.\nAggregateError — если все промисы завершаются с ошибкой (содержит свойство errors с массивом всех ошибок).',
     },
     {
       name: 'Promise.resolve()',

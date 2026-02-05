@@ -2,7 +2,7 @@ import { type FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Pills, IconArrow } from '@/shared/ui';
 import { AppPaths } from '@/shared/constants/route.ts';
-import { labelTopics, Topics } from './config/types.ts';
+import { labelTopics, Topics, type ITopic } from '@/entities/topic';
 import { config } from './config';
 import styles from './JavaScriptContentPage.module.css';
 
@@ -27,10 +27,10 @@ export const JavaScriptContentPage: FC = () => {
     );
   };
 
-  const navigateToTopic = (section: any) => {
-    navigate(`${AppPaths.JAVA_SCRIPT}/topic/${section.value}`, {
+  const navigateToTopic = (topic: ITopic) => {
+    navigate(`${AppPaths.JAVA_SCRIPT}/topic/${topic.value}`, {
       state: {
-        topicData: section,
+        topicData: topic,
       },
     });
   };

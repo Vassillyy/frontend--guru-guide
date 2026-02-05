@@ -1,7 +1,7 @@
-import { Sections } from './types';
+import { Methods, type IMethod } from '@/entities/method';
 
-export const configWeakSet = {
-  [Sections.WEAK_SET]: [
+export const configWeakSet: Record<Methods.WEAK_SET, IMethod[]> = {
+  [Methods.WEAK_SET]: [
     {
       name: 'add()',
       syntax: 'weakSet.add(value)',
@@ -17,9 +17,8 @@ export const configWeakSet = {
         'const weakSet = new WeakSet();\nconst obj = {};\nweakSet.add(obj);\nconst hasObj = weakSet.has(obj);\nconsole.log(hasObj); // true',
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakset.prototype.add',
-      errors: [
+      errors:
         'TypeError — если this не является множеством (weakSet или set) или если в качестве значения передаётся не объект.',
-      ],
     },
     {
       name: 'has()',
@@ -36,9 +35,8 @@ export const configWeakSet = {
         'const obj = {};\nconst weakSet = new WeakSet([obj]);\nconst hasObj = weakSet.has(obj);\nconsole.log(hasObj); // true',
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakset.prototype.has',
-      errors: [
+      errors:
         'TypeError — если this не является множеством (weakSet или set) или если в качестве значения передаётся не объект.',
-      ],
     },
     {
       name: 'delete()',
@@ -55,9 +53,8 @@ export const configWeakSet = {
         'const obj = {};\nconst weakSet = new WeakSet([obj]);\nconst deleted = weakSet.delete(obj);\nconsole.log(deleted); // true\nconsole.log(weakSet.has(obj)); // false',
       specification:
         'https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakset.prototype.delete',
-      errors: [
+      errors:
         'TypeError — если this не является множеством (weakSet или set) или если в качестве значения передаётся не объект.',
-      ],
     },
   ],
 };
