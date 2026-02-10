@@ -14,7 +14,7 @@ export const configNumber: Record<Methods.NUMBER, IMethod[]> = {
       description:
         'Метод объекта Number, округляет число до указанного количества знаков после запятой. Возвращает строку.',
       example:
-        "const num = 123.123;\nconsole.log(num.toFixed(2)); // '123.12'\n// Округление до ближайшего целого:\nconst num2 = 123.567;\nconsole.log(num2.toFixed(0)); // '124'",
+        "const num = 123.123;\nconsole.log(num.toFixed(2)); // '123.12'\n\n// Округление до ближайшего целого:\nconst num2 = 123.567;\nconsole.log(num2.toFixed(0)); // '124'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.tofixed',
       errors:
@@ -51,7 +51,7 @@ export const configNumber: Record<Methods.NUMBER, IMethod[]> = {
       description:
         'Метод объекта Number, возвращает строковое представление числа в экспоненциальной записи.',
       example:
-        "// Большие числа:\nconst bigNumber = 123456.789;\nconsole.log(bigNumber.toExponential(4)); // '1.2346e+5'\n// Маленькие числа:\nconst smallNumber = 0.000123456;\nconsole.log(smallNumber.toExponential(3)); // '1.235e-4'\n// Целые числа:\nconst integer = 42;\nconsole.log(integer.toExponential(0)); // '4e+1'",
+        "// Большие числа:\nconst bigNumber = 123456.789;\nconsole.log(bigNumber.toExponential(4)); // '1.2346e+5'\n\n// Маленькие числа:\nconst smallNumber = 0.000123456;\nconsole.log(smallNumber.toExponential(3)); // '1.235e-4'\n\n// Целые числа:\nconst integer = 42;\nconsole.log(integer.toExponential(0)); // '4e+1'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.toexponential',
       errors:
@@ -93,7 +93,7 @@ export const configNumber: Record<Methods.NUMBER, IMethod[]> = {
       description:
         'Метод объекта Number, преобразует число в строку с учётом локали (языка и региона). Поддерживает различные стили форматирования: десятичные числа, валюту, проценты, единицы измерения. Позволяет настраивать количество цифр, разделители и другие параметры отображения. Игнорирует невалидные значения.',
       example:
-        "const num = 123456.789;\nconst result1 = num.toLocaleString('ru-RU');\nconsole.log(result1); // '123 456,789'\nconst result2 = num.toLocaleString('en-US');\nconsole.log(result2); // '123,456.789'\nconst result3 = num.toLocaleString('de-DE', {\n  style: 'currency',\n  currency: 'EUR',\n});\nconsole.log(result3); // '123.456,79 €'\nconst result4 = num.toLocaleString('ja-JP', {\n  style: 'currency',\n  currency: 'JPY',\n});\nconsole.log(result4); // '¥123,457'\nconst result5 = num.toLocaleString('ru-RU', {\n  style: 'percent',\n});\nconsole.log(result5); // '12 345 679 %'",
+        "const num = 123456.789;\nconst result1 = num.toLocaleString('ru-RU');\nconsole.log(result1); // '123 456,789'\n\nconst result2 = num.toLocaleString('en-US');\nconsole.log(result2); // '123,456.789'\n\nconst result3 = num.toLocaleString('de-DE', {\n  style: 'currency',\n  currency: 'EUR',\n});\nconsole.log(result3); // '123.456,79 €'\n\nconst result4 = num.toLocaleString('ja-JP', {\n  style: 'currency',\n  currency: 'JPY',\n});\nconsole.log(result4); // '¥123,457'\n\nconst result5 = num.toLocaleString('ru-RU', {\n  style: 'percent',\n});\n\nconsole.log(result5); // '12 345 679 %'",
       specification:
         'https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.tolocalestring',
       errors:
@@ -141,7 +141,7 @@ export const configNumber: Record<Methods.NUMBER, IMethod[]> = {
         },
       ],
       description:
-        'Статический метод объекта Number, возвращает true только в том случае, если значение (value) принадлежит к типу number и не является NaN/Infinity/-Infinity. Во всех остальных случаях возвращает false.',
+        'Статический метод объекта Number, возвращает true только в том случае, если указанное значение принадлежит к типу number и не является NaN/Infinity/-Infinity. Во всех остальных случаях возвращает false.',
       example:
         "console.log(Number.isFinite(42)); // true\nconsole.log(Number.isFinite(42.5)); // true\nconsole.log(Number.isFinite('42')); // false\nconsole.log(Number.isFinite(Infinity)); // false\nconsole.log(Number.isFinite(-Infinity)); // false\nconsole.log(Number.isFinite(NaN)); // false\nconsole.log(Number.isFinite(null)); // false",
       specification:

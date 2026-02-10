@@ -8,7 +8,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       description:
         'Метод объекта String, возвращает новую строку, приведённую в верхний регистр.',
       example:
-        "const filename = 'readme.md';\nconsole.log(filename.toUpperCase()); // 'README.MD'\nconst currency = 'eur/usd';\nconsole.log(currency.toUpperCase()); // 'EUR/USD'",
+        "const filename = 'readme.md';\nconsole.log(filename.toUpperCase()); // 'README.MD'\n\nconst currency = 'eur/usd';\nconsole.log(currency.toUpperCase()); // 'EUR/USD'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.touppercase',
       errors: 'TypeError — если this не является строкой.',
@@ -19,7 +19,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       description:
         'Метод объекта String, возвращает новую строку, приведённую в нижний регистр.',
       example:
-        "const config = 'BACKGROUND_COLOR';\nconsole.log(config.toLowerCase()); // 'background_color'\nconst domain = 'EXAMPLE.COM';\nconsole.log(domain.toLowerCase()); // 'example.com'",
+        "const config = 'BACKGROUND_COLOR';\nconsole.log(config.toLowerCase()); // 'background_color'\n\nconst domain = 'EXAMPLE.COM';\nconsole.log(domain.toLowerCase()); // 'example.com'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.tolowercase',
       errors: 'TypeError — если this не является строкой.',
@@ -30,11 +30,11 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       parameters: [
         {
           name: 'searchString',
-          description: 'Подстрока для проверки',
+          description: 'Подстрока для поиска',
         },
         {
           name: 'position',
-          description: 'Необязательный индекс, с которого начинать поиск',
+          description: 'Индекс с которого начинается поиск',
         },
       ],
       description:
@@ -51,12 +51,12 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       parameters: [
         {
           name: 'searchString',
-          description: 'Подстрока для проверки',
+          description: 'Подстрока для поиска',
         },
         {
           name: 'position',
           description:
-            'Необязательный индекс, с которого начинать поиск (длина строки, если не указан)',
+            'Индекс с которого начинается поиск (длина строки, если не указан)',
         },
       ],
       description:
@@ -83,7 +83,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       description:
         'Метод объекта String, позволяет заменить подстроку в исходной строке другой подстрокой. Возвращает новую строку.',
       example:
-        "const text = 'Удалить пробелы';\nconsole.log(text.replace('пробелы', 'запятые')); // 'Удалить запятые'\nconst price = 'Цена: $100.50';\nconsole.log(price.replace(/\\\\$/, '€')); // 'Цена: €100.50'",
+        "const text = 'Удалить пробелы';\nconst result1 = text.replace('пробелы', 'запятые');\nconsole.log(result1); // 'Удалить запятые'\n\nconst price = 'Цена: $100.50';\nconst result2 = price.replace(/\\$/, '€');\nconsole.log(result2); // 'Цена: €100.50'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replace',
       errors: 'TypeError — если this не является строкой.',
@@ -106,7 +106,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       description:
         'Метод объекта String, позволяет заменить все вхождения подстроки в исходной строке на другую подстроку. Возвращает новую строку.',
       example:
-        "const version = 'Node.js v18.17.0';\nconsole.log(version.replace('v18', 'v20')); // 'Node.js v20.17.0'\nconst email = 'user@example.com';\nconsole.log(email.replace(/@.*$/, '@gmail.com')); // 'user@gmail.com'",
+        "const version = 'Node.js v18.17.0';\nconst result1 = version.replace('v18', 'v20');\nconsole.log(result1); // 'Node.js v20.17.0'\n\nconst email = 'user@example.com';\nconst result2 = email.replace(/@.*$/, '@gmail.com');\nconsole.log(result2); // 'user@gmail.com'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replaceall',
       errors:
@@ -157,13 +157,13 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
         {
           name: 'startIndex',
-          description: 'Необязательный индекс начала поиска',
+          description: 'Индекс начала поиска',
         },
       ],
       description:
         'Метод объекта String, выполняет поиск подстроки в исходной строке. Метод возвращает индекс первого совпадения или -1, если подстрока не найдена.',
       example:
-        "const url = 'https://site.com';\nconsole.log(url.indexOf('://')); // 5\nconsole.log(url.indexOf('site')); // 8\nconsole.log(url.indexOf('ftp')); // -1",
+        "const url = 'https:/site.com';\nconsole.log(url.indexOf(':/')); // 5\nconsole.log(url.indexOf('site')); // 7\nconsole.log(url.indexOf('ftp')); // -1",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.indexof',
       errors: 'TypeError — если this не является строкой или массивом.',
@@ -178,8 +178,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
         {
           name: 'fromIndex',
-          description:
-            'Необязательный индекс начала поиска в обратном направлении',
+          description: 'Индекс начала поиска в обратном направлении',
         },
       ],
       description:
@@ -200,7 +199,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
         {
           name: 'position',
-          description: 'Необязательный индекс начала поиска',
+          description: 'Индекс начала поиска',
         },
       ],
       description:
@@ -222,7 +221,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         {
           name: 'end',
           description:
-            'Необязательный индекс конца подстроки (не включая, может быть отрицательным)',
+            'Индекс конца подстроки (не включая, может быть отрицательным)',
         },
       ],
       description:
@@ -243,7 +242,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
         {
           name: 'end',
-          description: 'Необязательный индекс конца подстроки (не включая)',
+          description: 'Индекс конца подстроки (не включая)',
         },
       ],
       description:
@@ -282,18 +281,18 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         {
           name: 'locales',
           description:
-            "Необязательная строка или массив строк с кодом локали ('ru-RU', 'en-US')",
+            "Строка или массив строк с кодом локали ('ru-RU', 'en-US')",
         },
         {
           name: 'options',
           description:
-            "Необязательный объект с настройками сравнения:\n • sensitivity: 'base' — различает только базовые буквы (a ≠ b), 'accent' — различает диакритики (a ≠ á), 'case' — различает регистр (a ≠ A), 'variant' — различает всё (по умолчанию)\n • ignorePunctuation: true/false — игнорировать знаки пунктуации\n • numeric: true/false — числовое сравнение ('2' > '10' при true)\n • caseFirst: 'upper' — заглавные буквы первыми, 'lower' — строчные первыми, 'false' — порядок локали\n • usage: 'sort' (по умолчанию) или 'search' — цель сравнения (поиск или сортировка)",
+            "Объект с настройками сравнения:\n • sensitivity: 'base' — различает только базовые буквы (a ≠ b), 'accent' — различает диакритики (a ≠ á), 'case' — различает регистр (a ≠ A), 'variant' — различает всё (по умолчанию)\n • ignorePunctuation: true/false — игнорировать знаки пунктуации\n • numeric: true/false — числовое сравнение ('2' > '10' при true)\n • caseFirst: 'upper' — заглавные буквы первыми, 'lower' — строчные первыми, 'false' — порядок локали\n • usage: 'sort' (по умолчанию) или 'search' — цель сравнения (поиск или сортировка)",
         },
       ],
       description:
-        'Метод объекта String, сравнивает две строки с учётом правил языка. Возвращает число:\n • отрицательное, если исходная строка меньше строки для сравнения;\n • положительное, если больше;\n • 0, если равны.',
+        'Метод объекта String, сравнивает две строки с учётом правил языка. Возвращает число:\n • отрицательное, если исходная строка меньше указанной строки;\n • положительное, если больше;\n • 0, если равны.',
       example:
-        "const result1 = 'café'.localeCompare('cafe');\nconsole.log(result1); // 1\nconst result2 = '10'.localeCompare('2', undefined, {\n  numeric: true,\n});\nconsole.log(result2); // 1\nconst result3 = 'résumé'.localeCompare('resume', 'fr', {\n  sensitivity: 'base'\n});\nconsole.log(result3); // 0\nconst result4 = 'ä'.localeCompare('z', 'de');\nconsole.log(result4); // -1",
+        "const result1 = 'café'.localeCompare('cafe');\nconsole.log(result1); // 1\n\nconst result2 = '10'.localeCompare('2', undefined, {\n  numeric: true,\n});\nconsole.log(result2); // 1\n\nconst result3 = 'résumé'.localeCompare('resume', 'fr', {\n  sensitivity: 'base'\n});\nconsole.log(result3); // 0\n\nconst result4 = 'ä'.localeCompare('z', 'de');\nconsole.log(result4); // -1",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.localecompare',
       errors:
@@ -303,7 +302,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       name: 'trim()',
       syntax: 'str.trim()',
       description:
-        'Метод объекта String, создаёт новую строку на основе исходной строки, удаляя все пробельные символы (пробелы, табуляции, неразрывные пробелы) с её начала и конца.',
+        'Метод объекта String, возвращает новую строку на основе исходной строки, удаляя все пробельные символы (пробелы, табуляции, неразрывные пробелы) с её начала и конца.',
       example:
         "const input = '   user@example.com   ';\nconst cleaned = input.trim();\nconsole.log(cleaned); // 'user@example.com'",
       specification:
@@ -320,9 +319,9 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
       ],
       description:
-        'Метод объекта String, создаёт новую строку, состоящую из повторений исходной строки заданное количество раз. Если аргумент равен 0, возвращает пустую строку.',
+        'Метод объекта String, возвращает новую строку, состоящую из повторений исходной строки заданное количество раз. Если аргумент равен 0, возвращает пустую строку.',
       example:
-        "const separator = '---';\nconsole.log(separator.repeat(3)); // '------------'\nconst loading = '.';\nconsole.log(loading.repeat(5)); // '.....'\nconst pattern = 'abc';\nconsole.log(pattern.repeat(2)); // 'abcabc'",
+        "const separator = '---';\nconsole.log(separator.repeat(3)); // '------------'\n\nconst loading = '.';\nconsole.log(loading.repeat(5)); // '.....'\n\nconst pattern = 'abc';\nconsole.log(pattern.repeat(2)); // 'abcabc'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.repeat',
       errors:
@@ -339,7 +338,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
       ],
       description:
-        'Метод объекта String возвращает новую строку, в которую копирует данные из исходной строки и аргументов.',
+        'Метод объекта String возвращает новую строку, в которую копирует содержимое из исходной строки и аргументов.',
       example:
         "const firstName = 'John';\nconst lastName = 'Doe';\nconst fullName = firstName.concat(' ', lastName);\nconsole.log(fullName); // 'John Doe'",
       specification:
@@ -357,8 +356,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
         },
         {
           name: 'limit',
-          description:
-            'Необязательное ограничение количества элементов в результате',
+          description: 'Ограничение количества элементов в результате',
         },
       ],
       description:
@@ -382,7 +380,7 @@ export const configString: Record<Methods.STRING, IMethod[]> = {
       description:
         'Статический метод объекта String, создаёт символ по указанному коду.',
       example:
-        "const charA = String.fromCodePoint(65);\nconsole.log(charA); // 'A'\nconst rocket = String.fromCodePoint(128640);\nconsole.log(rocket); // '🚀'\nconst combined = String.fromCodePoint(72, 105, 33);\nconsole.log(combined); // 'Hi!'",
+        "const charA = String.fromCodePoint(65);\nconsole.log(charA); // 'A'\n\nconst rocket = String.fromCodePoint(128640);\nconsole.log(rocket); // '🚀'\n\nconst combined = String.fromCodePoint(72, 105, 33);\nconsole.log(combined); // 'Hi!'",
       specification:
         'https://tc39.es/ecma262/multipage/text-processing.html#sec-string.fromcodepoint',
     },
