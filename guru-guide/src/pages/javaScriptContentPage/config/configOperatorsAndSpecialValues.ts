@@ -104,6 +104,42 @@ export const configOperatorsAndSpecialValues: ITopic = {
           'let a = (1, 2, 3, 4);\nconsole.log(a); // 4 (возвращает последнее значение)\n\nfor (let i = 0, j = 10; i < j; i++, j--) {\n  console.log(i, j); // 0 10, 1 9, 2 8, 3 7, 4 6\n}',
       },
       {
+        title: 'Операторы spread и rest',
+        content:
+          '... — остаточные параметры (rest) и оператор расширения (spread)',
+        addition:
+          'Остаточные параметры — это оператор, который используется в определении функции для сбора всех неуказанных аргументов в массив и также в деструктуризации для получения неуказанных элементов.\nОператор расширения — это оператор, который используется для извлечения элементов из итерируемого объекта.',
+        examples: `// Оператор расширения (spread) - объединение массивов\nconst firstPart = [1, 2, 3];\nconst secondPart = [4, 5, 6];\nconst combined = [...firstPart, ...secondPart];\nconsole.log(combined); // [1, 2, 3, 4, 5, 6]\n\n// Остаточные параметры (rest) - сбор аргументов в функцию\nfunction multiply(multiplier, ...numbers) {\n    return numbers.map(num => num * multiplier);\n}\nconst result = multiply(2, 1, 3, 5, 7);\nconsole.log(result); // [2, 6, 10, 14]`,
+      },
+      {
+        title: 'Оператор void',
+        content: 'void — вычисляет выражение и возвращает undefined',
+        addition:
+          'Используется для выполнения выражений, результат которых не нужен.',
+        examples: `const result = void console.log('Сообщение') // 'Сообщение';\nconsole.log(result); // undefined`,
+      },
+      {
+        title: 'Оператор delete',
+        content: 'delete — удаляет свойство объекта',
+        addition:
+          'Удаляет свойство объекта или элемент массива. Возвращает true если удаление успешно, иначе false.',
+        examples: `// Удаление пользовательского свойства объекта\nconst user = { name: 'Иван', age: 30 };\nconsole.log(delete user.age); // true\nconsole.log(user); // { name: 'Иван' }\n\n// Удаление элемента массива\nconst numbers = [1, 2, 3, 4, 5];\nconsole.log(delete numbers[2]); // true\nconsole.log(numbers); // [1, 2, null, 4, 5]\nconsole.log(numbers[2]); // undefined`,
+      },
+      {
+        title: 'Оператор in',
+        content: 'in — проверяет наличие свойства в объекте',
+        addition:
+          'Возвращает true, если свойство существует в объекте или его цепочке прототипов.',
+        examples: `const car = { brand: 'Toyota', year: 2020 };\nconst hasBrand = 'brand' in car;\nconst hasColor = 'color' in car;\nconsole.log(hasBrand); // true\nconsole.log(hasColor); // false`,
+      },
+      {
+        title: 'Оператор new',
+        content: 'new — создает экземпляр объекта',
+        addition:
+          'Используется для создания экземпляров объектов на основе конструкторов.',
+        examples: `function User(name) {\n    this.name = name;\n}\n\nconst admin = new User('Администратор');\nconsole.log(admin.name); // 'Администратор'`,
+      },
+      {
         title: 'Специальное значение NaN',
         content: 'NaN — Not-a-Number (не число)',
         addition:
